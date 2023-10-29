@@ -66,11 +66,15 @@ public:
 class header
 {
 public:
+	uint32_t version{};
 	wstring name;
-	string tag;
-	uint32_t level;
-	uint8_t sex;
-	uint8_t hardcore;
+	string classId;
+	uint32_t level{};
+	uint8_t sex{};
+	uint8_t hardcore{};
+	uint8_t expansionStatus{};
+	uint8_t isInMainQuest{};
+	string className;
 
 	void read(gdc_file *);
 	void write(gdc_file *);
@@ -646,18 +650,13 @@ void gdc_file::read(const char *filename)
 		throw std::runtime_error("gdc_file:read: unexpected int value of " + std::to_string(v));
 	}
 
-	const auto v2 = read_int();
-	// TODO: was: if (v2 != 1)
-	if (v2 != 2)
-	{
-		throw std::runtime_error("gdc_file:read: unexpected int value of " + std::to_string(v2));
-	}
-
 	hdr.read(this);
 
-	if (next_int())
+	const auto vv = next_int();
+	std::cout << "Next_int: " << std::to_string(vv) << std::endl;
+	if (vv == 0)
 	{
-		throw std::runtime_error("gdc_file:read: failed to read next_int");
+		throw std::runtime_error("gdc_file:read: next int is zero");
 	}
 
 	const auto v3 = read_int();
@@ -753,27 +752,38 @@ template <typename T> void vector<T>::write(gdc_file *gdc)
 
 void header::read(gdc_file *gdc)
 {
+	version = gdc->read_int();
+	std::cout << "version:" << std::to_string(version) << std::endl;
+	if(version != 1 && version != 2) {
+		throw std::runtime_error("Unsupported version: " + std::to_string(version));
+	}
+
 	name.read(gdc);
 	std::wcout << "name:" << name << std::endl;
 
 	sex = gdc->read_byte();
 	std::cout << "sex:" << std::to_string(sex) << std::endl;
 
-	tag.read(gdc);
-	std::cout << "tag:" << tag << std::endl;
+	classId.read(gdc);
+	std::cout << "classId:" << classId << std::endl;
 
 	level = gdc->read_int();
 	std::cout << "level:" << std::to_string(level) << std::endl;
 
 	hardcore = gdc->read_byte();
 	std::cout << "hardcore:" << std::to_string(hardcore) << std::endl;
+
+	if(version >= 2) {
+		expansionStatus = gdc->read_byte();
+		std::cout << "expansionStatus:" << std::to_string(expansionStatus) << std::endl;
+	}
 }
 
 void header::write(gdc_file *gdc)
 {
 	name.write(gdc);
 	gdc->write_byte(sex);
-	tag.write(gdc);
+	classId.write(gdc);
 	gdc->write_int(level);
 	gdc->write_byte(hardcore);
 }
