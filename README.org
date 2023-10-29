@@ -1,0 +1,38 @@
+#+title: GrimDawn Player Parser
+
+
+* Introduction
+A =Grim Dawn= player parser.
+
+* References
++ [[http://www.lost.org.uk/grimdawn/][GrimDawn decryption code samples]]
+
+* Build
+** GCC
+#+begin_src sh
+g++ -g ./decrypt.cpp -std=c++17
+#+end_src
+** Microsoft Visual Studio
+*** Install
+#+begin_src sh
+choco install visualstudio2019-workload-vctools
+#+end_src
+
+*** Setup PATH
+#+begin_src powershell
+set env:PATH = $PATH:"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin"
+#+end_src
+
+*** Build
+#+begin_src bat
+vcvars64.bat
+cl /Zi decrypt.cpp
+#+end_src
+* Run
+#+begin_src sh
+a.exe player.gdc player.out
+#+end_src
+
+* Issues and Solutions :issues:
+** TODO Decryption samples are old and need to be updated to work
++ When running the =c++= ~decrypt.cc~ it fails with an exception on a version check
