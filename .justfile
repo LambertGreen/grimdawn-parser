@@ -1,7 +1,5 @@
-set shell :=["cmd.exe", "/c"]
-
 build:
-	g++ decrypt.cpp -std=c++17
+	g++ decrypt.cpp -std=c++17 -o grimparse
 
 run:
-	a testfiles/player.gdc output.txt
+	./grimparse testfiles/player.gdc output.txt
