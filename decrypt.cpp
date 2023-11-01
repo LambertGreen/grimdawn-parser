@@ -8,6 +8,9 @@
 #include <vector>
 
 static std::exception e;
+#define LOG(field) std::cout << #field << ": " << field << std::endl;
+#define LOG_N(field)                                                           \
+  std::cout << #field << ": " << std::to_string(field) << std::endl;
 
 class gdc_file;
 
@@ -599,7 +602,7 @@ void gdc_file::read(const char *filename) {
   }
 
   const auto v3 = read_int();
-  if (v3 != 7) // version
+  if (v3 != 8) // version
   {
     throw std::runtime_error("gdc_file:read: unexpected int value of " +
                              std::to_string(v3));
@@ -725,25 +728,55 @@ void header::write(gdc_file *gdc) {
 void character_info::read(gdc_file *gdc) {
   block b;
 
-  if (gdc->read_block_start(&b) != 1)
-    throw e;
+  if (gdc->read_block_start(&b) != 1) {
+    throw std::runtime_error("character_info: start block is not 1");
+  }
 
-  if (gdc->read_int() != 4) // version
-    throw e;
+  // version
+  const auto v = gdc->read_int();
+  if (v != 5) {
+    throw std::runtime_error("character_info: version is not 5, but " +
+                             std::to_string(v));
+  }
 
   isInMainQuest = gdc->read_byte();
+  LOG_N(isInMainQuest);
+
   hasBeenInGame = gdc->read_byte();
+  LOG_N(hasBeenInGame);
+
   difficulty = gdc->read_byte();
+  LOG_N(difficulty);
+
   greatestDifficulty = gdc->read_byte();
+  LOG_N(greatestDifficulty);
+
   money = gdc->read_int();
+  LOG_N(money);
+
   greatestSurvivalDifficulty = gdc->read_byte();
+  LOG_N(greatestSurvivalDifficulty);
+
   currentTribute = gdc->read_int();
+  LOG_N(currentTribute);
+
   compassState = gdc->read_byte();
+  LOG_N(compassState);
+
   lootMode = gdc->read_int();
+  LOG_N(lootMode);
+
   skillWindowShowHelp = gdc->read_byte();
+  LOG_N(skillWindowShowHelp);
+
   alternateConfig = gdc->read_byte();
+  LOG_N(alternateConfig);
+
   alternateConfigEnabled = gdc->read_byte();
+  LOG_N(alternateConfigEnabled);
+
   texture.read(gdc);
+  LOG(texture);
 
   gdc->read_block_end(&b);
 }
@@ -1561,6 +1594,11 @@ void uid::write(gdc_file *gdc) {
 
 void string::read(gdc_file *gdc) {
   uint32_t len = gdc->read_int();
+  LOG_N(len);
+  if (len > 1000) {
+    throw std::runtime_error("Length of string is suspiciously long: " +
+                             std::to_string(len));
+  }
 
   clear();
   reserve(len);
