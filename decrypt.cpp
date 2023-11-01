@@ -1,3 +1,4 @@
+#include <_types/_uint8_t.h>
 #include <stdexcept>
 #include <stdint.h>
 #include <stdio.h>
@@ -81,7 +82,6 @@ class character_info {
 public:
   string texture;
   uint32_t money;
-  uint32_t lootMode;
   uint32_t currentTribute;
   uint8_t isInMainQuest;
   uint8_t hasBeenInGame;
@@ -92,6 +92,7 @@ public:
   uint8_t skillWindowShowHelp;
   uint8_t alternateConfig;
   uint8_t alternateConfigEnabled;
+  vector<uint8_t> lootFilters;
 
   void read(gdc_file *);
   void write(gdc_file *);
@@ -763,9 +764,6 @@ void character_info::read(gdc_file *gdc) {
   compassState = gdc->read_byte();
   LOG_N(compassState);
 
-  lootMode = gdc->read_int();
-  LOG_N(lootMode);
-
   skillWindowShowHelp = gdc->read_byte();
   LOG_N(skillWindowShowHelp);
 
@@ -777,6 +775,14 @@ void character_info::read(gdc_file *gdc) {
 
   texture.read(gdc);
   LOG(texture);
+
+  const auto lootFiltersSize = gdc->read_int();
+  lootFilters.resize(lootFiltersSize);
+  LOG_N(lootFiltersSize);
+
+  for (uint32_t i = 0; i < lootFiltersSize; i++) {
+    lootFilters[i] = gdc->read_byte();
+  }
 
   gdc->read_block_end(&b);
 }
@@ -795,7 +801,6 @@ void character_info::write(gdc_file *gdc) {
   gdc->write_byte(greatestSurvivalDifficulty);
   gdc->write_int(currentTribute);
   gdc->write_byte(compassState);
-  gdc->write_int(lootMode);
   gdc->write_byte(skillWindowShowHelp);
   gdc->write_byte(alternateConfig);
   gdc->write_byte(alternateConfigEnabled);
@@ -1594,7 +1599,7 @@ void uid::write(gdc_file *gdc) {
 
 void string::read(gdc_file *gdc) {
   uint32_t len = gdc->read_int();
-  LOG_N(len);
+  // LOG_N(len);
   if (len > 1000) {
     throw std::runtime_error("Length of string is suspiciously long: " +
                              std::to_string(len));
