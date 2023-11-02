@@ -1600,7 +1600,7 @@ void uid::write(gdc_file *gdc) {
 void string::read(gdc_file *gdc) {
   uint32_t len = gdc->read_int();
   // LOG_N(len);
-  if (len > 1000) {
+  if (len > 256) {
     throw std::runtime_error("Length of string is suspiciously long: " +
                              std::to_string(len));
   }
