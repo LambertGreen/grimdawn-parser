@@ -24,6 +24,7 @@
 #include "shrine_list.hpp"
 #include "skill.hpp"
 #include "stash_item.hpp"
+#include "stash_page.hpp"
 #include "teleport_list.hpp"
 #include "trigger_tokens.hpp"
 #include "tutorial_pages.hpp"
