@@ -1,4 +1,5 @@
 #include "gdc_file.hpp"
+#include <string>
 
 void gdc_file::read(const char *filename) {
   file f(filename, "rb");
@@ -61,61 +62,15 @@ void gdc_file::read(const char *filename) {
     throw e;
 }
 
-void gdc_file::write(const char *filename) {
-  file f(filename, "wb");
-
-  if (!(fp = f.fp))
-    throw e;
-
-  write_int(0x55555555);
-  write_int(0x58434447);
-  write_int(1);
-
-  hdr.write(this);
-
-  write_int(0);
-
-  write_int(7); // version
-  id.write(this);
-
-  info.write(this);
-  bio.write(this);
-  inv.write(this);
-  stash.write(this);
-  respawns.write(this);
-  teleports.write(this);
-  markers.write(this);
-  shrines.write(this);
-  skills.write(this);
-  notes.write(this);
-  factions.write(this);
-  ui.write(this);
-  tutorials.write(this);
-  stats.write(this);
-  tokens.write(this);
-
-  if (fflush(fp))
-    throw e;
-}
-
 template <typename T> void vector<T>::read(gdc_file *gdc) {
   uint32_t n = gdc->read_int();
+  std::cout << "Vector size: " << std::to_string(n) << std::endl;
 
   this->resize(n);
   T *ptr = this->data();
 
   for (uint32_t i = 0; i < n; i++) {
     ptr[i].read(gdc);
-  }
-}
-
-template <typename T> void vector<T>::write(gdc_file *gdc) {
-  uint32_t n = this->size();
-  gdc->write_int(n);
-
-  T *ptr = this->data();
-  for (uint32_t i = 0; i < n; i++) {
-    ptr[i].write(gdc);
   }
 }
 
@@ -146,14 +101,6 @@ void header::read(gdc_file *gdc) {
     std::cout << "expansionStatus:" << std::to_string(expansionStatus)
               << std::endl;
   }
-}
-
-void header::write(gdc_file *gdc) {
-  name.write(gdc);
-  gdc->write_byte(sex);
-  classId.write(gdc);
-  gdc->write_int(level);
-  gdc->write_byte(hardcore);
 }
 
 void character_info::read(gdc_file *gdc) {
@@ -217,28 +164,6 @@ void character_info::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void character_info::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 1);
-  gdc->write_int(4); // version
-
-  gdc->write_byte(isInMainQuest);
-  gdc->write_byte(hasBeenInGame);
-  gdc->write_byte(difficulty);
-  gdc->write_byte(greatestDifficulty);
-  gdc->write_int(money);
-  gdc->write_byte(greatestSurvivalDifficulty);
-  gdc->write_int(currentTribute);
-  gdc->write_byte(compassState);
-  gdc->write_byte(skillWindowShowHelp);
-  gdc->write_byte(alternateConfig);
-  gdc->write_byte(alternateConfigEnabled);
-  texture.write(gdc);
-
-  gdc->write_block_end(&b);
-}
-
 void character_bio::read(gdc_file *gdc) {
   block b;
 
@@ -261,27 +186,6 @@ void character_bio::read(gdc_file *gdc) {
   energy = gdc->read_float();
 
   gdc->read_block_end(&b);
-}
-
-void character_bio::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 2);
-  gdc->write_int(8); // version
-
-  gdc->write_int(level);
-  gdc->write_int(experience);
-  gdc->write_int(modifierPoints);
-  gdc->write_int(skillPoints);
-  gdc->write_int(devotionPoints);
-  gdc->write_int(totalDevotion);
-  gdc->write_float(physique);
-  gdc->write_float(cunning);
-  gdc->write_float(spirit);
-  gdc->write_float(health);
-  gdc->write_float(energy);
-
-  gdc->write_block_end(&b);
 }
 
 void inventory::read(gdc_file *gdc) {
@@ -326,46 +230,6 @@ void inventory::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void inventory::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 3);
-  gdc->write_int(4); // version
-
-  gdc->write_byte(flag);
-
-  if (flag) {
-    uint32_t n = sacks.size();
-    gdc->write_int(n);
-    gdc->write_int(focused);
-    gdc->write_int(selected);
-
-    for (uint32_t i = 0; i < n; i++) {
-      sacks[i].write(gdc);
-    }
-
-    gdc->write_byte(useAlternate);
-
-    for (unsigned i = 0; i < 12; i++) {
-      equipment[i].write(gdc);
-    }
-
-    gdc->write_byte(alternate1);
-
-    for (unsigned i = 0; i < 2; i++) {
-      weapon1[i].write(gdc);
-    }
-
-    gdc->write_byte(alternate2);
-
-    for (unsigned i = 0; i < 2; i++) {
-      weapon2[i].write(gdc);
-    }
-  }
-
-  gdc->write_block_end(&b);
-}
-
 void inventory_sack::read(gdc_file *gdc) {
   block b;
 
@@ -378,27 +242,10 @@ void inventory_sack::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void inventory_sack::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 0);
-
-  gdc->write_byte(tempBool);
-  items.write(gdc);
-
-  gdc->write_block_end(&b);
-}
-
 void inventory_item::read(gdc_file *gdc) {
   item::read(gdc);
   x = gdc->read_int();
   y = gdc->read_int();
-}
-
-void inventory_item::write(gdc_file *gdc) {
-  item::write(gdc);
-  gdc->write_int(x);
-  gdc->write_int(y);
 }
 
 void inventory_equipment::read(gdc_file *gdc) {
@@ -406,50 +253,52 @@ void inventory_equipment::read(gdc_file *gdc) {
   attached = gdc->read_byte();
 }
 
-void inventory_equipment::write(gdc_file *gdc) {
-  item::write(gdc);
-  gdc->write_byte(attached);
-}
+void stash_page::read(gdc_file *gdc) {
+  const int BLOCK = 0;
 
-void character_stash::read(gdc_file *gdc) {
   block b;
-
-  if (gdc->read_block_start(&b) != 4)
-    throw e;
-
-  if (gdc->read_int() != 5) // version
-    throw e;
+  const auto block_val = gdc->read_block_start(&b);
+  if (block_val != BLOCK) {
+    throw std::runtime_error(
+        "character_stash:read: unexpected int BLOCK value of " +
+        std::to_string(block_val));
+  }
 
   width = gdc->read_int();
   height = gdc->read_int();
+
   items.read(gdc);
 
   gdc->read_block_end(&b);
 }
 
-void character_stash::write(gdc_file *gdc) {
+void character_stash::read(gdc_file *gdc) {
+  const int BLOCK = 4;
+  const int VERSION = 6;
+
   block b;
+  const auto block_val = gdc->read_block_start(&b);
+  if (block_val != BLOCK) {
+    throw std::runtime_error(
+        "character_stash:read: unexpected int BLOCK value of " +
+        std::to_string(block_val));
+  }
 
-  gdc->write_block_start(&b, 4);
-  gdc->write_int(5); // version
+  const auto v = gdc->read_int();
+  if (v != VERSION) {
+    throw std::runtime_error("character_stash:read: unexpected int value of " +
+                             std::to_string(v));
+  }
 
-  gdc->write_int(width);
-  gdc->write_int(height);
-  items.write(gdc);
+  pages.read(gdc);
 
-  gdc->write_block_end(&b);
+  gdc->read_block_end(&b);
 }
 
 void stash_item::read(gdc_file *gdc) {
   item::read(gdc);
   x = gdc->read_float();
   y = gdc->read_float();
-}
-
-void stash_item::write(gdc_file *gdc) {
-  item::write(gdc);
-  gdc->write_float(x);
-  gdc->write_float(y);
 }
 
 void respawn_list::read(gdc_file *gdc) {
@@ -472,23 +321,6 @@ void respawn_list::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void respawn_list::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 5);
-  gdc->write_int(1); // version
-
-  for (unsigned i = 0; i < 3; i++) {
-    uids[i].write(gdc);
-  }
-
-  for (unsigned i = 0; i < 3; i++) {
-    spawn[i].write(gdc);
-  }
-
-  gdc->write_block_end(&b);
-}
-
 void teleport_list::read(gdc_file *gdc) {
   block b;
 
@@ -503,19 +335,6 @@ void teleport_list::read(gdc_file *gdc) {
   }
 
   gdc->read_block_end(&b);
-}
-
-void teleport_list::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 6);
-  gdc->write_int(1); // version
-
-  for (unsigned i = 0; i < 3; i++) {
-    uids[i].write(gdc);
-  }
-
-  gdc->write_block_end(&b);
 }
 
 void marker_list::read(gdc_file *gdc) {
@@ -534,19 +353,6 @@ void marker_list::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void marker_list::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 7);
-  gdc->write_int(1); // version
-
-  for (unsigned i = 0; i < 3; i++) {
-    uids[i].write(gdc);
-  }
-
-  gdc->write_block_end(&b);
-}
-
 void shrine_list::read(gdc_file *gdc) {
   block b;
 
@@ -561,19 +367,6 @@ void shrine_list::read(gdc_file *gdc) {
   }
 
   gdc->read_block_end(&b);
-}
-
-void shrine_list::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 17);
-  gdc->write_int(2); // version
-
-  for (unsigned i = 0; i < 6; i++) {
-    uids[i].write(gdc);
-  }
-
-  gdc->write_block_end(&b);
 }
 
 void character_skills::read(gdc_file *gdc) {
@@ -594,21 +387,6 @@ void character_skills::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void character_skills::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 8);
-  gdc->write_int(5); // version
-
-  skills.write(gdc);
-  gdc->write_int(masteriesAllowed);
-  gdc->write_int(skillReclamationPointsUsed);
-  gdc->write_int(devotionReclamationPointsUsed);
-  itemSkills.write(gdc);
-
-  gdc->write_block_end(&b);
-}
-
 void skill::read(gdc_file *gdc) {
   name.read(gdc);
   level = gdc->read_int();
@@ -621,34 +399,12 @@ void skill::read(gdc_file *gdc) {
   autoCastSkill.read(gdc);
   autoCastController.read(gdc);
 }
-
-void skill::write(gdc_file *gdc) {
-  name.write(gdc);
-  gdc->write_int(level);
-  gdc->write_byte(enabled);
-  gdc->write_int(devotionLevel);
-  gdc->write_int(experience);
-  gdc->write_int(active);
-  gdc->write_byte(unknown1);
-  gdc->write_byte(unknown2);
-  autoCastSkill.write(gdc);
-  autoCastController.write(gdc);
-}
-
 void item_skill::read(gdc_file *gdc) {
   name.read(gdc);
   autoCastSkill.read(gdc);
   autoCastController.read(gdc);
   itemSlot = gdc->read_int();
   itemName.read(gdc);
-}
-
-void item_skill::write(gdc_file *gdc) {
-  name.write(gdc);
-  autoCastSkill.write(gdc);
-  autoCastController.write(gdc);
-  gdc->write_int(itemSlot);
-  itemName.write(gdc);
 }
 
 void lore_notes::read(gdc_file *gdc) {
@@ -663,17 +419,6 @@ void lore_notes::read(gdc_file *gdc) {
   names.read(gdc);
 
   gdc->read_block_end(&b);
-}
-
-void lore_notes::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 12);
-  gdc->write_int(1); // version
-
-  names.write(gdc);
-
-  gdc->write_block_end(&b);
 }
 
 void faction_pack::read(gdc_file *gdc) {
@@ -691,32 +436,12 @@ void faction_pack::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void faction_pack::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 13);
-  gdc->write_int(5); // version
-
-  gdc->write_int(faction);
-  factions.write(gdc);
-
-  gdc->write_block_end(&b);
-}
-
 void faction_data::read(gdc_file *gdc) {
   modified = gdc->read_byte();
   unlocked = gdc->read_byte();
   value = gdc->read_float();
   positiveBoost = gdc->read_float();
   negativeBoost = gdc->read_float();
-}
-
-void faction_data::write(gdc_file *gdc) {
-  gdc->write_byte(modified);
-  gdc->write_byte(unlocked);
-  gdc->write_float(value);
-  gdc->write_float(positiveBoost);
-  gdc->write_float(negativeBoost);
 }
 
 void ui_settings::read(gdc_file *gdc) {
@@ -747,31 +472,6 @@ void ui_settings::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void ui_settings::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 14);
-  gdc->write_int(4); // version
-
-  gdc->write_byte(unknown1);
-  gdc->write_int(unknown2);
-  gdc->write_byte(unknown3);
-
-  for (unsigned i = 0; i < 5; i++) {
-    unknown4[i].write(gdc);
-    unknown5[i].write(gdc);
-    gdc->write_byte(unknown6[i]);
-  }
-
-  for (unsigned i = 0; i < 36; i++) {
-    slots[i].write(gdc);
-  }
-
-  gdc->write_float(cameraDistance);
-
-  gdc->write_block_end(&b);
-}
-
 void hot_slot::read(gdc_file *gdc) {
   type = gdc->read_int();
 
@@ -785,22 +485,6 @@ void hot_slot::read(gdc_file *gdc) {
     bitmapUp.read(gdc);
     bitmapDown.read(gdc);
     label.read(gdc);
-  }
-}
-
-void hot_slot::write(gdc_file *gdc) {
-  gdc->write_int(type);
-
-  if (type == 0) {
-    skill.write(gdc);
-    gdc->write_byte(isItemSkill);
-    item.write(gdc);
-    gdc->write_int(equipLocation);
-  } else if (type == 4) {
-    item.write(gdc);
-    bitmapUp.write(gdc);
-    bitmapDown.write(gdc);
-    label.write(gdc);
   }
 }
 
@@ -821,22 +505,6 @@ void tutorial_pages::read(gdc_file *gdc) {
   }
 
   gdc->read_block_end(&b);
-}
-
-void tutorial_pages::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 15);
-  gdc->write_int(1); // version
-
-  uint32_t n = pages.size();
-  gdc->write_int(n);
-
-  for (uint32_t i = 0; i < n; i++) {
-    gdc->write_int(pages[i]);
-  }
-
-  gdc->write_block_end(&b);
 }
 
 void play_stats::read(gdc_file *gdc) {
@@ -897,61 +565,6 @@ void play_stats::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void play_stats::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 16);
-  gdc->write_int(9); // version
-
-  gdc->write_int(playTime);
-  gdc->write_int(deaths);
-  gdc->write_int(kills);
-  gdc->write_int(experienceFromKills);
-  gdc->write_int(healthPotionsUsed);
-  gdc->write_int(manaPotionsUsed);
-  gdc->write_int(maxLevel);
-  gdc->write_int(hitsReceived);
-  gdc->write_int(hitsInflicted);
-  gdc->write_int(criticalHitsInflicted);
-  gdc->write_int(criticalHitsReceived);
-  gdc->write_float(greatestDamageInflicted);
-
-  for (unsigned i = 0; i < 3; i++) {
-    greatestMonsterKilledName[i].write(gdc);
-    gdc->write_int(greatestMonsterKilledLevel[i]);
-    gdc->write_int(greatestMonsterKilledLifeAndMana[i]);
-    lastMonsterHit[i].write(gdc);
-    lastMonsterHitBy[i].write(gdc);
-  }
-
-  gdc->write_int(championKills);
-  gdc->write_float(lastHit);
-  gdc->write_float(lastHitBy);
-  gdc->write_float(greatestDamageReceived);
-  gdc->write_int(heroKills);
-  gdc->write_int(itemsCrafted);
-  gdc->write_int(relicsCrafted);
-  gdc->write_int(transcendentRelicsCrafted);
-  gdc->write_int(mythicalRelicsCrafted);
-  gdc->write_int(shrinesRestored);
-  gdc->write_int(oneShotChestsOpened);
-  gdc->write_int(loreNotesCollected);
-
-  for (unsigned i = 0; i < 3; i++) {
-    gdc->write_int(bossKills[i]);
-  }
-
-  gdc->write_int(survivalWaveTier);
-  gdc->write_int(greatestSurvivalScore);
-  gdc->write_int(cooldownRemaining);
-  gdc->write_int(cooldownTotal);
-
-  gdc->write_int(unknown1);
-  gdc->write_int(unknown2);
-
-  gdc->write_block_end(&b);
-}
-
 void trigger_tokens::read(gdc_file *gdc) {
   block b;
 
@@ -966,19 +579,6 @@ void trigger_tokens::read(gdc_file *gdc) {
   }
 
   gdc->read_block_end(&b);
-}
-
-void trigger_tokens::write(gdc_file *gdc) {
-  block b;
-
-  gdc->write_block_start(&b, 10);
-  gdc->write_int(2); // version
-
-  for (unsigned i = 0; i < 3; i++) {
-    tokens[i].write(gdc);
-  }
-
-  gdc->write_block_end(&b);
 }
 
 void item::read(gdc_file *gdc) {
@@ -998,32 +598,9 @@ void item::read(gdc_file *gdc) {
   stackCount = gdc->read_int();
 }
 
-void item::write(gdc_file *gdc) {
-  baseName.write(gdc);
-  prefixName.write(gdc);
-  suffixName.write(gdc);
-  modifierName.write(gdc);
-  transmuteName.write(gdc);
-  gdc->write_int(seed);
-  relicName.write(gdc);
-  relicBonus.write(gdc);
-  gdc->write_int(relicSeed);
-  augmentName.write(gdc);
-  gdc->write_int(unknown);
-  gdc->write_int(augmentSeed);
-  gdc->write_int(var1);
-  gdc->write_int(stackCount);
-}
-
 void uid::read(gdc_file *gdc) {
   for (unsigned i = 0; i < 16; i++) {
     id[i] = gdc->read_byte();
-  }
-}
-
-void uid::write(gdc_file *gdc) {
-  for (unsigned i = 0; i < 16; i++) {
-    gdc->write_byte(id[i]);
   }
 }
 
@@ -1043,17 +620,6 @@ void string::read(gdc_file *gdc) {
   }
 }
 
-void string::write(gdc_file *gdc) {
-  uint32_t len = size();
-  const char *str = data();
-
-  gdc->write_int(len);
-
-  for (uint32_t i = 0; i < len; i++) {
-    gdc->write_byte(str[i]);
-  }
-}
-
 void wstring::read(gdc_file *gdc) {
   uint32_t len = gdc->read_int();
 
@@ -1067,20 +633,8 @@ void wstring::read(gdc_file *gdc) {
   }
 }
 
-void wstring::write(gdc_file *gdc) {
-  uint32_t len = size();
-  const wchar_t *str = data();
-
-  gdc->write_int(len);
-
-  for (uint32_t i = 0; i < len; i++) {
-    gdc->write_byte(str[i]);
-    gdc->write_byte(str[i] >> 8);
-  }
-}
-
 int main(int argc, char **argv) {
-  if (argc != 3) {
+  if (argc != 2) {
     fprintf(stderr, "Usage: %s <in file> <out file>\n", argv[0]);
     return 1;
   }
@@ -1093,15 +647,6 @@ int main(int argc, char **argv) {
     std::cout << "Exception:" << e.what() << std::endl;
   } catch (const std::exception &e) {
     printf("Error reading file: %s\n", argv[1]);
-    return 1;
-  }
-
-  try {
-    gdc.write(argv[2]);
-  } catch (const std::runtime_error &e) {
-    std::cout << "Exception:" << e.what() << std::endl;
-  } catch (const std::exception &e) {
-    printf("Error writing file: %s\n", argv[2]);
     return 1;
   }
 
