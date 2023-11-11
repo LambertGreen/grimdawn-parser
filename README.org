@@ -12,6 +12,24 @@ A =Grim Dawn= player parser.
 #+begin_src sh
 g++ -g ./decrypt.cpp -std=c++17
 #+end_src
+** Clang/LLVM
+*** Install
+#+begin_src sh
+brew install llvm
+#+end_src
+
+*** Setup Environment
+#+begin_src sh
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+#+end_src
+
+*** Build
+#+begin_src sh
+clang++ -g -O0 -std=c++17 -o grimparse decrypt.cpp
+#+end_src
+
 ** Microsoft Visual Studio
 *** Install
 #+begin_src sh
