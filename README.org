@@ -12,6 +12,7 @@ A =Grim Dawn= player parser.
 #+begin_src sh
 g++ -g ./decrypt.cpp -std=c++17
 #+end_src
+
 ** Clang/LLVM
 *** Install
 #+begin_src sh
@@ -46,9 +47,10 @@ set env:PATH = $PATH:"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildT
 vcvars64.bat
 cl /Zi decrypt.cpp
 #+end_src
+
 * Run
 #+begin_src sh
-a.exe player.gdc player.out
+grimparse testfiles/player.gdc
 #+end_src
 
 * Issues and Solutions :issues:
