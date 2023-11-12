@@ -305,20 +305,31 @@ void stash_item::read(gdc_file *gdc) {
 }
 
 void respawn_list::read(gdc_file *gdc) {
+  const int BLOCK = 5;
+  const int VERSION = 1;
+
   block b;
+  const auto block_val = gdc->read_block_start(&b);
+  if (block_val != BLOCK) {
+    throw std::runtime_error(
+        "respawn_list:read: unexpected int BLOCK value of " +
+        std::to_string(block_val));
+  }
 
-  if (gdc->read_block_start(&b) != 5)
-    throw e;
+  const auto v = gdc->read_int();
+  if (v != VERSION) {
+    throw std::runtime_error("respawn_list:read: unexpected int value of " +
+                             std::to_string(v));
+  }
 
-  if (gdc->read_int() != 1) // version
-    throw e;
-
-  for (unsigned i = 0; i < 3; i++) {
+  const int uids_len = sizeof(uids) / sizeof(uids[0]);
+  for (unsigned i = 0; i < uids_len; i++) {
     uids[i].read(gdc);
   }
 
+  const int spwan_len = sizeof(spawns) / sizeof(spawns[0]);
   for (unsigned i = 0; i < 3; i++) {
-    spawn[i].read(gdc);
+    spawns[i].read(gdc);
   }
 
   gdc->read_block_end(&b);
