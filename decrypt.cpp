@@ -1,3 +1,4 @@
+#include "common.hpp"
 #include "gdc_file.hpp"
 #include <string>
 
@@ -41,7 +42,6 @@ void gdc_file::read(const char *filename) {
   }
 
   id.read(this);
-
   info.read(this);
   bio.read(this);
   inv.read(this);
@@ -298,7 +298,10 @@ void character_stash::read(gdc_file *gdc) {
 void stash_item::read(gdc_file *gdc) {
   item::read(gdc);
   x = gdc->read_float();
+  LOG_N(x);
+
   y = gdc->read_float();
+  LOG_N(y);
 }
 
 void respawn_list::read(gdc_file *gdc) {
@@ -583,19 +586,46 @@ void trigger_tokens::read(gdc_file *gdc) {
 
 void item::read(gdc_file *gdc) {
   baseName.read(gdc);
+  LOG(baseName);
+
   prefixName.read(gdc);
+  LOG(prefixName);
+
   suffixName.read(gdc);
+  LOG(suffixName);
+
   modifierName.read(gdc);
+  LOG(modifierName);
+
   transmuteName.read(gdc);
+  LOG(transmuteName);
+
   seed = gdc->read_int();
+  LOG_N(seed);
+
   relicName.read(gdc);
+  LOG(relicName);
+
   relicBonus.read(gdc);
+  LOG(relicBonus);
+
   relicSeed = gdc->read_int();
+  LOG_N(relicSeed);
+
   augmentName.read(gdc);
+  LOG(augmentName);
+
   unknown = gdc->read_int();
+  LOG_N(unknown);
+
   augmentSeed = gdc->read_int();
+  LOG_N(augmentSeed);
+
   var1 = gdc->read_int();
+  LOG_N(var1);
+
   stackCount = gdc->read_int();
+  LOG_N(stackCount);
 }
 
 void uid::read(gdc_file *gdc) {
