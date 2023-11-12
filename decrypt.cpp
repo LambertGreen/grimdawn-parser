@@ -635,13 +635,12 @@ void wstring::read(gdc_file *gdc) {
 
 int main(int argc, char **argv) {
   if (argc != 2) {
-    fprintf(stderr, "Usage: %s <in file> <out file>\n", argv[0]);
+    fprintf(stderr, "Usage: %s <player.gdc file>\n", argv[0]);
     return 1;
   }
 
-  gdc_file gdc;
-
   try {
+    gdc_file gdc;
     gdc.read(argv[1]);
   } catch (const std::runtime_error &e) {
     std::cout << "Exception:" << e.what() << std::endl;

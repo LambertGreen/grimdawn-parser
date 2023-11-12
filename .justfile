@@ -8,12 +8,12 @@ build_with_gnu:
 
 # debug with lldb
 debug:
-	lldb ./grimparse testfiles/player.gdc output.txt
+	lldb ./grimparse testfiles/player.gdc
 
 # debug with gdb
 debug_with_gdb:
-    gdb -- ./grimparse testfiles/player.gdc output.txt
+    gdb -- ./grimparse testfiles/player.gdc
 
 # run
 run:
-	./grimparse testfiles/player.gdc output.txt
+	./grimparse testfiles/player.gdc
