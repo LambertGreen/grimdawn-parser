@@ -1,7 +1,10 @@
 #pragma once
 
 #include "common.hpp"
+#include "skill_map.hpp"
 #include "string.hpp"
+#include "vector.hpp"
+#include <_types/_uint8_t.h>
 
 class play_stats {
 public:
@@ -35,10 +38,17 @@ public:
   float lastHit;
   float lastHitBy;
   float greatestDamageReceived;
-  uint32_t survivalWaveTier;
-  uint32_t greatestSurvivalScore;
-  uint32_t cooldownRemaining;
-  uint32_t cooldownTotal;
+  uint32_t survivalGreatestWave;
+  uint32_t survivalGreatestScore;
+  // uint32_t cooldownRemaining;
+  // uint32_t cooldownTotal;
+  uint32_t survivalDefensesBuilt;
+  uint32_t survivalPowerUpsActivated;
+  vector<skill_map> skillMap;
+  uint32_t endlessSouls;
+  uint32_t endlessEssence;
+  uint8_t difficultySkip;
+
   uint32_t unknown1;
   uint32_t unknown2;
 

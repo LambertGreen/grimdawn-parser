@@ -1,5 +1,7 @@
+#include "block.hpp"
 #include "common.hpp"
 #include "gdc_file.hpp"
+#include "skill_map.hpp"
 #include <string>
 
 void gdc_file::read(const char *filename) {
@@ -74,6 +76,14 @@ template <typename T> void vector<T>::read(gdc_file *gdc) {
   }
 }
 
+void block::read_start(gdc_file *gdc) {
+
+  num = gdc->read_block_start(&b);
+  version = gdc->read_int();
+}
+
+void block::read_end(gdc_file *gdc) { gdc->read_block_end(&b); }
+
 void header::read(gdc_file *gdc) {
   version = gdc->read_int();
   std::cout << "version:" << std::to_string(version) << std::endl;
@@ -104,18 +114,13 @@ void header::read(gdc_file *gdc) {
 }
 
 void character_info::read(gdc_file *gdc) {
+  const int BLOCK = 1;
+  const int VERSION = 5;
+
   block b;
-
-  if (gdc->read_block_start(&b) != 1) {
-    throw std::runtime_error("character_info: start block is not 1");
-  }
-
-  // version
-  const auto v = gdc->read_int();
-  if (v != 5) {
-    throw std::runtime_error("character_info: version is not 5, but " +
-                             std::to_string(v));
-  }
+  b.read_start(gdc);
+  ENSURE(b.num == BLOCK, "Unexpected block number");
+  ENSURE(b.version == VERSION, "Unexpected version number");
 
   isInMainQuest = gdc->read_byte();
   LOG_N(isInMainQuest);
@@ -161,17 +166,17 @@ void character_info::read(gdc_file *gdc) {
     lootFilters[i] = gdc->read_byte();
   }
 
-  gdc->read_block_end(&b);
+  b.read_end(gdc);
 }
 
 void character_bio::read(gdc_file *gdc) {
+  const int BLOCK = 2;
+  const int VERSION = 8;
+
   block b;
-
-  if (gdc->read_block_start(&b) != 2)
-    throw e;
-
-  if (gdc->read_int() != 8) // version
-    throw e;
+  b.read_start(gdc);
+  ENSURE(b.num == BLOCK, "Unexpected block number");
+  ENSURE(b.version == VERSION, "Unexpected version number");
 
   level = gdc->read_int();
   experience = gdc->read_int();
@@ -185,17 +190,17 @@ void character_bio::read(gdc_file *gdc) {
   health = gdc->read_float();
   energy = gdc->read_float();
 
-  gdc->read_block_end(&b);
+  b.read_end(gdc);
 }
 
 void inventory::read(gdc_file *gdc) {
+  const int BLOCK = 3;
+  const int VERSION = 4;
+
   block b;
-
-  if (gdc->read_block_start(&b) != 3)
-    throw e;
-
-  if (gdc->read_int() != 4) // version
-    throw e;
+  b.read_start(gdc);
+  ENSURE(b.num == BLOCK, "Unexpected block number");
+  ENSURE(b.version == VERSION, "Unexpected version number");
 
   if ((flag = gdc->read_byte())) {
     uint32_t n = gdc->read_int();
@@ -227,14 +232,13 @@ void inventory::read(gdc_file *gdc) {
     }
   }
 
-  gdc->read_block_end(&b);
+  b.read_end(gdc);
 }
 
 void inventory_sack::read(gdc_file *gdc) {
-  block b;
+  block_field b;
 
-  if (gdc->read_block_start(&b))
-    throw e;
+  ENSURE(gdc->read_block_start(&b) == 0, "Unexpected block number");
 
   tempBool = gdc->read_byte();
   items.read(gdc);
@@ -256,13 +260,9 @@ void inventory_equipment::read(gdc_file *gdc) {
 void stash_page::read(gdc_file *gdc) {
   const int BLOCK = 0;
 
-  block b;
+  block_field b;
   const auto block_val = gdc->read_block_start(&b);
-  if (block_val != BLOCK) {
-    throw std::runtime_error(
-        "character_stash:read: unexpected int BLOCK value of " +
-        std::to_string(block_val));
-  }
+  ENSURE(block_val == BLOCK, "Unexpected block number");
 
   width = gdc->read_int();
   height = gdc->read_int();
@@ -277,22 +277,13 @@ void character_stash::read(gdc_file *gdc) {
   const int VERSION = 6;
 
   block b;
-  const auto block_val = gdc->read_block_start(&b);
-  if (block_val != BLOCK) {
-    throw std::runtime_error(
-        "character_stash:read: unexpected int BLOCK value of " +
-        std::to_string(block_val));
-  }
-
-  const auto v = gdc->read_int();
-  if (v != VERSION) {
-    throw std::runtime_error("character_stash:read: unexpected int value of " +
-                             std::to_string(v));
-  }
+  b.read_start(gdc);
+  ENSURE(b.num == BLOCK, "Unexpected block number");
+  ENSURE(b.version == VERSION, "Unexpected version number");
 
   pages.read(gdc);
 
-  gdc->read_block_end(&b);
+  b.read_end(gdc);
 }
 
 void stash_item::read(gdc_file *gdc) {
@@ -309,18 +300,9 @@ void respawn_list::read(gdc_file *gdc) {
   const int VERSION = 1;
 
   block b;
-  const auto block_val = gdc->read_block_start(&b);
-  if (block_val != BLOCK) {
-    throw std::runtime_error(
-        "respawn_list:read: unexpected int BLOCK value of " +
-        std::to_string(block_val));
-  }
-
-  const auto v = gdc->read_int();
-  if (v != VERSION) {
-    throw std::runtime_error("respawn_list:read: unexpected int value of " +
-                             std::to_string(v));
-  }
+  b.read_start(gdc);
+  ENSURE(b.num == BLOCK, "Unexpected block number");
+  ENSURE(b.version == VERSION, "Unexpected version number");
 
   const int uids_len = sizeof(uids) / sizeof(uids[0]);
   for (unsigned i = 0; i < uids_len; i++) {
@@ -332,7 +314,7 @@ void respawn_list::read(gdc_file *gdc) {
     spawns[i].read(gdc);
   }
 
-  gdc->read_block_end(&b);
+  b.read_end(gdc);
 }
 
 void teleport_list::read(gdc_file *gdc) {
@@ -340,72 +322,69 @@ void teleport_list::read(gdc_file *gdc) {
   const int VERSION = 1;
 
   block b;
-  const auto block_val = gdc->read_block_start(&b);
-  if (block_val != BLOCK) {
-    throw std::runtime_error(
-        "teleport_list:read: unexpected int BLOCK value of " +
-        std::to_string(block_val));
-  }
-
-  const auto v = gdc->read_int();
-  if (v != VERSION) {
-    throw std::runtime_error("teleport_list:read: unexpected int value of " +
-                             std::to_string(v));
-  }
+  b.read_start(gdc);
+  ENSURE(b.num == BLOCK, "Unexpected block number");
+  ENSURE(b.version == VERSION, "Unexpected version number");
 
   const int uids_len = sizeof(uids) / sizeof(uids[0]);
   for (unsigned i = 0; i < uids_len; i++) {
     uids[i].read(gdc);
   }
 
-  gdc->read_block_end(&b);
+  b.read_end(gdc);
 }
 
 void marker_list::read(gdc_file *gdc) {
+  const int BLOCK = 7;
+  const int VERSION = 1;
+
   block b;
-
-  if (gdc->read_block_start(&b) != 7)
-    throw e;
-
-  if (gdc->read_int() != 1) // version
-    throw e;
+  b.read_start(gdc);
+  ENSURE(b.num == BLOCK, "Unexpected block number");
+  ENSURE(b.version == VERSION, "Unexpected version number");
 
   for (unsigned i = 0; i < 3; i++) {
     uids[i].read(gdc);
   }
 
-  gdc->read_block_end(&b);
+  b.read_end(gdc);
 }
 
 void shrine_list::read(gdc_file *gdc) {
+  const int BLOCK = 17;
+  const int VERSION = 2;
+
   block b;
-
-  if (gdc->read_block_start(&b) != 17)
-    throw e;
-
-  if (gdc->read_int() != 2) // version
-    throw e;
+  b.read_start(gdc);
+  ENSURE(b.num == BLOCK, "Unexpected block number");
+  ENSURE(b.version == VERSION, "Unexpected version number");
 
   for (unsigned i = 0; i < 6; i++) {
     uids[i].read(gdc);
   }
 
-  gdc->read_block_end(&b);
+  b.read_end(gdc);
 }
 
 void character_skills::read(gdc_file *gdc) {
-  block b;
+  const int BLOCK = 8;
+  const int VERSION = 5;
 
-  if (gdc->read_block_start(&b) != 8)
-    throw e;
-
-  if (gdc->read_int() != 5) // version
-    throw e;
+  block_field b;
+  ENSURE(gdc->read_block_start(&b) == BLOCK, "Unexpected block number");
+  ENSURE(gdc->read_int() == VERSION, "Unexpected version number");
 
   skills.read(gdc);
+
   masteriesAllowed = gdc->read_int();
+  LOG_N(masteriesAllowed);
+
   skillReclamationPointsUsed = gdc->read_int();
+  LOG_N(skillReclamationPointsUsed);
+
   devotionReclamationPointsUsed = gdc->read_int();
+  LOG_N(devotionReclamationPointsUsed);
+
   itemSkills.read(gdc);
 
   gdc->read_block_end(&b);
@@ -413,16 +392,33 @@ void character_skills::read(gdc_file *gdc) {
 
 void skill::read(gdc_file *gdc) {
   name.read(gdc);
+  LOG(name);
+
   level = gdc->read_int();
+  LOG_N(level);
+
   enabled = gdc->read_byte();
+  LOG_N(enabled);
+
   devotionLevel = gdc->read_int();
+  LOG_N(devotionLevel);
+
   experience = gdc->read_int();
+  LOG_N(experience);
+
   active = gdc->read_int();
+  LOG_N(active);
+
   unknown1 = gdc->read_byte();
+  LOG_N(unknown1);
+
   unknown2 = gdc->read_byte();
+  LOG_N(unknown2);
+
   autoCastSkill.read(gdc);
   autoCastController.read(gdc);
 }
+
 void item_skill::read(gdc_file *gdc) {
   name.read(gdc);
   autoCastSkill.read(gdc);
@@ -432,13 +428,12 @@ void item_skill::read(gdc_file *gdc) {
 }
 
 void lore_notes::read(gdc_file *gdc) {
-  block b;
+  const int BLOCK = 12;
+  const int VERSION = 1;
 
-  if (gdc->read_block_start(&b) != 12)
-    throw e;
-
-  if (gdc->read_int() != 1) // version
-    throw e;
+  block_field b;
+  ENSURE(gdc->read_block_start(&b) == BLOCK, "Unexpected block number");
+  ENSURE(gdc->read_int() == VERSION, "Unexpected version number");
 
   names.read(gdc);
 
@@ -446,15 +441,16 @@ void lore_notes::read(gdc_file *gdc) {
 }
 
 void faction_pack::read(gdc_file *gdc) {
-  block b;
+  const int BLOCK = 13;
+  const int VERSION = 5;
 
-  if (gdc->read_block_start(&b) != 13)
-    throw e;
-
-  if (gdc->read_int() != 5) // version
-    throw e;
+  block_field b;
+  ENSURE(gdc->read_block_start(&b) == BLOCK, "Unexpected block number");
+  ENSURE(gdc->read_int() == VERSION, "Unexpected version number");
 
   faction = gdc->read_int();
+  LOG_N(faction);
+
   factions.read(gdc);
 
   gdc->read_block_end(&b);
@@ -469,13 +465,12 @@ void faction_data::read(gdc_file *gdc) {
 }
 
 void ui_settings::read(gdc_file *gdc) {
-  block b;
+  const int BLOCK = 14;
+  const int VERSION = 5;
 
-  if (gdc->read_block_start(&b) != 14)
-    throw e;
-
-  if (gdc->read_int() != 4) // version
-    throw e;
+  block_field b;
+  ENSURE(gdc->read_block_start(&b) == BLOCK, "Unexpected block number");
+  ENSURE(gdc->read_int() == VERSION, "Unexpected version number");
 
   unknown1 = gdc->read_byte();
   unknown2 = gdc->read_int();
@@ -487,7 +482,8 @@ void ui_settings::read(gdc_file *gdc) {
     unknown6[i] = gdc->read_byte();
   }
 
-  for (unsigned i = 0; i < 36; i++) {
+  const int slots_len = sizeof(slots) / sizeof(slots[0]);
+  for (unsigned i = 0; i < slots_len; i++) {
     slots[i].read(gdc);
   }
 
@@ -513,13 +509,12 @@ void hot_slot::read(gdc_file *gdc) {
 }
 
 void tutorial_pages::read(gdc_file *gdc) {
-  block b;
+  const int BLOCK = 15;
+  const int VERSION = 1;
 
-  if (gdc->read_block_start(&b) != 15)
-    throw e;
-
-  if (gdc->read_int() != 1) // version
-    throw e;
+  block_field b;
+  ENSURE(gdc->read_block_start(&b) == BLOCK, "Unexpected block number");
+  ENSURE(gdc->read_int() == VERSION, "Unexpected version number");
 
   uint32_t n = gdc->read_int();
   pages.resize(n);
@@ -532,17 +527,22 @@ void tutorial_pages::read(gdc_file *gdc) {
 }
 
 void play_stats::read(gdc_file *gdc) {
-  block b;
+  const int BLOCK = 16;
+  const int VERSION = 11;
 
-  if (gdc->read_block_start(&b) != 16)
-    throw e;
-
-  if (gdc->read_int() != 9) // version
-    throw e;
+  block_field b;
+  ENSURE(gdc->read_block_start(&b) == BLOCK, "Unexpected block number");
+  ENSURE(gdc->read_int() == VERSION, "Unexpected version number");
 
   playTime = gdc->read_int();
+  LOG_N(playTime);
+
   deaths = gdc->read_int();
+  LOG_N(deaths);
+
   kills = gdc->read_int();
+  LOG_N(kills);
+
   experienceFromKills = gdc->read_int();
   healthPotionsUsed = gdc->read_int();
   manaPotionsUsed = gdc->read_int();
@@ -578,10 +578,16 @@ void play_stats::read(gdc_file *gdc) {
     bossKills[i] = gdc->read_int();
   }
 
-  survivalWaveTier = gdc->read_int();
-  greatestSurvivalScore = gdc->read_int();
-  cooldownRemaining = gdc->read_int();
-  cooldownTotal = gdc->read_int();
+  survivalGreatestWave = gdc->read_int();
+  survivalGreatestScore = gdc->read_int();
+  survivalDefensesBuilt = gdc->read_int();
+  survivalPowerUpsActivated = gdc->read_int();
+
+  skillMap.read(gdc);
+
+  endlessSouls = gdc->read_int();
+  endlessEssence = gdc->read_int();
+  difficultySkip = gdc->read_byte();
 
   unknown1 = gdc->read_int();
   unknown2 = gdc->read_int();
@@ -589,14 +595,18 @@ void play_stats::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
+void skill_map::read(gdc_file *gdc) {
+  skill.read(gdc);
+  active = gdc->read_int();
+}
+
 void trigger_tokens::read(gdc_file *gdc) {
-  block b;
+  const int BLOCK = 10;
+  const int VERSION = 2;
 
-  if (gdc->read_block_start(&b) != 10)
-    throw e;
-
-  if (gdc->read_int() != 2) // version
-    throw e;
+  block_field b;
+  ENSURE(gdc->read_block_start(&b) == BLOCK, "Unexpected block number");
+  ENSURE(gdc->read_int() == VERSION, "Unexpected version number");
 
   for (unsigned i = 0; i < 3; i++) {
     tokens[i].read(gdc);

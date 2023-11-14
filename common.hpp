@@ -11,8 +11,13 @@
 #include <vector>
 
 static std::exception e;
+
 #define LOG(field) std::cout << #field << ": " << field << std::endl;
 #define LOG_N(field)                                                           \
   std::cout << #field << ": " << std::to_string(field) << std::endl;
+
+#define ENSURE(condition, message)                                             \
+  if (!(condition))                                                            \
+    throw std::runtime_error((message));
 
 class gdc_file;

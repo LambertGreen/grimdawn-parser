@@ -151,7 +151,7 @@ public:
     return u.f;
   }
 
-  uint32_t read_block_start(block *b) {
+  uint32_t read_block_start(block_field *b) {
     uint32_t ret = read_int();
 
     b->len = next_int();
@@ -160,7 +160,7 @@ public:
     return ret;
   }
 
-  void read_block_end(block *b) {
+  void read_block_end(block_field *b) {
     if (ftell(fp) != b->end) {
       throw std::runtime_error("read_block_end: failed!");
     }
@@ -190,13 +190,13 @@ public:
       throw e;
   }
 
-  void write_block_start(block *b, uint32_t n) {
+  void write_block_start(block_field *b, uint32_t n) {
     write_int(n);
     write_int(0);
     b->end = ftell(fp);
   }
 
-  void write_block_end(block *b) {
+  void write_block_end(block_field *b) {
     long pos = ftell(fp);
 
     if (fseek(fp, b->end - 4, SEEK_SET))

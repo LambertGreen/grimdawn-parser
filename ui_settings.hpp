@@ -5,7 +5,7 @@
 
 class ui_settings {
 public:
-  hot_slot slots[36];
+  hot_slot slots[46];
   string unknown4[5];
   string unknown5[5];
   uint32_t unknown2;
