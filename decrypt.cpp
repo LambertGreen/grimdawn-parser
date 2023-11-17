@@ -59,6 +59,12 @@ void gdc_file::read(const char *filename) {
   stats.read(this);
   tokens.read(this);
 
+  // Write out Json
+  json j;
+  j.emplace("bio", bio.get_json());
+  j.emplace("stats", stats.get_json());
+  std::cout << j.dump() << std::endl;
+
   if (ftell(fp) != end)
     throw e;
 }
@@ -248,7 +254,6 @@ void inventory_item::read(gdc_file *gdc) {
 
 void inventory_equipment::read(gdc_file *gdc) {
   item::read(gdc);
-  std::cout << item::get_json().dump() << std::endl;
 
   attached = gdc->read_byte();
 }

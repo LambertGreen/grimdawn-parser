@@ -39,26 +39,25 @@ private:
   uint32_t table[256];
 
 public:
-  header hdr;
-  uid id;
-  character_info info;
-  character_bio bio;
-  inventory inv;
-  character_stash stash;
-  respawn_list respawns;
-  teleport_list teleports;
-  marker_list markers;
-  shrine_list shrines;
-  character_skills skills;
-  lore_notes notes;
-  faction_pack factions;
-  ui_settings ui;
-  tutorial_pages tutorials;
-  play_stats stats;
-  trigger_tokens tokens;
+  header hdr{};
+  uid id{};
+  character_info info{};
+  character_bio bio{};
+  inventory inv{};
+  character_stash stash{};
+  respawn_list respawns{};
+  teleport_list teleports{};
+  marker_list markers{};
+  shrine_list shrines{};
+  character_skills skills{};
+  lore_notes notes{};
+  faction_pack factions{};
+  ui_settings ui{};
+  tutorial_pages tutorials{};
+  play_stats stats{};
+  trigger_tokens tokens{};
 
   void read(const char *);
-  void write(const char *);
 
 private:
   void read_key() {

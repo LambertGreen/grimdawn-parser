@@ -26,4 +26,7 @@ static std::exception e;
   if (!(condition))                                                            \
     throw std::runtime_error((message));
 
+#define ADD_TO_JSON(jsonObj, field) jsonObj[#field] = field
+#define ADD_TO_JSON2(jsonObj, field1, field2) jsonObj[#field1] = field2
+
 class gdc_file;

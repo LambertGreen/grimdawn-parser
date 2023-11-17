@@ -9,8 +9,8 @@ struct block_field {
 
 class block {
 public:
-  int num;
-  int version;
+  int num{};
+  int version{};
   block_field b;
 
   void read_start(gdc_file *);
