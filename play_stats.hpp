@@ -5,9 +5,14 @@
 #include "string.hpp"
 #include "vector.hpp"
 #include <_types/_uint8_t.h>
+#include <string>
 
 class play_stats {
 public:
+  void read(gdc_file *gdc);
+  json get_json() const;
+
+private:
   string greatestMonsterKilledName[3];
   string lastMonsterHit[3];
   string lastMonsterHitBy[3];
@@ -40,8 +45,6 @@ public:
   float greatestDamageReceived;
   uint32_t survivalGreatestWave;
   uint32_t survivalGreatestScore;
-  // uint32_t cooldownRemaining;
-  // uint32_t cooldownTotal;
   uint32_t survivalDefensesBuilt;
   uint32_t survivalPowerUpsActivated;
   vector<skill_map> skillMap;
@@ -51,7 +54,4 @@ public:
 
   uint32_t unknown1;
   uint32_t unknown2;
-
-  void read(gdc_file *);
-  void write(gdc_file *);
 };

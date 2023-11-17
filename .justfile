@@ -1,5 +1,13 @@
-# build with clang
+# generate with cmake
+generate:
+	cmake -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+# build with make
 build:
+	cd build && make
+
+# build with clang
+build_with_clang:
     clang++ -g -O0 -std=c++17 -o grimparse decrypt.cpp
 
 # build with g++
@@ -16,4 +24,8 @@ debug_with_gdb:
 
 # run
 run:
-	./grimparse testfiles/player.gdc
+	./build/grimparse testfiles/player.gdc > player.json
+
+# clean
+clean:
+	trash build

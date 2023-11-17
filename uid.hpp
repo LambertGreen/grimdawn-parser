@@ -7,5 +7,4 @@ public:
   uint8_t id[16];
 
   void read(gdc_file *);
-  void write(gdc_file *);
 };

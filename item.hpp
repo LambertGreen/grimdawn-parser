@@ -4,7 +4,7 @@
 #include "common.hpp"
 #include "string.hpp"
 
-class item {
+struct item {
 public:
   string baseName;
   string prefixName;
@@ -22,5 +22,15 @@ public:
   uint32_t var1;
 
   void read(gdc_file *);
-  void write(gdc_file *);
+
+  nlohmann::json get_json() {
+    nlohmann::json j;
+    j["base-name"] = baseName;
+    j["prefix-name"] = prefixName;
+    j["suffix-name"] = suffixName;
+    j["modifier-name"] = modifierName;
+    j["transmute-name"] = transmuteName;
+
+    return j;
+  }
 };

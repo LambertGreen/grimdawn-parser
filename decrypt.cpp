@@ -31,7 +31,6 @@ void gdc_file::read(const char *filename) {
   hdr.read(this);
 
   const auto vv = next_int();
-  std::cout << "Next_int: " << std::to_string(vv) << std::endl;
   if (vv != 0) {
     throw std::runtime_error("gdc_file:read: next int is not zero");
   }
@@ -66,7 +65,6 @@ void gdc_file::read(const char *filename) {
 
 template <typename T> void vector<T>::read(gdc_file *gdc) {
   uint32_t n = gdc->read_int();
-  std::cout << "Vector size: " << std::to_string(n) << std::endl;
 
   this->resize(n);
   T *ptr = this->data();
@@ -86,31 +84,27 @@ void block::read_end(gdc_file *gdc) { gdc->read_block_end(&b); }
 
 void header::read(gdc_file *gdc) {
   version = gdc->read_int();
-  std::cout << "version:" << std::to_string(version) << std::endl;
   if (version != 1 && version != 2) {
     throw std::runtime_error("Unsupported version: " + std::to_string(version));
   }
 
   name.read(gdc);
-  std::wcout << "name:" << name << std::endl;
+  LOG_W(name);
 
   sex = gdc->read_byte();
-  std::cout << "sex:" << std::to_string(sex) << std::endl;
+  LOG_N(sex);
 
   classId.read(gdc);
-  std::cout << "classId:" << classId << std::endl;
+  LOG(classId);
 
   level = gdc->read_int();
-  std::cout << "level:" << std::to_string(level) << std::endl;
+  LOG_N(level);
 
   hardcore = gdc->read_byte();
-  std::cout << "hardcore:" << std::to_string(hardcore) << std::endl;
+  LOG_N(hardcore);
 
-  if (version >= 2) {
-    expansionStatus = gdc->read_byte();
-    std::cout << "expansionStatus:" << std::to_string(expansionStatus)
-              << std::endl;
-  }
+  expansionStatus = gdc->read_byte();
+  LOG_N(expansionStatus);
 }
 
 void character_info::read(gdc_file *gdc) {
@@ -254,6 +248,8 @@ void inventory_item::read(gdc_file *gdc) {
 
 void inventory_equipment::read(gdc_file *gdc) {
   item::read(gdc);
+  std::cout << item::get_json().dump() << std::endl;
+
   attached = gdc->read_byte();
 }
 
@@ -667,7 +663,6 @@ void uid::read(gdc_file *gdc) {
 
 void string::read(gdc_file *gdc) {
   uint32_t len = gdc->read_int();
-  // LOG_N(len);
   if (len > 256) {
     throw std::runtime_error("Length of string is suspiciously long: " +
                              std::to_string(len));
