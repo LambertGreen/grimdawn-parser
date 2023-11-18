@@ -6,6 +6,29 @@
 
 struct item {
 public:
+  void read(gdc_file *gdc);
+
+  virtual json get_json() const {
+    json j;
+    ADD_TO_JSON(j, baseName);
+    ADD_TO_JSON(j, prefixName);
+    ADD_TO_JSON(j, suffixName);
+    ADD_TO_JSON(j, modifierName);
+    ADD_TO_JSON(j, transmuteName);
+    ADD_TO_JSON(j, relicName);
+    ADD_TO_JSON(j, relicBonus);
+    ADD_TO_JSON(j, augmentName);
+    ADD_TO_JSON(j, stackCount);
+    ADD_TO_JSON(j, seed);
+    ADD_TO_JSON(j, relicSeed);
+    ADD_TO_JSON(j, unknown);
+    ADD_TO_JSON(j, augmentSeed);
+    ADD_TO_JSON(j, var1);
+
+    return j;
+  };
+
+private:
   string baseName;
   string prefixName;
   string suffixName;
@@ -20,17 +43,4 @@ public:
   uint32_t unknown;
   uint32_t augmentSeed;
   uint32_t var1;
-
-  void read(gdc_file *);
-
-  nlohmann::json get_json() {
-    nlohmann::json j;
-    j["base-name"] = baseName;
-    j["prefix-name"] = prefixName;
-    j["suffix-name"] = suffixName;
-    j["modifier-name"] = modifierName;
-    j["transmute-name"] = transmuteName;
-
-    return j;
-  }
 };

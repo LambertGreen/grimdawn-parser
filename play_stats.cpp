@@ -55,9 +55,7 @@ json play_stats::get_json() const {
   }
 
   for (int i = 0; i < skillMap.size(); i++) {
-    json sm = skillMap[i].get_json();
-    auto skill = "skill_" + std::to_string(i);
-    j.emplace(skill, sm);
+    j.emplace("skill_" + std::to_string(i), skillMap[i].get_json());
   }
 
   return j;

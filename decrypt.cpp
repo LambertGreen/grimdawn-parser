@@ -61,7 +61,11 @@ void gdc_file::read(const char *filename) {
 
   // Write out Json
   json j;
+  j.emplace("id", id.get_json());
+  j.emplace("info", info.get_json());
   j.emplace("bio", bio.get_json());
+  j.emplace("inventory", inv.get_json());
+  j.emplace("stash", stash.get_json());
   j.emplace("stats", stats.get_json());
   std::cout << j.dump() << std::endl;
 

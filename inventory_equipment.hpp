@@ -5,8 +5,14 @@
 
 class inventory_equipment : public item {
 public:
-  uint8_t attached;
+  void read(gdc_file *gdc);
 
-  void read(gdc_file *);
-  void write(gdc_file *);
+  json get_json() const {
+    json j = item::get_json();
+    ADD_TO_JSON(j, attached);
+    return j;
+  };
+
+private:
+  uint8_t attached;
 };
