@@ -25,7 +25,7 @@ public:
 
     json m;
     for (int i = 0; i < lootFilters.size(); i++) {
-      m.emplace("lootFilter_" + std::to_string(i), lootFilters[i]);
+      m.emplace("lootFilter_" + formatNumber(i), lootFilters[i]);
     }
 
     j.emplace(json{"lootFilters", m});

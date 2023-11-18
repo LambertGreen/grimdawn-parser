@@ -21,6 +21,7 @@ FetchContent_MakeAvailable(json)
 # Define your executable
 add_executable(${PROJECT_NAME}
   play_stats.cpp
+  common.cpp
   decrypt.cpp)
 
 # Link nlohmann/json to your executable
