@@ -24,6 +24,6 @@ public:
   };
 
 private:
-  vector<inventory_item> items;
-  uint8_t tempBool;
+  vector<inventory_item> items{};
+  uint8_t tempBool{};
 };

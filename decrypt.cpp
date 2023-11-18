@@ -66,6 +66,7 @@ void gdc_file::read(const char *filename) {
   j.emplace("bio", bio.get_json());
   j.emplace("inventory", inv.get_json());
   j.emplace("stash", stash.get_json());
+  j.emplace("respawns", respawns.get_json());
   j.emplace("stats", stats.get_json());
   std::cout << j.dump() << std::endl;
 
@@ -314,8 +315,8 @@ void respawn_list::read(gdc_file *gdc) {
     uids[i].read(gdc);
   }
 
-  const int spwan_len = sizeof(spawns) / sizeof(spawns[0]);
-  for (unsigned i = 0; i < 3; i++) {
+  const int spawn_len = sizeof(spawns) / sizeof(spawns[0]);
+  for (unsigned i = 0; i < spawn_len; i++) {
     spawns[i].read(gdc);
   }
 
