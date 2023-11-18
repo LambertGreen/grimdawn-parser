@@ -26,3 +26,10 @@ add_executable(${PROJECT_NAME}
 
 # Link nlohmann/json to your executable
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
+
+# Symlik compile_commands.json to project directory
+if (CMAKE_EXPORT_COMPILE_COMMANDS)
+  execute_process(COMMAND ${CMAKE_COMMAND} -E create_symlink
+                  ${CMAKE_BINARY_DIR}/compile_commands.json
+                  ${CMAKE_SOURCE_DIR}/compile_commands.json)
+endif()
