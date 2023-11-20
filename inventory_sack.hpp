@@ -9,19 +9,7 @@
 class inventory_sack {
 public:
   void read(gdc_file *);
-
-  json get_json() const {
-    json j;
-    ADD_TO_JSON(j, tempBool);
-
-    json m;
-    for (int i = 0; i < items.size(); i++) {
-      m.emplace("inventory_item_" + std::to_string(i), items[i].get_json());
-    }
-
-    j.emplace("inventory_items", m);
-    return j;
-  };
+  json get_json() const;
 
 private:
   vector<inventory_item> items{};
