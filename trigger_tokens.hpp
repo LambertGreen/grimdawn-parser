@@ -6,8 +6,15 @@
 
 class trigger_tokens {
 public:
-  vector<string> tokens[3];
-
   void read(gdc_file *);
-  void write(gdc_file *);
+  json get_json() const {
+    json j;
+    for (int i = 0; i < sizeof(tokens) / sizeof(tokens[0]); i++) {
+      j.emplace("token_" + std::to_string(i), tokens[i]);
+    }
+    return j;
+  };
+
+private:
+  vector<string> tokens[3];
 };

@@ -75,6 +75,7 @@ void gdc_file::read(const char *filename) {
   j.emplace("ui", ui.get_json());
   j.emplace("tutorials", tutorials.get_json());
   j.emplace("stats", stats.get_json());
+  j.emplace("tokens", tokens.get_json());
   std::cout << j.dump() << std::endl;
 
   if (ftell(fp) != end)
