@@ -72,6 +72,7 @@ void gdc_file::read(const char *filename) {
   j.emplace("shrines", shrines.get_json());
   j.emplace("notes", notes.get_json());
   j.emplace("factions", factions.get_json());
+  j.emplace("ui", ui.get_json());
   j.emplace("stats", stats.get_json());
   std::cout << j.dump() << std::endl;
 
