@@ -70,6 +70,7 @@ void gdc_file::read(const char *filename) {
   j.emplace("teleports", teleports.get_json());
   j.emplace("markers", markers.get_json());
   j.emplace("shrines", shrines.get_json());
+  j.emplace("skills", skills.get_json());
   j.emplace("notes", notes.get_json());
   j.emplace("factions", factions.get_json());
   j.emplace("ui", ui.get_json());
