@@ -67,6 +67,9 @@ void gdc_file::read(const char *filename) {
   j.emplace("inventory", inv.get_json());
   j.emplace("stash", stash.get_json());
   j.emplace("respawns", respawns.get_json());
+  j.emplace("teleports", teleports.get_json());
+  j.emplace("markers", markers.get_json());
+  j.emplace("shrines", shrines.get_json());
   j.emplace("stats", stats.get_json());
   std::cout << j.dump() << std::endl;
 
@@ -349,7 +352,7 @@ void marker_list::read(gdc_file *gdc) {
   ENSURE(b.num == BLOCK, "Unexpected block number");
   ENSURE(b.version == VERSION, "Unexpected version number");
 
-  for (unsigned i = 0; i < 3; i++) {
+  for (unsigned i = 0; i < sizeof(uids) / sizeof(uids[0]); i++) {
     uids[i].read(gdc);
   }
 
@@ -365,7 +368,7 @@ void shrine_list::read(gdc_file *gdc) {
   ENSURE(b.num == BLOCK, "Unexpected block number");
   ENSURE(b.version == VERSION, "Unexpected version number");
 
-  for (unsigned i = 0; i < 6; i++) {
+  for (unsigned i = 0; i < sizeof(uids) / sizeof(uids[0]); i++) {
     uids[i].read(gdc);
   }
 
