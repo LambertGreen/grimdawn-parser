@@ -6,8 +6,16 @@
 
 class lore_notes {
 public:
-  vector<string> names;
-
   void read(gdc_file *);
-  void write(gdc_file *);
+  json get_json() const {
+    json j;
+
+    for (int i = 0; i < names.size(); i++) {
+      j.emplace("names_" + formatNumber(i, 3), names[i]);
+    }
+    return j;
+  };
+
+private:
+  vector<string> names;
 };

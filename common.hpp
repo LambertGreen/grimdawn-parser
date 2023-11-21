@@ -31,5 +31,5 @@ static std::exception e;
 #define ADD_TO_JSON(jsonObj, field) jsonObj[#field] = field
 #define ADD_TO_JSON2(jsonObj, field1, field2) jsonObj[#field1] = field2
 
-std::string formatNumber(int num);
+std::string formatNumber(int num, int count = 2);
 class gdc_file;

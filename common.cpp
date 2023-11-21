@@ -1,7 +1,7 @@
 #include "common.hpp"
 
-std::string formatNumber(int num) {
+std::string formatNumber(int num, int count) {
   std::ostringstream oss;
-  oss << std::setw(2) << std::setfill('0') << num;
+  oss << std::setw(count) << std::setfill('0') << num;
   return oss.str();
 }
