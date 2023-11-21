@@ -18,12 +18,8 @@ FetchContent_Declare(
 # Make nlohmann/json available to the project
 FetchContent_MakeAvailable(json)
 
-# Define your executable
-add_executable(${PROJECT_NAME}
-  common.cpp
-  play_stats.cpp
-  inventory_sack.cpp
-  decrypt.cpp)
+file(GLOB SOURCES "src/*.cpp")
+add_executable(${PROJECT_NAME} ${SOURCES})
 
 # Link nlohmann/json to your executable
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
