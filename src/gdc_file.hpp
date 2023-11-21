@@ -58,6 +58,7 @@ public:
   trigger_tokens tokens{};
 
   void read(const char *);
+  json get_json() const;
 
 private:
   void read_key() {

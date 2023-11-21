@@ -24,7 +24,35 @@ debug_with_gdb:
 
 # run
 run:
-	./build/grimparse testfiles/player.gdc > player.json
+	./build/grimparse testfiles/_Thor/player.gdc Thor > testfiles/_Thor/player.json
+
+# run on player Iska
+run-iska:
+	./build/grimparse testfiles/_Iska/player.gdc Iska > testfiles/_Iska/player.json
+
+# run on player Luna
+run-luna:
+	./build/grimparse testfiles/_Luna/player.gdc Luna > testfiles/_Luna/player.json
+
+# run on player Luthar
+run-luthar:
+	./build/grimparse testfiles/_Luthar/player.gdc Luthar > testfiles/_Luthar/player.json
+
+# run on player Thor
+run-thor:
+	./build/grimparse testfiles/_Thor/player.gdc Thor > testfiles/_Thor/player.json
+
+# run on all players
+run-all: run-iska run-luna run-luthar run-thor
+
+# combine all players
+combine:
+    jq -s '.' \
+       testfiles/_Iska/player.json      \
+       testfiles/_Luna/player.json      \
+       testfiles/_Luthar/player.json    \
+       testfiles/_Thor/player.json      \
+       > testfiles/combined.json
 
 # clean
 clean:

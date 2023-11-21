@@ -59,7 +59,11 @@ void gdc_file::read(const char *filename) {
   stats.read(this);
   tokens.read(this);
 
-  // Write out Json
+  if (ftell(fp) != end)
+    throw e;
+}
+
+json gdc_file::get_json() const {
   json j;
   j.emplace("id", id.get_json());
   j.emplace("info", info.get_json());
@@ -77,10 +81,7 @@ void gdc_file::read(const char *filename) {
   j.emplace("tutorials", tutorials.get_json());
   j.emplace("stats", stats.get_json());
   j.emplace("tokens", tokens.get_json());
-  std::cout << j.dump() << std::endl;
-
-  if (ftell(fp) != end)
-    throw e;
+  return j;
 }
 
 template <typename T> void vector<T>::read(gdc_file *gdc) {
@@ -709,14 +710,18 @@ void wstring::read(gdc_file *gdc) {
 }
 
 int main(int argc, char **argv) {
-  if (argc != 2) {
-    fprintf(stderr, "Usage: %s <player.gdc file>\n", argv[0]);
+  if (argc != 3) {
+    fprintf(stderr, "Usage: %s <player.gdc file> <player-name>\n", argv[0]);
     return 1;
   }
 
   try {
     gdc_file gdc;
     gdc.read(argv[1]);
+    json j;
+    j.emplace("player-name", argv[2]);
+    j.emplace("player-data", gdc.get_json());
+    std::cout << j.dump() << std::endl;
   } catch (const std::runtime_error &e) {
     std::cout << "Exception:" << e.what() << std::endl;
   } catch (const std::exception &e) {
