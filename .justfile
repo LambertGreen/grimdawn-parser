@@ -1,3 +1,5 @@
+# -*- makefile -*-
+
 # generate with cmake
 generate:
 	cmake -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
