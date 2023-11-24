@@ -37,7 +37,7 @@ test-thor:
 	./build/grimparse testfiles/_Thor/player.gdc Thor > testfiles/_Thor/player.json
 
 # run on all players
-test-all: run-iska run-luna run-luthar run-thor
+test-all: test-iska test-luna test-luthar test-thor
 
 # combine all players
 test-combine:
