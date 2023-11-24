@@ -51,3 +51,12 @@ test-combine:
 # clean
 clean:
 	trash build
+	trash grimdawn_decoded
+
+# decode player.gdc files
+decode:
+	./scripts/decode_player_info.sh
+
+# combine player.json files
+combine:
+	./scripts/combine_player_info.sh

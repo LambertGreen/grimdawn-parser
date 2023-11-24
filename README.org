@@ -28,9 +28,14 @@ See the .justfile for all test recipes.
 just test-all
 #+end_src
 
-* Run
+* Decode ~player.gdc~ files into ~player.json~ files
 #+begin_src sh
-grimparse testfiles/player.gdc
+just decode
+#+end_src
+
+* Combine ~player.json~ files into ~all-characters-combined.json~
+#+begin_src sh
+just combine
 #+end_src
 
 * Issues and Solutions :issue:
