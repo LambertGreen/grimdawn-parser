@@ -1,2 +1,12 @@
+#============================================================
+# Ignore file to improve editor experience finding text files
+#============================================================
+
+# The ref GDStash jar file
+ref/
+
 # The GrimDawn save files are encrypted so we ignore them for editing purposes
 grimdawn_save/
+
+# Tableau directory
+tableau/
