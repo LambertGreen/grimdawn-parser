@@ -8,63 +8,98 @@ A =Grim Dawn= player parser.
 + [[http://www.lost.org.uk/grimdawn/][GrimDawn decryption code samples]]
 
 * Build
-** GCC
+The build is automated via the =just= tool with build recipes defined in ~".justfile"~.
+
+** Generate build config
+#+begin_src sh
+just generate
+#+end_src
+
+** Run build command
+#+begin_src sh
+just build
+#+end_src
+
+* Test
+See the .justfile for all test recipes.
+
+** Test all
+#+begin_src sh
+just test-all
+#+end_src
+
+* Decode ~player.gdc~ files into ~player.json~ files
+#+begin_src sh
+just decode
+#+end_src
+
+* Combine ~player.json~ files into ~all-characters-combined.json~
+#+begin_src sh
+just combine
+#+end_src
+
+* Issues and Solutions :issue:
+** Open [0/2] :open:
+*** TODO Update building and running on supported platforms
+We have updated the building process to use the following tools:
++ =cmake=: for easier build file generation now that we moved to multiple cpp files
++ =just=: for consistent recipe names for build/test/run actions
+
+However we have not validated this setup for all platforms.
+
+Below is the old build setup instructions that may need to be incorporated in the just file.
+**** Setup (OLD INSTRUCTIONS)
+***** GCC
 #+begin_src sh
 g++ -g ./decrypt.cpp -std=c++17
 #+end_src
 
-** Clang/LLVM
-*** Install
+***** Clang/LLVM
+****** Install
 #+begin_src sh
 brew install llvm
 #+end_src
 
-*** Setup Environment
+****** Setup Environment
 #+begin_src sh
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 #+end_src
 
-*** Build
+****** Build
 #+begin_src sh
 clang++ -g -O0 -std=c++17 -o grimparse decrypt.cpp
 #+end_src
 
-** Microsoft Visual Studio
-*** Install
+***** Microsoft Visual Studio
+****** Install
 #+begin_src sh
 choco install visualstudio2019-workload-vctools
 #+end_src
 
-*** Setup PATH
+****** Setup PATH
 #+begin_src powershell
 set env:PATH = $PATH:"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\MSBuild\Current\Bin"
 #+end_src
 
-*** Build
+****** Build
 #+begin_src bat
 vcvars64.bat
 cl /Zi decrypt.cpp
 #+end_src
-
-* Run
-#+begin_src sh
-grimparse testfiles/player.gdc
-#+end_src
-* Parse all players into a combined ~json~ file
+*** TODO Parse all players into a combined ~json~ file
 We want to load the parsed ~json~ file into =Tableau Desktop= so we can compare characters.
 
-** Getting =Grimdawn= saves
+**** Getting =Grimdawn= saves
 Here we can pull in =grimdawn_save= project as a =git= submodule.
-** Get the list of ~player.gdc~ files for each character
+**** Get the list of ~player.gdc~ files for each character
 #+begin_src sh :results table
 ls  grimdawn_save/main/*/player.gdc
 #+end_src
 
 
-* Issues and Solutions :issue:
-** Open [0/0] :open:
+
 ** Solved [1/1] :solved:
 *** DONE Decryption samples are old and need to be updated to work
 CLOSED: [2023-11-21 Tue 21:30]
