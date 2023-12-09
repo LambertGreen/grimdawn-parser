@@ -1,6 +1,13 @@
 #include "uid.hpp"
 
+#include "gdc_file.hpp"
 #include <string>
+
+void uid::read(gdc_file *gdc) {
+  for (unsigned i = 0; i < 16; i++) {
+    id[i] = gdc->read_byte();
+  }
+}
 
 json uid::get_json() const {
 	std::string s = std::to_string(id[0]);

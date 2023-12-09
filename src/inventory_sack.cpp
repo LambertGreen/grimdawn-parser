@@ -1,5 +1,19 @@
 #include "inventory_sack.hpp"
 
+#include "block_field.hpp"
+#include "gdc_file.hpp"
+
+void inventory_sack::read(gdc_file *gdc) {
+  block_field b;
+
+  ENSURE(gdc->read_block_start(&b) == 0, "Unexpected block number");
+
+  tempBool = gdc->read_byte();
+  items.read(gdc);
+
+  gdc->read_block_end(&b);
+}
+
 json inventory_sack::get_json() const {
   json j;
   ADD_TO_JSON(j, tempBool);

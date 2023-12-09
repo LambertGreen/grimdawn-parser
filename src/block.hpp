@@ -2,10 +2,7 @@
 
 #include "common.hpp"
 
-struct block_field {
-  uint32_t len{};
-  long end{};
-};
+#include "block_field.hpp"
 
 class block {
 public:

@@ -1,9 +1,7 @@
-
 #pragma once
 
+#include "gdc_file.hpp"
 #include <string>
-
-class gdc_file;
 
 class string : public std::string {
 public:
