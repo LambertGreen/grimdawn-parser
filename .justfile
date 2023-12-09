@@ -4,9 +4,9 @@
 generate:
 	cmake -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
-# build with make
+# build with cmake
 build:
-	cd build && make
+	cmake --build build
 
 # debug with lldb
 debug:
