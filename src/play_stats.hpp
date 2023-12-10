@@ -1,7 +1,6 @@
 #pragma once
 
 #include <_types/_uint8_t.h>
-#include <string>
 #include "common.hpp"
 #include "skill_map.hpp"
 #include "string.hpp"

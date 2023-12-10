@@ -58,3 +58,26 @@ void character_info::read(gdc_file* gdc) {
 
   b.read_end(gdc);
 }
+
+json character_info::get_json() const {
+  json j;
+  ADD_TO_JSON(j, texture);
+  ADD_TO_JSON(j, money);
+  ADD_TO_JSON(j, currentTribute);
+  ADD_TO_JSON(j, isInMainQuest);
+  ADD_TO_JSON(j, hasBeenInGame);
+  ADD_TO_JSON(j, difficulty);
+  ADD_TO_JSON(j, greatestDifficulty);
+  ADD_TO_JSON(j, compassState);
+  ADD_TO_JSON(j, skillWindowShowHelp);
+  ADD_TO_JSON(j, alternateConfig);
+  ADD_TO_JSON(j, alternateConfigEnabled);
+
+  json m;
+  for (int i = 0; i < lootFilters.size(); i++) {
+    m.emplace("lootFilter_" + formatNumber(i), lootFilters[i]);
+  }
+
+  j.emplace(json{"lootFilters", m});
+  return j;
+}

@@ -1,5 +1,6 @@
 #include "character_bio.hpp"
 
+#include <string>
 #include "block.hpp"
 #include "gdc_file.hpp"
 

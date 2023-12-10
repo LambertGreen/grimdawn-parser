@@ -18,3 +18,18 @@ void shrine_list::read(gdc_file* gdc) {
 
   b.read_end(gdc);
 }
+
+json shrine_list::get_json() const {
+  json j;
+
+  for (int i = 0; i < sizeof(uids) / sizeof(uids[0]); i++) {
+    json m;
+    for (int j = 0; j < uids[i].size(); j++) {
+      m.emplace("uid_" + formatNumber(i), uids[i][j].get_json());
+    }
+
+    j.emplace(json{"uids", m});
+  }
+
+  return j;
+};
