@@ -21,4 +21,7 @@ if g:localvimrc_sourced_once
 endif
 
 " do stuff you want to do only once for a running vim instance
-setlocal makeprg=just
+set makeprg=just
+set formatprg=clang-format\ -style=file
+autocmd BufWritePre *.cpp,*.h,*.hpp,*.c :normal gggqG
+
