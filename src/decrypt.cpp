@@ -1,8 +1,8 @@
+#include <string>
 #include "common.hpp"
 #include "player.hpp"
-#include <string>
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
   if (argc != 3) {
     fprintf(stderr, "Usage: %s <player.gdc file> <player-name>\n", argv[0]);
     return 1;
@@ -17,12 +17,10 @@ int main(int argc, char **argv) {
 
     std::cout << j.dump() << std::endl;
 
-  } catch (const std::runtime_error &e) {
-
+  } catch (const std::runtime_error& e) {
     std::cout << "Exception:" << e.what() << std::endl;
 
-  } catch (const std::exception &e) {
-
+  } catch (const std::exception& e) {
     printf("Error reading file: %s\n", argv[1]);
     return 1;
   }

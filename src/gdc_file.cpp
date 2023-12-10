@@ -1,8 +1,7 @@
 #include "gdc_file.hpp"
 #include "block_field.hpp"
 
-gdc_file::gdc_file(const char *filename) : f(filename, "rb") {
-
+gdc_file::gdc_file(const char* filename) : f(filename, "rb") {
   if (!(this->fp = f.fp)) {
     throw std::runtime_error("gdc_file:read: failed!");
   }
@@ -34,7 +33,7 @@ void gdc_file::read_version() {
   }
 
   const auto v3 = read_int();
-  if (v3 != 8) // version
+  if (v3 != 8)  // version
   {
     throw std::runtime_error("gdc_file:read: unexpected int value of " +
                              std::to_string(v3));
@@ -75,8 +74,8 @@ uint32_t gdc_file::next_int() {
   return ret;
 }
 
-void gdc_file::update_key(void *ptr, uint32_t len) {
-  uint8_t *p = (uint8_t *)ptr;
+void gdc_file::update_key(void* ptr, uint32_t len) {
+  uint8_t* p = (uint8_t*)ptr;
 
   for (uint32_t i = 0; i < len; i++) {
     key ^= table[p[i]];
@@ -134,7 +133,7 @@ float gdc_file::read_float() {
   return u.f;
 }
 
-uint32_t gdc_file::read_block_start(block_field *b) {
+uint32_t gdc_file::read_block_start(block_field* b) {
   uint32_t ret = read_int();
 
   b->len = next_int();
@@ -143,7 +142,7 @@ uint32_t gdc_file::read_block_start(block_field *b) {
   return ret;
 }
 
-void gdc_file::read_block_end(block_field *b) {
+void gdc_file::read_block_end(block_field* b) {
   if (ftell(fp) != b->end) {
     throw std::runtime_error("read_block_end: failed!");
   }
@@ -173,13 +172,13 @@ void gdc_file::write_float(float val) {
     throw e;
 }
 
-void gdc_file::write_block_start(block_field *b, uint32_t n) {
+void gdc_file::write_block_start(block_field* b, uint32_t n) {
   write_int(n);
   write_int(0);
   b->end = ftell(fp);
 }
 
-void gdc_file::write_block_end(block_field *b) {
+void gdc_file::write_block_end(block_field* b) {
   long pos = ftell(fp);
 
   if (fseek(fp, b->end - 4, SEEK_SET))

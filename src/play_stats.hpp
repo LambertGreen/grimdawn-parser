@@ -1,18 +1,18 @@
 #pragma once
 
+#include <_types/_uint8_t.h>
+#include <string>
 #include "common.hpp"
 #include "skill_map.hpp"
 #include "string.hpp"
 #include "vector.hpp"
-#include <_types/_uint8_t.h>
-#include <string>
 
 class play_stats {
-public:
-  void read(gdc_file *gdc);
+ public:
+  void read(gdc_file* gdc);
   json get_json() const;
 
-private:
+ private:
   string greatestMonsterKilledName[3]{};
   string lastMonsterHit[3]{};
   string lastMonsterHitBy[3]{};

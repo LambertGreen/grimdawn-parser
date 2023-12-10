@@ -3,7 +3,12 @@
 # default
 default: build
 
+# format
+format:
+	find src -iname '*.cpp' -o -iname '*.hpp' | xargs clang-format -i
+
 # generate with cmake
+#
 generate:
 	cmake -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 

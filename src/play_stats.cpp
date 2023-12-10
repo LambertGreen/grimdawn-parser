@@ -1,8 +1,8 @@
 #include "play_stats.hpp"
 
+#include <string>
 #include "block.hpp"
 #include "gdc_file.hpp"
-#include <string>
 
 json play_stats::get_json() const {
   json j;

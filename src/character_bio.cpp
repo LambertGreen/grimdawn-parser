@@ -3,7 +3,7 @@
 #include "block.hpp"
 #include "gdc_file.hpp"
 
-void character_bio::read(gdc_file *gdc) {
+void character_bio::read(gdc_file* gdc) {
   const int BLOCK = 2;
   const int VERSION = 8;
 
@@ -26,3 +26,20 @@ void character_bio::read(gdc_file *gdc) {
 
   b.read_end(gdc);
 }
+
+json character_bio::get_json() const {
+  json j;
+  ADD_TO_JSON(j, level);
+  ADD_TO_JSON(j, experience);
+  ADD_TO_JSON(j, modifierPoints);
+  ADD_TO_JSON(j, skillPoints);
+  ADD_TO_JSON(j, devotionPoints);
+  ADD_TO_JSON(j, totalDevotion);
+  ADD_TO_JSON(j, physique);
+  ADD_TO_JSON(j, cunning);
+  ADD_TO_JSON(j, spirit);
+  ADD_TO_JSON(j, health);
+  ADD_TO_JSON(j, energy);
+
+  return j;
+};

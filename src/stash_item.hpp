@@ -4,8 +4,8 @@
 #include "item.hpp"
 
 class stash_item : public item {
-public:
-  void read(gdc_file *);
+ public:
+  void read(gdc_file*);
 
   json get_json() const {
     json j = item::get_json();
@@ -14,7 +14,7 @@ public:
     return j;
   };
 
-private:
+ private:
   float x;
   float y;
 };

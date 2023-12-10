@@ -3,7 +3,7 @@
 #include "block.hpp"
 #include "gdc_file.hpp"
 
-void inventory::read(gdc_file *gdc) {
+void inventory::read(gdc_file* gdc) {
   const int BLOCK = 3;
   const int VERSION = 4;
 
@@ -44,3 +44,31 @@ void inventory::read(gdc_file *gdc) {
 
   b.read_end(gdc);
 }
+
+json inventory::get_json() const {
+  json j;
+  ADD_TO_JSON(j, focused);
+  ADD_TO_JSON(j, selected);
+  ADD_TO_JSON(j, flag);
+  ADD_TO_JSON(j, useAlternate);
+  ADD_TO_JSON(j, alternate1);
+  ADD_TO_JSON(j, alternate2);
+
+  for (int i = 0; i < 12; i++) {
+    j.emplace("equipment_" + std::to_string(i), equipment[i].get_json());
+  }
+
+  for (int i = 0; i < 2; i++) {
+    j.emplace("weapon1_" + std::to_string(i), weapon1[i].get_json());
+  }
+
+  for (int i = 0; i < 2; i++) {
+    j.emplace("weapon2_" + std::to_string(i), weapon2[i].get_json());
+  }
+
+  for (int i = 0; i < sacks.size(); i++) {
+    json m;
+    m.emplace("sack_" + std::to_string(i), sacks[i].get_json());
+  }
+  return j;
+};

@@ -2,8 +2,7 @@
 
 #include "gdc_file.hpp"
 
-
-void header::read(gdc_file *gdc) {
+void header::read(gdc_file* gdc) {
   version = gdc->read_int();
   if (version != 1 && version != 2) {
     throw std::runtime_error("Unsupported version: " + std::to_string(version));

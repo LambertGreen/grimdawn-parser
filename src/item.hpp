@@ -5,8 +5,8 @@
 #include "string.hpp"
 
 struct item {
-public:
-  void read(gdc_file *gdc);
+ public:
+  void read(gdc_file* gdc);
 
   virtual json get_json() const {
     json j;
@@ -28,7 +28,7 @@ public:
     return j;
   };
 
-private:
+ private:
   string baseName;
   string prefixName;
   string suffixName;

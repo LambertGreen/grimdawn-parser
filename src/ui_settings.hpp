@@ -4,8 +4,8 @@
 #include "hot_slot.hpp"
 
 class ui_settings {
-public:
-  void read(gdc_file *);
+ public:
+  void read(gdc_file*);
 
   json get_json() const {
     json j;
@@ -27,7 +27,7 @@ public:
     return j;
   };
 
-private:
+ private:
   hot_slot slots[46];
   string unknown4[5];
   string unknown5[5];

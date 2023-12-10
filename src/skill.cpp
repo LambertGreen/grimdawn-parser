@@ -1,7 +1,7 @@
 #include "skill.hpp"
 #include "gdc_file.hpp"
 
-void skill::read(gdc_file *gdc) {
+void skill::read(gdc_file* gdc) {
   name.read(gdc);
   LOG(name);
 
@@ -29,4 +29,3 @@ void skill::read(gdc_file *gdc) {
   autoCastSkill.read(gdc);
   autoCastController.read(gdc);
 }
-

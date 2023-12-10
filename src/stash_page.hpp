@@ -1,14 +1,14 @@
 
 #pragma once
 
+#include <string>
 #include "common.hpp"
 #include "stash_item.hpp"
 #include "vector.hpp"
-#include <string>
 
 class stash_page {
-public:
-  void read(gdc_file *);
+ public:
+  void read(gdc_file*);
 
   json get_json() const {
     json j;
@@ -21,7 +21,7 @@ public:
     return j;
   };
 
-private:
+ private:
   vector<stash_item> items;
   uint32_t width;
   uint32_t height;

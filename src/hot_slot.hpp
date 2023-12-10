@@ -5,8 +5,8 @@
 #include "wstring.hpp"
 
 class hot_slot {
-public:
-  void read(gdc_file *);
+ public:
+  void read(gdc_file*);
   json get_json() const {
     json j;
     ADD_TO_JSON(j, skill);
@@ -20,7 +20,7 @@ public:
     return j;
   };
 
-private:
+ private:
   string skill;
   string item;
   string bitmapUp;

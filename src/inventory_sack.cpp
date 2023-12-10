@@ -3,7 +3,7 @@
 #include "block_field.hpp"
 #include "gdc_file.hpp"
 
-void inventory_sack::read(gdc_file *gdc) {
+void inventory_sack::read(gdc_file* gdc) {
   block_field b;
 
   ENSURE(gdc->read_block_start(&b) == 0, "Unexpected block number");

@@ -3,14 +3,15 @@
 #include "block.hpp"
 #include "gdc_file.hpp"
 
-void respawn_list::read(gdc_file *gdc) {
-  const int BLOCK = 5;
-  const int VERSION = 1;
+namespace {
+const int BLOCK = 5;
+const int VERSION = 1;
+}  // namespace
 
+void respawn_list::read(gdc_file* gdc) {
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "Unexpected block number");
-  ENSURE(b.version == VERSION, "Unexpected version number");
+  validate_block(b, BLOCK, VERSION);
 
   const int uids_len = sizeof(uids) / sizeof(uids[0]);
   for (unsigned i = 0; i < uids_len; i++) {
@@ -24,3 +25,21 @@ void respawn_list::read(gdc_file *gdc) {
 
   b.read_end(gdc);
 }
+
+json respawn_list::get_json() const {
+  json j;
+
+  for (int i = 0; i < sizeof(uids) / sizeof(uids[0]); i++) {
+    json m;
+    for (int j = 0; j < uids[i].size(); j++) {
+      m.emplace("uid_" + formatNumber(i), uids[i][j].get_json());
+    }
+
+    j.emplace(json{"uids", m});
+  }
+
+  for (int i = 0; i < sizeof(spawns) / sizeof(spawns[0]); i++) {
+    j.emplace("spawn_" + std::to_string(i), spawns[i].get_json());
+  }
+  return j;
+};

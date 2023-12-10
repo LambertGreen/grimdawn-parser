@@ -3,8 +3,8 @@
 #include "common.hpp"
 
 class faction_data {
-public:
-  void read(gdc_file *);
+ public:
+  void read(gdc_file*);
 
   json get_json() const {
     json j;
@@ -16,7 +16,7 @@ public:
     return j;
   };
 
-private:
+ private:
   float value;
   float positiveBoost;
   float negativeBoost;

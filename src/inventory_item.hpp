@@ -5,10 +5,10 @@
 #include "item.hpp"
 
 class inventory_item : public item {
-public:
+ public:
   uint32_t x;
   uint32_t y;
 
-  void read(gdc_file *);
-  void write(gdc_file *);
+  void read(gdc_file*);
+  void write(gdc_file*);
 };

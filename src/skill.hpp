@@ -4,8 +4,8 @@
 #include "string.hpp"
 
 class skill {
-public:
-  void read(gdc_file *);
+ public:
+  void read(gdc_file*);
 
   json get_json() const {
     json j;
@@ -22,7 +22,7 @@ public:
     return j;
   };
 
-private:
+ private:
   string name;
   string autoCastSkill;
   string autoCastController;

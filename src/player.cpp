@@ -1,8 +1,8 @@
 #include "player.hpp"
 
-#include "block.hpp"
+#include "block_field.hpp"
 
-player::player(const char *filename) : gdc(filename) {
+player::player(const char* filename) : gdc(filename) {
   gdc.read_start();
   hdr.read(&gdc);
   gdc.read_version();
@@ -46,7 +46,7 @@ json player::get_json() const {
   return j;
 }
 
-void item_skill::read(gdc_file *gdc) {
+void item_skill::read(gdc_file* gdc) {
   name.read(gdc);
   autoCastSkill.read(gdc);
   autoCastController.read(gdc);
@@ -54,7 +54,7 @@ void item_skill::read(gdc_file *gdc) {
   itemName.read(gdc);
 }
 
-void lore_notes::read(gdc_file *gdc) {
+void lore_notes::read(gdc_file* gdc) {
   const int BLOCK = 12;
   const int VERSION = 1;
 
@@ -67,7 +67,7 @@ void lore_notes::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void faction_pack::read(gdc_file *gdc) {
+void faction_pack::read(gdc_file* gdc) {
   const int BLOCK = 13;
   const int VERSION = 5;
 
@@ -83,7 +83,7 @@ void faction_pack::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void faction_data::read(gdc_file *gdc) {
+void faction_data::read(gdc_file* gdc) {
   modified = gdc->read_byte();
   unlocked = gdc->read_byte();
   value = gdc->read_float();
@@ -91,7 +91,7 @@ void faction_data::read(gdc_file *gdc) {
   negativeBoost = gdc->read_float();
 }
 
-void ui_settings::read(gdc_file *gdc) {
+void ui_settings::read(gdc_file* gdc) {
   const int BLOCK = 14;
   const int VERSION = 5;
 
@@ -119,7 +119,7 @@ void ui_settings::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void hot_slot::read(gdc_file *gdc) {
+void hot_slot::read(gdc_file* gdc) {
   type = gdc->read_int();
 
   if (type == 0) {
@@ -135,7 +135,7 @@ void hot_slot::read(gdc_file *gdc) {
   }
 }
 
-void tutorial_pages::read(gdc_file *gdc) {
+void tutorial_pages::read(gdc_file* gdc) {
   const int BLOCK = 15;
   const int VERSION = 1;
 
@@ -153,7 +153,7 @@ void tutorial_pages::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void play_stats::read(gdc_file *gdc) {
+void play_stats::read(gdc_file* gdc) {
   const int BLOCK = 16;
   const int VERSION = 11;
 
@@ -222,12 +222,12 @@ void play_stats::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void skill_map::read(gdc_file *gdc) {
+void skill_map::read(gdc_file* gdc) {
   skill.read(gdc);
   active = gdc->read_int();
 }
 
-void trigger_tokens::read(gdc_file *gdc) {
+void trigger_tokens::read(gdc_file* gdc) {
   const int BLOCK = 10;
   const int VERSION = 2;
 
@@ -242,7 +242,7 @@ void trigger_tokens::read(gdc_file *gdc) {
   gdc->read_block_end(&b);
 }
 
-void item::read(gdc_file *gdc) {
+void item::read(gdc_file* gdc) {
   baseName.read(gdc);
   LOG(baseName);
 
@@ -286,7 +286,7 @@ void item::read(gdc_file *gdc) {
   LOG_N(stackCount);
 }
 
-void string::read(gdc_file *gdc) {
+void string::read(gdc_file* gdc) {
   uint32_t len = gdc->read_int();
   if (len > 256) {
     throw std::runtime_error("Length of string is suspiciously long: " +
@@ -301,7 +301,7 @@ void string::read(gdc_file *gdc) {
   }
 }
 
-void wstring::read(gdc_file *gdc) {
+void wstring::read(gdc_file* gdc) {
   uint32_t len = gdc->read_int();
 
   clear();

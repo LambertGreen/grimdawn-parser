@@ -4,8 +4,8 @@
 #include "string.hpp"
 
 class item_skill {
-public:
-  void read(gdc_file *);
+ public:
+  void read(gdc_file*);
   json get_json() const {
     json j;
     ADD_TO_JSON(j, name);
@@ -16,7 +16,7 @@ public:
     return j;
   };
 
-private:
+ private:
   string name;
   string autoCastSkill;
   string autoCastController;

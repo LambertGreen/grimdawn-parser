@@ -1,13 +1,13 @@
 #pragma once
 
+#include <string>
 #include "common.hpp"
 #include "string.hpp"
 #include "vector.hpp"
-#include <string>
 
 class character_info {
-public:
-  void read(gdc_file *);
+ public:
+  void read(gdc_file*);
 
   json get_json() const {
     json j;
@@ -32,7 +32,7 @@ public:
     return j;
   }
 
-private:
+ private:
   string texture;
   uint32_t money;
   uint32_t currentTribute;

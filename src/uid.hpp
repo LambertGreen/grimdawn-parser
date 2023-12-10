@@ -3,10 +3,10 @@
 #include "common.hpp"
 
 class uid {
-public:
+ public:
   json get_json() const;
-  void read(gdc_file *);
+  void read(gdc_file*);
 
-private:
+ private:
   uint8_t id[16];
 };

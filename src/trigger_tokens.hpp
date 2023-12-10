@@ -5,8 +5,8 @@
 #include "vector.hpp"
 
 class trigger_tokens {
-public:
-  void read(gdc_file *);
+ public:
+  void read(gdc_file*);
   json get_json() const {
     json j;
     for (int i = 0; i < sizeof(tokens) / sizeof(tokens[0]); i++) {
@@ -15,6 +15,6 @@ public:
     return j;
   };
 
-private:
+ private:
   vector<string> tokens[3];
 };

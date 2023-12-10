@@ -3,7 +3,7 @@
 #include "block_field.hpp"
 #include "gdc_file.hpp"
 
-void character_skills::read(gdc_file *gdc) {
+void character_skills::read(gdc_file* gdc) {
   const int BLOCK = 8;
   const int VERSION = 5;
 

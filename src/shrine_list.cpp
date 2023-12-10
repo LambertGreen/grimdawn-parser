@@ -3,7 +3,7 @@
 #include "block.hpp"
 #include "gdc_file.hpp"
 
-void shrine_list::read(gdc_file *gdc) {
+void shrine_list::read(gdc_file* gdc) {
   const int BLOCK = 17;
   const int VERSION = 2;
 

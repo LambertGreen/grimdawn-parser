@@ -6,8 +6,8 @@
 #include "vector.hpp"
 
 class character_skills {
-public:
-  void read(gdc_file *);
+ public:
+  void read(gdc_file*);
   json get_json() const {
     json j;
     ADD_TO_JSON(j, masteriesAllowed);
@@ -28,7 +28,7 @@ public:
     return j;
   };
 
-private:
+ private:
   vector<skill> skills;
   vector<item_skill> itemSkills;
   uint32_t masteriesAllowed;

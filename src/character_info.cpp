@@ -3,7 +3,7 @@
 #include "block.hpp"
 #include "gdc_file.hpp"
 
-void character_info::read(gdc_file *gdc) {
+void character_info::read(gdc_file* gdc) {
   const int BLOCK = 1;
   const int VERSION = 5;
 

@@ -3,7 +3,7 @@
 #include "block_field.hpp"
 #include "gdc_file.hpp"
 
-void stash_page::read(gdc_file *gdc) {
+void stash_page::read(gdc_file* gdc) {
   const int BLOCK = 0;
 
   block_field b;

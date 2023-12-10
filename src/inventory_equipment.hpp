@@ -4,8 +4,8 @@
 #include "item.hpp"
 
 class inventory_equipment : public item {
-public:
-  void read(gdc_file *gdc);
+ public:
+  void read(gdc_file* gdc);
 
   json get_json() const {
     json j = item::get_json();
@@ -13,6 +13,6 @@ public:
     return j;
   };
 
-private:
+ private:
   uint8_t attached;
 };
