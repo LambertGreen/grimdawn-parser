@@ -1,32 +1,12 @@
-
 #pragma once
 
-#include "common.hpp"
+#include "gdc_object.hpp"
 #include "string.hpp"
 
-struct item {
+struct item : gdc_object {
  public:
   void read(gdc_file* gdc);
-
-  virtual json get_json() const {
-    json j;
-    ADD_TO_JSON(j, baseName);
-    ADD_TO_JSON(j, prefixName);
-    ADD_TO_JSON(j, suffixName);
-    ADD_TO_JSON(j, modifierName);
-    ADD_TO_JSON(j, transmuteName);
-    ADD_TO_JSON(j, relicName);
-    ADD_TO_JSON(j, relicBonus);
-    ADD_TO_JSON(j, augmentName);
-    ADD_TO_JSON(j, stackCount);
-    ADD_TO_JSON(j, seed);
-    ADD_TO_JSON(j, relicSeed);
-    ADD_TO_JSON(j, unknown);
-    ADD_TO_JSON(j, augmentSeed);
-    ADD_TO_JSON(j, var1);
-
-    return j;
-  };
+  virtual json get_json() const;
 
  private:
   string baseName;

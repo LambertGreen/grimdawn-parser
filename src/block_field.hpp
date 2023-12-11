@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "common.hpp"
+#include <stdint.h>
 
 struct block_field {
   uint32_t len{};

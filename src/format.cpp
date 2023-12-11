@@ -1,4 +1,5 @@
-#include "common.hpp"
+#include <iomanip>
+#include <sstream>
 
 std::string formatNumber(int num, int count) {
   std::ostringstream oss;

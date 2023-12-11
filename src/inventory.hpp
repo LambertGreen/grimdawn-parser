@@ -1,10 +1,10 @@
 #pragma once
 
-#include "common.hpp"
+#include "gdc_object.hpp"
 #include "inventory_equipment.hpp"
 #include "inventory_sack.hpp"
 
-class inventory {
+class inventory : gdc_object {
  public:
   void read(gdc_file* gdc);
   json get_json() const;

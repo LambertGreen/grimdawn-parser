@@ -1,11 +1,11 @@
 #pragma once
 
-#include "common.hpp"
+#include "gdc_object.hpp"
 #include "item_skill.hpp"
 #include "skill.hpp"
 #include "vector.hpp"
 
-class character_skills {
+class character_skills : gdc_object {
  public:
   void read(gdc_file*);
   json get_json() const;

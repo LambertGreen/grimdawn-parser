@@ -1,26 +1,15 @@
 #pragma once
 
-#include "common.hpp"
+#include "gdc_object.hpp"
 #include "string.hpp"
 
-class skill {
+#include <_types/_uint8_t.h>
+#include <stdint.h>
+
+class skill : gdc_object {
  public:
   void read(gdc_file*);
-
-  json get_json() const {
-    json j;
-    ADD_TO_JSON(j, name);
-    ADD_TO_JSON(j, autoCastSkill);
-    ADD_TO_JSON(j, autoCastController);
-    ADD_TO_JSON(j, level);
-    ADD_TO_JSON(j, devotionLevel);
-    ADD_TO_JSON(j, experience);
-    ADD_TO_JSON(j, active);
-    ADD_TO_JSON(j, enabled);
-    ADD_TO_JSON(j, unknown1);
-    ADD_TO_JSON(j, unknown2);
-    return j;
-  };
+  json get_json() const;
 
  private:
   string name;

@@ -1,20 +1,11 @@
 #pragma once
 
-#include "common.hpp"
+#include "gdc_object.hpp"
 
-class faction_data {
+class faction_data : gdc_object {
  public:
   void read(gdc_file*);
-
-  json get_json() const {
-    json j;
-    ADD_TO_JSON(j, value);
-    ADD_TO_JSON(j, positiveBoost);
-    ADD_TO_JSON(j, negativeBoost);
-    ADD_TO_JSON(j, modified);
-    ADD_TO_JSON(j, unlocked);
-    return j;
-  };
+  json get_json() const;
 
  private:
   float value;

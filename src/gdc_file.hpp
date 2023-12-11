@@ -1,8 +1,9 @@
 #pragma once
 
-#include "common.hpp"
-
 #include "file.hpp"
+
+#include <_types/_uint8_t.h>
+#include <stdint.h>
 
 class block_field;
 

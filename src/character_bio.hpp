@@ -1,9 +1,9 @@
 
 #pragma once
 
-#include "common.hpp"
+#include "gdc_object.hpp"
 
-class character_bio {
+class character_bio : gdc_object {
  public:
   void read(gdc_file* gdc);
   json get_json() const;

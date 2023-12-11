@@ -2,11 +2,17 @@
 
 #include "block_field.hpp"
 #include "gdc_file.hpp"
+#include "validation.hpp"
+
+namespace {
+const int BLOCK = 0;
+}
 
 void inventory_sack::read(gdc_file* gdc) {
   block_field b;
 
-  ENSURE(gdc->read_block_start(&b) == 0, "Unexpected block number");
+  ENSURE(gdc->read_block_start(&b) == BLOCK,
+         "inventory_sack: Unexpected block number");
 
   tempBool = gdc->read_byte();
   items.read(gdc);

@@ -3,6 +3,7 @@
 #include <string>
 #include "block.hpp"
 #include "gdc_file.hpp"
+#include "validation.hpp"
 
 namespace {
 const int BLOCK = 4;
@@ -12,7 +13,8 @@ const int VERSION = 6;
 void character_stash::read(gdc_file* gdc) {
   block b;
   b.read_start(gdc);
-  validate_block(b, BLOCK, VERSION);
+  ENSURE(b.num == BLOCK, "character_stash: Unexpected block number");
+  ENSURE(b.version == VERSION, "character_stash: Unexpected version number");
 
   pages.read(gdc);
   b.read_end(gdc);

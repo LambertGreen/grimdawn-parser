@@ -1,9 +1,9 @@
 #pragma once
 
-#include "common.hpp"
+#include "gdc_object.hpp"
 #include "vector.hpp"
 
-class tutorial_pages {
+class tutorial_pages : gdc_object {
  public:
   void read(gdc_file*);
   json get_json() const;

@@ -9,20 +9,9 @@ void header::read(gdc_file* gdc) {
   }
 
   name.read(gdc);
-  LOG_W(name);
-
   sex = gdc->read_byte();
-  LOG_N(sex);
-
   classId.read(gdc);
-  LOG(classId);
-
   level = gdc->read_int();
-  LOG_N(level);
-
   hardcore = gdc->read_byte();
-  LOG_N(hardcore);
-
   expansionStatus = gdc->read_byte();
-  LOG_N(expansionStatus);
 }

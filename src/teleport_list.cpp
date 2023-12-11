@@ -1,7 +1,9 @@
 #include "teleport_list.hpp"
 
 #include "block.hpp"
+#include "format.hpp"
 #include "gdc_file.hpp"
+#include "validation.hpp"
 
 namespace {
 const int BLOCK = 6;
@@ -11,7 +13,8 @@ const int VERSION = 1;
 void teleport_list::read(gdc_file* gdc) {
   block b;
   b.read_start(gdc);
-  validate_block(b, BLOCK, VERSION);
+  ENSURE(b.num == BLOCK, "teleport_list: Unexpected block number");
+  ENSURE(b.version == VERSION, "teleport_list: Unexpected version number");
 
   const int uids_len = sizeof(uids) / sizeof(uids[0]);
   for (unsigned i = 0; i < uids_len; i++) {

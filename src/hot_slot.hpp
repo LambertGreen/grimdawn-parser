@@ -1,24 +1,13 @@
 #pragma once
 
-#include "common.hpp"
+#include "gdc_object.hpp"
 #include "string.hpp"
 #include "wstring.hpp"
 
-class hot_slot {
+class hot_slot : gdc_object {
  public:
   void read(gdc_file*);
-  json get_json() const {
-    json j;
-    ADD_TO_JSON(j, skill);
-    ADD_TO_JSON(j, item);
-    ADD_TO_JSON(j, bitmapUp);
-    ADD_TO_JSON(j, bitmapDown);
-    ADD_TO_JSON(j, label);
-    ADD_TO_JSON(j, type);
-    ADD_TO_JSON(j, equipLocation);
-    ADD_TO_JSON(j, isItemSkill);
-    return j;
-  };
+  json get_json() const;
 
  private:
   string skill;

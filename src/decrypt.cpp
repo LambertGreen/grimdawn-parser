@@ -1,6 +1,9 @@
-#include <string>
-#include "common.hpp"
 #include "player.hpp"
+
+#include <iostream>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
 
 int main(int argc, char** argv) {
   if (argc != 3) {

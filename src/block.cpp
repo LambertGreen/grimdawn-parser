@@ -10,8 +10,3 @@ void block::read_start(gdc_file* gdc) {
 void block::read_end(gdc_file* gdc) {
   gdc->read_block_end(&b);
 }
-
-void validate_block(const block& b, int expected_block, int expected_version) {
-  ENSURE(b.num == expected_block, "Unexpected block number");
-  ENSURE(b.version == expected_version, "Unexpected version number");
-}

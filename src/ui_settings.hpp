@@ -1,9 +1,9 @@
 #pragma once
 
-#include "common.hpp"
+#include "gdc_object.hpp"
 #include "hot_slot.hpp"
 
-class ui_settings {
+class ui_settings : gdc_object {
  public:
   void read(gdc_file*);
   json get_json() const;

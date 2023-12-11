@@ -1,8 +1,8 @@
 #pragma once
 
-#include "common.hpp"
+#include "gdc_object.hpp"
 
-class uid {
+class uid : gdc_object {
  public:
   json get_json() const;
   void read(gdc_file*);

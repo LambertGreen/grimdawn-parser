@@ -1,17 +1,14 @@
-
 #pragma once
 
-#include "common.hpp"
+#include "gdc_object.hpp"
 #include "string.hpp"
 
-class skill_map {
+class skill_map : gdc_object {
  public:
+  void read(gdc_file*);
+  json get_json() const;
+
+ private:
   string skill;
   int active;
-
-  void read(gdc_file*);
-  json get_json() const {
-    auto j = json{{"skill", skill}, {"acitive", active}};
-    return j;
-  }
 };

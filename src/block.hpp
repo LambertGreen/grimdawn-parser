@@ -1,8 +1,8 @@
 #pragma once
 
-#include "common.hpp"
-
 #include "block_field.hpp"
+
+class gdc_file;
 
 class block {
  public:

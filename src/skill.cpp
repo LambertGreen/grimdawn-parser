@@ -1,31 +1,31 @@
 #include "skill.hpp"
+
 #include "gdc_file.hpp"
 
 void skill::read(gdc_file* gdc) {
   name.read(gdc);
-  LOG(name);
-
   level = gdc->read_int();
-  LOG_N(level);
-
   enabled = gdc->read_byte();
-  LOG_N(enabled);
-
   devotionLevel = gdc->read_int();
-  LOG_N(devotionLevel);
-
   experience = gdc->read_int();
-  LOG_N(experience);
-
   active = gdc->read_int();
-  LOG_N(active);
-
   unknown1 = gdc->read_byte();
-  LOG_N(unknown1);
-
   unknown2 = gdc->read_byte();
-  LOG_N(unknown2);
-
   autoCastSkill.read(gdc);
   autoCastController.read(gdc);
 }
+
+json skill::get_json() const {
+  json j;
+  ADD_TO_JSON(j, name);
+  ADD_TO_JSON(j, autoCastSkill);
+  ADD_TO_JSON(j, autoCastController);
+  ADD_TO_JSON(j, level);
+  ADD_TO_JSON(j, devotionLevel);
+  ADD_TO_JSON(j, experience);
+  ADD_TO_JSON(j, active);
+  ADD_TO_JSON(j, enabled);
+  ADD_TO_JSON(j, unknown1);
+  ADD_TO_JSON(j, unknown2);
+  return j;
+};

@@ -1,17 +1,19 @@
 #include "character_bio.hpp"
 
-#include <string>
 #include "block.hpp"
 #include "gdc_file.hpp"
+#include "validation.hpp"
+
+namespace {
+const int BLOCK = 2;
+const int VERSION = 8;
+}  // namespace
 
 void character_bio::read(gdc_file* gdc) {
-  const int BLOCK = 2;
-  const int VERSION = 8;
-
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "Unexpected block number");
-  ENSURE(b.version == VERSION, "Unexpected version number");
+  ENSURE(b.num == BLOCK, "character_info: Unexpected block number");
+  ENSURE(b.version == VERSION, "character_info: Unexpected version number");
 
   level = gdc->read_int();
   experience = gdc->read_int();

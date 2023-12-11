@@ -1,11 +1,10 @@
 #pragma once
 
-#include <string>
-#include "common.hpp"
+#include "gdc_object.hpp"
 #include "string.hpp"
 #include "vector.hpp"
 
-class character_info {
+class character_info : gdc_object {
  public:
   void read(gdc_file*);
   json get_json() const;

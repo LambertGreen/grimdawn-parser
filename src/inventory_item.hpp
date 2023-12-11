@@ -1,7 +1,6 @@
 
 #pragma once
 
-#include "common.hpp"
 #include "item.hpp"
 
 class inventory_item : public item {

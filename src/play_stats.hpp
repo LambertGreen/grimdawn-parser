@@ -1,12 +1,12 @@
 #pragma once
 
 #include <_types/_uint8_t.h>
-#include "common.hpp"
+#include "gdc_object.hpp"
 #include "skill_map.hpp"
 #include "string.hpp"
 #include "vector.hpp"
 
-class play_stats {
+class play_stats : gdc_object {
  public:
   void read(gdc_file* gdc);
   json get_json() const;

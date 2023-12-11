@@ -1,12 +1,11 @@
 
 #pragma once
 
-#include <string>
-#include "common.hpp"
+#include "gdc_object.hpp"
 #include "inventory_item.hpp"
 #include "vector.hpp"
 
-class inventory_sack {
+class inventory_sack : gdc_object {
  public:
   void read(gdc_file*);
   json get_json() const;

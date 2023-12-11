@@ -1,6 +1,6 @@
 #pragma once
 
-#include "common.hpp"
+#include <vector>
 #include "gdc_file.hpp"
 
 template <typename T>

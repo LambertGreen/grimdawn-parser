@@ -2,15 +2,18 @@
 
 #include "block.hpp"
 #include "gdc_file.hpp"
+#include "validation.hpp"
+
+namespace {
+const int BLOCK = 3;
+const int VERSION = 4;
+}  // namespace
 
 void inventory::read(gdc_file* gdc) {
-  const int BLOCK = 3;
-  const int VERSION = 4;
-
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "Unexpected block number");
-  ENSURE(b.version == VERSION, "Unexpected version number");
+  ENSURE(b.num == BLOCK, "inventory: Unexpected block number");
+  ENSURE(b.version == VERSION, "inventory: Unexpected version number");
 
   if ((flag = gdc->read_byte())) {
     uint32_t n = gdc->read_int();

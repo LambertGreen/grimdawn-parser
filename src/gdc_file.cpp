@@ -1,6 +1,11 @@
 #include "gdc_file.hpp"
 #include "block_field.hpp"
 
+#include <stdexcept>
+#include <string>
+
+static std::exception e;
+
 gdc_file::gdc_file(const char* filename) : f(filename, "rb") {
   if (!(this->fp = f.fp)) {
     throw std::runtime_error("gdc_file:read: failed!");
