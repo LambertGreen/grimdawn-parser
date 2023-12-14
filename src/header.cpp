@@ -2,9 +2,14 @@
 
 #include "gdc_file.hpp"
 
-void header::read(gdc_file* gdc) {
+namespace {
+const int VERSION1 = 1;
+const int VERSION2 = 2;
+}  // namespace
+
+void header::read(gdc_file_reader* gdc) {
   version = gdc->read_int();
-  if (version != 1 && version != 2) {
+  if (version != VERSION1 && version != VERSION2) {
     throw std::runtime_error("Unsupported version: " + std::to_string(version));
   }
 
@@ -14,4 +19,23 @@ void header::read(gdc_file* gdc) {
   level = gdc->read_int();
   hardcore = gdc->read_byte();
   expansionStatus = gdc->read_byte();
+}
+
+void header::write(gdc_file_writer* gdc) {
+  name.write(gdc);
+  gdc->write_byte(sex);
+  classId.write(gdc);
+  gdc->write_int(level);
+  gdc->write_byte(hardcore);
+}
+
+json header::get_json() const {
+  json j;
+  ADD_TO_JSON(j, name);
+  ADD_TO_JSON(j, sex);
+  ADD_TO_JSON(j, classId);
+  ADD_TO_JSON(j, level);
+  ADD_TO_JSON(j, hardcore);
+  ADD_TO_JSON(j, expansionStatus);
+  return j;
 }

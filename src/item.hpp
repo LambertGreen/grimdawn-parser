@@ -5,7 +5,8 @@
 
 struct item : gdc_object {
  public:
-  void read(gdc_file* gdc);
+  virtual void read(gdc_file_reader* gdc);
+  virtual void write(gdc_file_writer* gdc);
   virtual json get_json() const;
 
  private:

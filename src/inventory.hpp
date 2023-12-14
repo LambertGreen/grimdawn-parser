@@ -6,8 +6,9 @@
 
 class inventory : gdc_object {
  public:
-  void read(gdc_file* gdc);
-  json get_json() const;
+  virtual void read(gdc_file_reader* gdc);
+  virtual void write(gdc_file_writer* gdc);
+  virtual json get_json() const;
 
  private:
   vector<inventory_sack> sacks;

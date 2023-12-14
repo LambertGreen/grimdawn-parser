@@ -8,7 +8,8 @@
 
 class play_stats : gdc_object {
  public:
-  void read(gdc_file* gdc);
+  void read(gdc_file_reader* gdc);
+  void write(gdc_file_writer* gdc);
   json get_json() const;
 
  private:

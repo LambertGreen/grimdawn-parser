@@ -9,7 +9,7 @@ const int BLOCK = 2;
 const int VERSION = 8;
 }  // namespace
 
-void character_bio::read(gdc_file* gdc) {
+void character_bio::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK, "character_info: Unexpected block number");
@@ -28,6 +28,25 @@ void character_bio::read(gdc_file* gdc) {
   energy = gdc->read_float();
 
   b.read_end(gdc);
+}
+
+void character_bio::write(gdc_file_writer* gdc) {
+  block b;
+  b.write_start(gdc, BLOCK, VERSION);
+
+  gdc->write_int(level);
+  gdc->write_int(experience);
+  gdc->write_int(modifierPoints);
+  gdc->write_int(skillPoints);
+  gdc->write_int(devotionPoints);
+  gdc->write_int(totalDevotion);
+  gdc->write_float(physique);
+  gdc->write_float(cunning);
+  gdc->write_float(spirit);
+  gdc->write_float(health);
+  gdc->write_float(energy);
+
+  b.write_end(gdc);
 }
 
 json character_bio::get_json() const {

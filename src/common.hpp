@@ -11,8 +11,4 @@ static std::exception e;
     field)  //                                                          \
   std::cout << #field << ": " << std::to_string(field) << std::endl;
 
-#define ENSURE(condition, message) \
-  if (!(condition))                \
-    throw std::runtime_error((message));
-
 std::string formatNumber(int num, int count = 2);

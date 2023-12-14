@@ -10,14 +10,24 @@ const int BLOCK = 4;
 const int VERSION = 6;
 }  // namespace
 
-void character_stash::read(gdc_file* gdc) {
+void character_stash::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK, "character_stash: Unexpected block number");
   ENSURE(b.version == VERSION, "character_stash: Unexpected version number");
 
   pages.read(gdc);
+
   b.read_end(gdc);
+}
+
+void character_stash::write(gdc_file_writer* gdc) {
+  block b;
+  b.write_start(gdc, BLOCK, VERSION);
+
+  pages.write(gdc);
+
+  b.write_end(gdc);
 }
 
 json character_stash::get_json() const {

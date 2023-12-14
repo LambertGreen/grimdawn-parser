@@ -10,7 +10,7 @@ const int BLOCK = 6;
 const int VERSION = 1;
 }  // namespace
 
-void teleport_list::read(gdc_file* gdc) {
+void teleport_list::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK, "teleport_list: Unexpected block number");
@@ -22,6 +22,17 @@ void teleport_list::read(gdc_file* gdc) {
   }
 
   b.read_end(gdc);
+}
+
+void teleport_list::write(gdc_file_writer* gdc) {
+  block b;
+  b.write_start(gdc, BLOCK, VERSION);
+
+  for (unsigned i = 0; i < 3; i++) {
+    uids[i].write(gdc);
+  }
+
+  b.write_end(gdc);
 }
 
 json teleport_list::get_json() const {

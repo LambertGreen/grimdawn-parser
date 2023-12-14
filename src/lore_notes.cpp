@@ -1,6 +1,6 @@
 #include "lore_notes.hpp"
 
-#include "block_field.hpp"
+#include "block.hpp"
 #include "format.hpp"
 #include "validation.hpp"
 
@@ -9,15 +9,24 @@ const int BLOCK = 12;
 const int VERSION = 1;
 }  // namespace
 
-void lore_notes::read(gdc_file* gdc) {
-  block_field b;
-  ENSURE(gdc->read_block_start(&b) == BLOCK,
-         "lore_notes: Unexpected block number");
-  ENSURE(gdc->read_int() == VERSION, "lore_notes: Unexpected version number");
+void lore_notes::read(gdc_file_reader* gdc) {
+  block b;
+  b.read_start(gdc);
+  ENSURE(b.num == BLOCK, "lore_notes: Unexpected block number");
+  ENSURE(b.version == VERSION, "lore_notes: Unexpected version number");
 
   names.read(gdc);
 
-  gdc->read_block_end(&b);
+  b.read_end(gdc);
+}
+
+void lore_notes::write(gdc_file_writer* gdc) {
+  block b;
+  b.write_start(gdc, BLOCK, VERSION);
+
+  names.write(gdc);
+
+  b.write_end(gdc);
 }
 
 json lore_notes::get_json() const {

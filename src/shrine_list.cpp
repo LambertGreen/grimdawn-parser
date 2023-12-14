@@ -10,7 +10,7 @@ const int BLOCK = 17;
 const int VERSION = 2;
 }  // namespace
 
-void shrine_list::read(gdc_file* gdc) {
+void shrine_list::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK, "shrine_list: Unexpected block number");
@@ -21,6 +21,17 @@ void shrine_list::read(gdc_file* gdc) {
   }
 
   b.read_end(gdc);
+}
+
+void shrine_list::write(gdc_file_writer* gdc) {
+  block b;
+  b.write_start(gdc, BLOCK, VERSION);
+
+  for (unsigned i = 0; i < 6; i++) {
+    uids[i].write(gdc);
+  }
+
+  b.write_end(gdc);
 }
 
 json shrine_list::get_json() const {

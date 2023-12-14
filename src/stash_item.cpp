@@ -2,10 +2,16 @@
 
 #include "gdc_file.hpp"
 
-void stash_item::read(gdc_file* gdc) {
+void stash_item::read(gdc_file_reader* gdc) {
   item::read(gdc);
   x = gdc->read_float();
   y = gdc->read_float();
+}
+
+void stash_item::write(gdc_file_writer* gdc) {
+  item::write(gdc);
+  gdc->write_float(x);
+  gdc->write_float(y);
 }
 
 json stash_item::get_json() const {

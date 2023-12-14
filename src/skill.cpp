@@ -2,7 +2,7 @@
 
 #include "gdc_file.hpp"
 
-void skill::read(gdc_file* gdc) {
+void skill::read(gdc_file_reader* gdc) {
   name.read(gdc);
   level = gdc->read_int();
   enabled = gdc->read_byte();
@@ -13,6 +13,19 @@ void skill::read(gdc_file* gdc) {
   unknown2 = gdc->read_byte();
   autoCastSkill.read(gdc);
   autoCastController.read(gdc);
+}
+
+void skill::write(gdc_file_writer* gdc) {
+  name.write(gdc);
+  gdc->write_int(level);
+  gdc->write_byte(enabled);
+  gdc->write_int(devotionLevel);
+  gdc->write_int(experience);
+  gdc->write_int(active);
+  gdc->write_byte(unknown1);
+  gdc->write_byte(unknown2);
+  autoCastSkill.write(gdc);
+  autoCastController.write(gdc);
 }
 
 json skill::get_json() const {

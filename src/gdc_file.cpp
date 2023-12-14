@@ -6,7 +6,15 @@
 
 static std::exception e;
 
-gdc_file::gdc_file(const char* filename) : f(filename, "rb") {
+namespace {
+const int VERSION1 = 0x58434447;
+const int VERSION2 = 0;
+const int VERSION3 = 8;
+const int NEXT_INT = 1;
+const int XOR_BITMAP = 0x55555555;
+}  // namespace
+
+gdc_file_reader::gdc_file_reader(const char* filename) : f(filename, "rb") {
   if (!(this->fp = f.fp)) {
     throw std::runtime_error("gdc_file:read: failed!");
   }
@@ -22,55 +30,56 @@ gdc_file::gdc_file(const char* filename) : f(filename, "rb") {
   }
 }
 
-void gdc_file::read_start() {
+void gdc_file_reader::read_start() {
   read_key();
   const auto v = read_int();
-  if (v != 0x58434447) {
+  if (v != VERSION1) {
     throw std::runtime_error("gdc_file:read: unexpected int value of " +
                              std::to_string(v));
   }
 }
 
-void gdc_file::read_version() {
-  const auto vv = next_int();
-  if (vv != 0) {
-    throw std::runtime_error("gdc_file:read: next int is not zero");
+void gdc_file_reader::read_version() {
+  const auto v2 = next_int();
+  if (v2 != VERSION2) {
+    throw std::runtime_error("gdc_file:read: unexpected int is values of " +
+                             std::to_string(v2));
   }
 
   const auto v3 = read_int();
-  if (v3 != 8)  // version
-  {
+  if (v3 != VERSION3) {
     throw std::runtime_error("gdc_file:read: unexpected int value of " +
                              std::to_string(v3));
   }
 }
 
-void gdc_file::read_end() {
+void gdc_file_reader::read_end() {
   if (ftell(this->fp) != end)
     throw e;
 }
 
-void gdc_file::read_key() {
+void gdc_file_reader::read_key() {
   uint32_t k;
 
   if (fread(&k, 4, 1, this->fp) != 1) {
-    throw std::runtime_error("gdc_file::read_key: failed to read uint32");
+    throw std::runtime_error(
+        "gdc_file_reader::read_key: failed to read uint32");
   }
 
-  k ^= 0x55555555;
+  k ^= XOR_BITMAP;
 
-  key = k;
+  this->key = k;
   for (unsigned i = 0; i < 256; i++) {
     k = (k >> 1) | (k << 31);
     k *= 39916801;
-    table[i] = k;
+    this->table[i] = k;
   }
 }
 
-uint32_t gdc_file::next_int() {
+uint32_t gdc_file_reader::next_int() {
   uint32_t ret;
 
-  if (fread(&ret, 4, 1, fp) != 1) {
+  if (fread(&ret, 4, 1, fp) != NEXT_INT) {
     throw std::runtime_error("next_int: failed to read uint32");
   }
 
@@ -79,15 +88,15 @@ uint32_t gdc_file::next_int() {
   return ret;
 }
 
-void gdc_file::update_key(void* ptr, uint32_t len) {
+void gdc_file_reader::update_key(void* ptr, uint32_t len) {
   uint8_t* p = (uint8_t*)ptr;
 
   for (uint32_t i = 0; i < len; i++) {
-    key ^= table[p[i]];
+    this->key ^= table[p[i]];
   }
 }
 
-uint32_t gdc_file::read_int() {
+uint32_t gdc_file_reader::read_int() {
   uint32_t val;
 
   if (fread(&val, 4, 1, fp) != 1) {
@@ -101,7 +110,7 @@ uint32_t gdc_file::read_int() {
   return ret;
 }
 
-uint16_t gdc_file::read_short() {
+uint16_t gdc_file_reader::read_short() {
   uint16_t val;
 
   if (fread(&val, 2, 1, fp) != 1) {
@@ -115,7 +124,7 @@ uint16_t gdc_file::read_short() {
   return ret;
 }
 
-uint8_t gdc_file::read_byte() {
+uint8_t gdc_file_reader::read_byte() {
   uint8_t val;
 
   if (fread(&val, 1, 1, fp) != 1) {
@@ -129,7 +138,7 @@ uint8_t gdc_file::read_byte() {
   return ret;
 }
 
-float gdc_file::read_float() {
+float gdc_file_reader::read_float() {
   union {
     float f;
     int i;
@@ -138,7 +147,7 @@ float gdc_file::read_float() {
   return u.f;
 }
 
-uint32_t gdc_file::read_block_start(block_field* b) {
+uint32_t gdc_file_reader::read_block_start(block_field* b) {
   uint32_t ret = read_int();
 
   b->len = next_int();
@@ -147,7 +156,7 @@ uint32_t gdc_file::read_block_start(block_field* b) {
   return ret;
 }
 
-void gdc_file::read_block_end(block_field* b) {
+void gdc_file_reader::read_block_end(block_field* b) {
   if (ftell(fp) != b->end) {
     throw std::runtime_error("read_block_end: failed!");
   }
@@ -157,33 +166,54 @@ void gdc_file::read_block_end(block_field* b) {
   }
 }
 
-void gdc_file::write_int(uint32_t val) {
+gdc_file_writer::gdc_file_writer(const char* filename) : f(filename, "wb") {
+  if (!(fp = f.fp))
+    throw e;
+}
+
+void gdc_file_writer::write_start() {
+  write_int(0x55555555);
+  write_int(VERSION1);
+  write_int(NEXT_INT);
+}
+
+void gdc_file_writer::write_version() {
+  write_int(VERSION2);
+  write_int(VERSION3);
+}
+
+void gdc_file_writer::write_end() {
+  if (fflush(fp))
+    throw e;
+}
+
+void gdc_file_writer::write_int(uint32_t val) {
   if (fwrite(&val, 4, 1, fp) != 1)
     throw e;
 }
 
-void gdc_file::write_short(uint16_t val) {
+void gdc_file_writer::write_short(uint16_t val) {
   if (fwrite(&val, 2, 1, fp) != 1)
     throw e;
 }
 
-void gdc_file::write_byte(uint8_t val) {
+void gdc_file_writer::write_byte(uint8_t val) {
   if (fwrite(&val, 1, 1, fp) != 1)
     throw e;
 }
 
-void gdc_file::write_float(float val) {
+void gdc_file_writer::write_float(float val) {
   if (fwrite(&val, 4, 1, fp) != 1)
     throw e;
 }
 
-void gdc_file::write_block_start(block_field* b, uint32_t n) {
+void gdc_file_writer::write_block_start(block_field* b, uint32_t n) {
   write_int(n);
   write_int(0);
   b->end = ftell(fp);
 }
 
-void gdc_file::write_block_end(block_field* b) {
+void gdc_file_writer::write_block_end(block_field* b) {
   long pos = ftell(fp);
 
   if (fseek(fp, b->end - 4, SEEK_SET))

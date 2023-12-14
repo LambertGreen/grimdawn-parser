@@ -1,6 +1,6 @@
 #include "item.hpp"
 
-void item::read(gdc_file* gdc) {
+void item::read(gdc_file_reader* gdc) {
   baseName.read(gdc);
   prefixName.read(gdc);
   suffixName.read(gdc);
@@ -15,6 +15,23 @@ void item::read(gdc_file* gdc) {
   augmentSeed = gdc->read_int();
   var1 = gdc->read_int();
   stackCount = gdc->read_int();
+}
+
+void item::write(gdc_file_writer* gdc) {
+  baseName.write(gdc);
+  prefixName.write(gdc);
+  suffixName.write(gdc);
+  modifierName.write(gdc);
+  transmuteName.write(gdc);
+  gdc->write_int(seed);
+  relicName.write(gdc);
+  relicBonus.write(gdc);
+  gdc->write_int(relicSeed);
+  augmentName.write(gdc);
+  gdc->write_int(unknown);
+  gdc->write_int(augmentSeed);
+  gdc->write_int(var1);
+  gdc->write_int(stackCount);
 }
 
 json item::get_json() const {

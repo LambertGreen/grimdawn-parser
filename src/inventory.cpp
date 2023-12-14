@@ -9,7 +9,7 @@ const int BLOCK = 3;
 const int VERSION = 4;
 }  // namespace
 
-void inventory::read(gdc_file* gdc) {
+void inventory::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK, "inventory: Unexpected block number");
@@ -46,6 +46,44 @@ void inventory::read(gdc_file* gdc) {
   }
 
   b.read_end(gdc);
+}
+
+void inventory::write(gdc_file_writer* gdc) {
+  block b;
+  b.write_start(gdc, BLOCK, VERSION);
+
+  gdc->write_byte(flag);
+
+  if (flag) {
+    uint32_t n = sacks.size();
+    gdc->write_int(n);
+    gdc->write_int(focused);
+    gdc->write_int(selected);
+
+    for (uint32_t i = 0; i < n; i++) {
+      sacks[i].write(gdc);
+    }
+
+    gdc->write_byte(useAlternate);
+
+    for (unsigned i = 0; i < 12; i++) {
+      equipment[i].write(gdc);
+    }
+
+    gdc->write_byte(alternate1);
+
+    for (unsigned i = 0; i < 2; i++) {
+      weapon1[i].write(gdc);
+    }
+
+    gdc->write_byte(alternate2);
+
+    for (unsigned i = 0; i < 2; i++) {
+      weapon2[i].write(gdc);
+    }
+  }
+
+  b.write_end(gdc);
 }
 
 json inventory::get_json() const {

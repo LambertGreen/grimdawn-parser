@@ -10,7 +10,7 @@ const int BLOCK = 5;
 const int VERSION = 1;
 }  // namespace
 
-void respawn_list::read(gdc_file* gdc) {
+void respawn_list::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK, "respawn_list: Unexpected block number");
@@ -27,6 +27,21 @@ void respawn_list::read(gdc_file* gdc) {
   }
 
   b.read_end(gdc);
+}
+
+void respawn_list::write(gdc_file_writer* gdc) {
+  block b;
+  b.write_start(gdc, BLOCK, VERSION);
+
+  for (unsigned i = 0; i < 3; i++) {
+    uids[i].write(gdc);
+  }
+
+  for (unsigned i = 0; i < 3; i++) {
+    spawns[i].write(gdc);
+  }
+
+  b.write_end(gdc);
 }
 
 json respawn_list::get_json() const {

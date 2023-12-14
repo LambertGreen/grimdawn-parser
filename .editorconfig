@@ -12,7 +12,7 @@ trim_trailing_whitespace = true
 
 # C++ files
 [*.{cpp,h}]
-indent_size = 4
+indent_size = 2
 max_line_length = 100
 
 # Python files

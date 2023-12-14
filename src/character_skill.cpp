@@ -1,6 +1,6 @@
 #include "character_skill.hpp"
 
-#include "block_field.hpp"
+#include "block.hpp"
 #include "format.hpp"
 #include "gdc_file.hpp"
 #include "validation.hpp"
@@ -10,19 +10,32 @@ const int BLOCK = 8;
 const int VERSION = 5;
 }  // namespace
 
-void character_skills::read(gdc_file* gdc) {
-  block_field b;
-  ENSURE(gdc->read_block_start(&b) == BLOCK,
-         "character_skills: Unexpected block number");
-  ENSURE(gdc->read_int() == VERSION,
-         "character_skills: Unexpected version number");
+void character_skills::read(gdc_file_reader* gdc) {
+  block b;
+  b.read_start(gdc);
+  ENSURE(b.num == BLOCK, "character_skills: Unexpected block number");
+  ENSURE(b.version == VERSION, "character_skills: Unexpected version number");
 
   skills.read(gdc);
   masteriesAllowed = gdc->read_int();
   skillReclamationPointsUsed = gdc->read_int();
   devotionReclamationPointsUsed = gdc->read_int();
   itemSkills.read(gdc);
-  gdc->read_block_end(&b);
+
+  b.read_end(gdc);
+}
+
+void character_skills::write(gdc_file_writer* gdc) {
+  block b;
+  b.write_start(gdc, BLOCK, VERSION);
+
+  skills.write(gdc);
+  gdc->write_int(masteriesAllowed);
+  gdc->write_int(skillReclamationPointsUsed);
+  gdc->write_int(devotionReclamationPointsUsed);
+  itemSkills.write(gdc);
+
+  b.write_end(gdc);
 }
 
 json character_skills::get_json() const {

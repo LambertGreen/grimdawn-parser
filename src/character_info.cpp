@@ -10,7 +10,7 @@ const int BLOCK = 1;
 const int VERSION = 5;
 }  // namespace
 
-void character_info::read(gdc_file* gdc) {
+void character_info::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK, "character_info: Unexpected block number");
@@ -36,6 +36,32 @@ void character_info::read(gdc_file* gdc) {
   }
 
   b.read_end(gdc);
+}
+
+void character_info::write(gdc_file_writer* gdc) {
+  block b;
+  b.write_start(gdc, BLOCK, VERSION);
+
+  gdc->write_byte(isInMainQuest);
+  gdc->write_byte(hasBeenInGame);
+  gdc->write_byte(difficulty);
+  gdc->write_byte(greatestDifficulty);
+  gdc->write_int(money);
+  gdc->write_byte(greatestSurvivalDifficulty);
+  gdc->write_int(currentTribute);
+  gdc->write_byte(compassState);
+  gdc->write_byte(skillWindowShowHelp);
+  gdc->write_byte(alternateConfig);
+  gdc->write_byte(alternateConfigEnabled);
+  texture.write(gdc);
+
+  const int lootFiltersSize = lootFilters.size();
+  gdc->write_int(lootFiltersSize);
+  for (uint32_t i = 0; i < lootFiltersSize; i++) {
+    gdc->write_byte(lootFilters[i]);
+  }
+
+  b.write_end(gdc);
 }
 
 json character_info::get_json() const {

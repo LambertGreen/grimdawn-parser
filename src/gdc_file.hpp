@@ -7,7 +7,7 @@
 
 class block_field;
 
-class gdc_file {
+class gdc_file_reader {
  private:
   file f;
   FILE* fp{};
@@ -17,7 +17,7 @@ class gdc_file {
   uint32_t table[256];
 
  public:
-  gdc_file(const char* filename);
+  gdc_file_reader(const char* filename);
   void read_start();
   void read_version();
   void read_end();
@@ -32,6 +32,22 @@ class gdc_file {
   float read_float();
   uint32_t read_block_start(block_field* b);
   void read_block_end(block_field* b);
+};
+
+class gdc_file_writer {
+ private:
+  file f;
+  FILE* fp{};
+
+  long end{};
+  uint32_t key{};
+  uint32_t table[256];
+
+ public:
+  gdc_file_writer(const char* filename);
+  void write_start();
+  void write_version();
+  void write_end();
   void write_int(uint32_t val);
   void write_short(uint16_t val);
   void write_byte(uint8_t val);

@@ -8,9 +8,8 @@ namespace {
 const int BLOCK = 0;
 }
 
-void inventory_sack::read(gdc_file* gdc) {
+void inventory_sack::read(gdc_file_reader* gdc) {
   block_field b;
-
   ENSURE(gdc->read_block_start(&b) == BLOCK,
          "inventory_sack: Unexpected block number");
 
@@ -18,6 +17,16 @@ void inventory_sack::read(gdc_file* gdc) {
   items.read(gdc);
 
   gdc->read_block_end(&b);
+}
+
+void inventory_sack::write(gdc_file_writer* gdc) {
+  block_field b;
+  gdc->write_block_start(&b, BLOCK);
+
+  gdc->write_byte(tempBool);
+  items.write(gdc);
+
+  gdc->write_block_end(&b);
 }
 
 json inventory_sack::get_json() const {

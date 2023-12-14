@@ -1,7 +1,7 @@
 #include "play_stats.hpp"
 
 #include <string>
-#include "block_field.hpp"
+#include "block.hpp"
 #include "validation.hpp"
 
 namespace {
@@ -9,11 +9,11 @@ const int BLOCK = 16;
 const int VERSION = 11;
 }  // namespace
 
-void play_stats::read(gdc_file* gdc) {
-  block_field b;
-  ENSURE(gdc->read_block_start(&b) == BLOCK,
-         "play_stats: Unexpected block number");
-  ENSURE(gdc->read_int() == VERSION, "play_stats: Unexpected version number");
+void play_stats::read(gdc_file_reader* gdc) {
+  block b;
+  b.read_start(gdc);
+  ENSURE(b.num == BLOCK, "play_stats: Unexpected block number");
+  ENSURE(b.version == VERSION, "play_stats: Unexpected version number");
 
   playTime = gdc->read_int();
   deaths = gdc->read_int();
@@ -67,7 +67,66 @@ void play_stats::read(gdc_file* gdc) {
   unknown1 = gdc->read_int();
   unknown2 = gdc->read_int();
 
-  gdc->read_block_end(&b);
+  b.read_end(gdc);
+}
+
+void play_stats::write(gdc_file_writer* gdc) {
+  block b;
+  b.write_start(gdc, BLOCK, VERSION);
+
+  gdc->write_int(playTime);
+  gdc->write_int(deaths);
+  gdc->write_int(kills);
+  gdc->write_int(experienceFromKills);
+  gdc->write_int(healthPotionsUsed);
+  gdc->write_int(manaPotionsUsed);
+  gdc->write_int(maxLevel);
+  gdc->write_int(hitsReceived);
+  gdc->write_int(hitsInflicted);
+  gdc->write_int(criticalHitsInflicted);
+  gdc->write_int(criticalHitsReceived);
+  gdc->write_float(greatestDamageInflicted);
+
+  for (unsigned i = 0; i < 3; i++) {
+    greatestMonsterKilledName[i].write(gdc);
+    gdc->write_int(greatestMonsterKilledLevel[i]);
+    gdc->write_int(greatestMonsterKilledLifeAndMana[i]);
+    lastMonsterHit[i].write(gdc);
+    lastMonsterHitBy[i].write(gdc);
+  }
+
+  gdc->write_int(championKills);
+  gdc->write_float(lastHit);
+  gdc->write_float(lastHitBy);
+  gdc->write_float(greatestDamageReceived);
+  gdc->write_int(heroKills);
+  gdc->write_int(itemsCrafted);
+  gdc->write_int(relicsCrafted);
+  gdc->write_int(transcendentRelicsCrafted);
+  gdc->write_int(mythicalRelicsCrafted);
+  gdc->write_int(shrinesRestored);
+  gdc->write_int(oneShotChestsOpened);
+  gdc->write_int(loreNotesCollected);
+
+  for (unsigned i = 0; i < 3; i++) {
+    gdc->write_int(bossKills[i]);
+  }
+
+  gdc->write_int(survivalGreatestWave);
+  gdc->write_int(survivalGreatestScore);
+  gdc->write_int(survivalDefensesBuilt);
+  gdc->write_int(survivalPowerUpsActivated);
+
+  skillMap.write(gdc);
+
+  gdc->write_int(endlessSouls);
+  gdc->write_int(endlessEssence);
+  gdc->write_byte(difficultySkip);
+
+  gdc->write_int(unknown1);
+  gdc->write_int(unknown2);
+
+  b.write_end(gdc);
 }
 
 json play_stats::get_json() const {
