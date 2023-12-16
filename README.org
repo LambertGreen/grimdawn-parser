@@ -7,33 +7,35 @@ A =Grim Dawn= player parser.
 * References
 + [[http://www.lost.org.uk/grimdawn/][GrimDawn decryption code samples]]
 
-* Build
+* Development
+** Build
 The build is automated via the =just= tool with build recipes defined in ~".justfile"~.
 
-** Generate build config
+*** Generate build config
 #+begin_src sh
 just generate
 #+end_src
 
-** Run build command
+*** Run build command
 #+begin_src sh
 just build
 #+end_src
 
-* Test
+** Test
 See the .justfile for all test recipes.
 
-** Test all
+*** Test all
 #+begin_src sh
 just test-all
 #+end_src
 
-* Decode ~player.gdc~ files into ~player.json~ files
+* Usage
+** Decode ~player.gdc~ files into ~player.json~ files
 #+begin_src sh
 just decode
 #+end_src
 
-* Combine ~player.json~ files into ~all-characters-combined.json~
+** Combine ~player.json~ files into ~all-characters-combined.json~
 #+begin_src sh
 just combine
 #+end_src
@@ -97,7 +99,6 @@ Here we can pull in =grimdawn_save= project as a =git= submodule.
 #+begin_src sh :results table
 ls  grimdawn_save/main/*/player.gdc
 #+end_src
-
 
 
 ** Solved [1/1] :solved:
