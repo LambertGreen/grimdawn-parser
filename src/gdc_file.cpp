@@ -1,21 +1,23 @@
 #include "gdc_file.hpp"
 #include "block_field.hpp"
 
+#include <cstdint>
 #include <stdexcept>
 #include <string>
 
 static std::exception e;
 
+#define XOR_BITMAP 0x55555555
+#define VERSION1 0x58434447
+#define TABLE_MULT 39916801
+
 namespace {
-const int VERSION1 = 0x58434447;
 const int VERSION2 = 0;
 const int VERSION3 = 8;
-const int NEXT_INT = 1;
-const int XOR_BITMAP = 0x55555555;
 }  // namespace
 
 gdc_file_reader::gdc_file_reader(const char* filename) : f(filename, "rb") {
-  if (!(this->fp = f.fp)) {
+  if (!(this->fp = this->f.fp)) {
     throw std::runtime_error("gdc_file:read: failed!");
   }
 
@@ -23,7 +25,7 @@ gdc_file_reader::gdc_file_reader(const char* filename) : f(filename, "rb") {
     throw std::runtime_error("gdc_file:read: failed fseek!");
   }
 
-  end = ftell(this->fp);
+  this->end = ftell(this->fp);
 
   if (fseek(this->fp, 0, SEEK_SET)) {
     throw std::runtime_error("gdc_file:read: failed fseek!");
@@ -54,7 +56,7 @@ void gdc_file_reader::read_version() {
 }
 
 void gdc_file_reader::read_end() {
-  if (ftell(this->fp) != end)
+  if (ftell(this->fp) != this->end)
     throw e;
 }
 
@@ -71,7 +73,7 @@ void gdc_file_reader::read_key() {
   this->key = k;
   for (unsigned i = 0; i < 256; i++) {
     k = (k >> 1) | (k << 31);
-    k *= 39916801;
+    k *= TABLE_MULT;
     this->table[i] = k;
   }
 }
@@ -79,7 +81,7 @@ void gdc_file_reader::read_key() {
 uint32_t gdc_file_reader::next_int() {
   uint32_t ret;
 
-  if (fread(&ret, 4, 1, fp) != NEXT_INT) {
+  if (fread(&ret, 4, 1, this->fp) != 1) {
     throw std::runtime_error("next_int: failed to read uint32");
   }
 
@@ -92,7 +94,11 @@ void gdc_file_reader::update_key(void* ptr, uint32_t len) {
   uint8_t* p = (uint8_t*)ptr;
 
   for (uint32_t i = 0; i < len; i++) {
-    this->key ^= table[p[i]];
+    int j = p[i];
+    if (j < 0) {
+      j += 256;
+    }
+    this->key ^= this->table[j];
   }
 }
 
@@ -127,7 +133,7 @@ uint16_t gdc_file_reader::read_short() {
 uint8_t gdc_file_reader::read_byte() {
   uint8_t val;
 
-  if (fread(&val, 1, 1, fp) != 1) {
+  if (fread(&val, 1, 1, this->fp) != 1) {
     throw std::runtime_error("read_byte: failed to read uint8");
   }
 
@@ -151,18 +157,18 @@ uint32_t gdc_file_reader::read_block_start(block_field* b) {
   uint32_t ret = read_int();
 
   b->len = next_int();
-  b->end = ftell(fp) + b->len;
+  b->end = ftell(this->fp) + b->len;
 
   return ret;
 }
 
 void gdc_file_reader::read_block_end(block_field* b) {
-  if (ftell(fp) != b->end) {
-    throw std::runtime_error("read_block_end: failed!");
+  if (ftell(this->fp) != b->end) {
+    throw std::runtime_error("read_block_end: ftell failed!");
   }
 
   if (next_int()) {
-    throw std::runtime_error("read_block_end: failed!");
+    throw std::runtime_error("read_block_end: next_int failed!");
   }
 }
 
@@ -174,7 +180,7 @@ gdc_file_writer::gdc_file_writer(const char* filename) : f(filename, "wb") {
 void gdc_file_writer::write_start() {
   write_int(0x55555555);
   write_int(VERSION1);
-  write_int(NEXT_INT);
+  write_int(1);
 }
 
 void gdc_file_writer::write_version() {

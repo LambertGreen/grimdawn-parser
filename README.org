@@ -22,12 +22,14 @@ just build
 #+end_src
 
 ** Test
-See the .justfile for all test recipes.
+See the ~'.justfile'~ for all test recipes.
 
 *** Test all
 #+begin_src sh
 just test-all
 #+end_src
+
+** Debug
 
 * Usage
 ** Decode ~player.gdc~ files into ~player.json~ files

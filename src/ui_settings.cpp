@@ -7,9 +7,9 @@
 namespace {
 const int BLOCK = 14;
 const int VERSION = 5;
-}  // namespace
+} // namespace
 
-void ui_settings::read(gdc_file_reader* gdc) {
+void ui_settings::read(gdc_file_reader *gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK, "ui_settings: Unexpected block number");
@@ -25,12 +25,16 @@ void ui_settings::read(gdc_file_reader* gdc) {
     unknown6[i] = gdc->read_byte();
   }
 
-  cameraDistance = gdc->read_byte();
+  for (unsigned i = 0; i < 46; i++) {
+    slots[i].read(gdc);
+  }
+
+  cameraDistance = gdc->read_float();
 
   b.read_end(gdc);
 }
 
-void ui_settings::write(gdc_file_writer* gdc) {
+void ui_settings::write(gdc_file_writer *gdc) {
   block b;
   b.write_start(gdc, BLOCK, VERSION);
 

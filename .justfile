@@ -10,7 +10,7 @@ format:
 # generate with cmake
 #
 generate:
-	cmake -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+	cmake -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug
 
 # build with cmake
 build:
@@ -18,11 +18,11 @@ build:
 
 # debug with lldb
 debug:
-	lldb ./grimparse testfiles/player.gdc
+	lldb ./build/grimparse testfiles/_Thor/player.gdc Thor
 
 # debug with gdb
 debug_with_gdb:
-    gdb -- ./grimparse testfiles/player.gdc
+    gdb -- ./build/grimparse testfiles/_Thor/player.gdc Thor
 
 # run
 test:
