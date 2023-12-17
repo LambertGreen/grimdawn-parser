@@ -29,13 +29,13 @@ void inventory_sack::write(gdc_file_writer* gdc) {
   gdc->write_block_end(&b);
 }
 
-json inventory_sack::get_json() const {
+json inventory_sack::to_json() const {
   json j;
   ADD_TO_JSON(j, tempBool);
 
   json m;
   for (int i = 0; i < items.size(); i++) {
-    m.emplace("inventory_item_" + std::to_string(i), items[i].get_json());
+    m.emplace("inventory_item_" + std::to_string(i), items[i].to_json());
   }
 
   j.emplace("inventory_items", m);

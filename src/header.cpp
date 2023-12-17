@@ -29,7 +29,7 @@ void header::write(gdc_file_writer* gdc) {
   gdc->write_byte(hardcore);
 }
 
-json header::get_json() const {
+json header::to_json() const {
   json j;
   ADD_TO_JSON(j, name);
   ADD_TO_JSON(j, sex);

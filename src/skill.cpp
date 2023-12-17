@@ -28,7 +28,7 @@ void skill::write(gdc_file_writer* gdc) {
   autoCastController.write(gdc);
 }
 
-json skill::get_json() const {
+json skill::to_json() const {
   json j;
   ADD_TO_JSON(j, name);
   ADD_TO_JSON(j, autoCastSkill);

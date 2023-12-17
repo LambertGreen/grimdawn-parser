@@ -14,8 +14,8 @@ void stash_item::write(gdc_file_writer* gdc) {
   gdc->write_float(y);
 }
 
-json stash_item::get_json() const {
-  json j = item::get_json();
+json stash_item::to_json() const {
+  json j = item::to_json();
   ADD_TO_JSON(j, x);
   ADD_TO_JSON(j, y);
   return j;

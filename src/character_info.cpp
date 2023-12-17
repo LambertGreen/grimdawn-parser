@@ -64,7 +64,7 @@ void character_info::write(gdc_file_writer* gdc) {
   b.write_end(gdc);
 }
 
-json character_info::get_json() const {
+json character_info::to_json() const {
   json j;
   ADD_TO_JSON(j, texture);
   ADD_TO_JSON(j, money);

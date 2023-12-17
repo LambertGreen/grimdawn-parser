@@ -32,7 +32,7 @@ void hot_slot::write(gdc_file_writer* gdc) {
   }
 }
 
-json hot_slot::get_json() const {
+json hot_slot::to_json() const {
   json j;
   ADD_TO_JSON(j, skill);
   ADD_TO_JSON(j, item);

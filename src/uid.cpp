@@ -15,7 +15,7 @@ void uid::write(gdc_file_writer* gdc) {
   }
 }
 
-json uid::get_json() const {
+json uid::to_json() const {
   std::string s = std::to_string(id[0]);
   for (int i = 1; i < sizeof(id) / sizeof(id[0]); i++) {
     s += "-" + std::to_string(i);

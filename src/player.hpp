@@ -23,7 +23,7 @@ class player {
  public:
   player(const char* filename);
   void write(const char* filename);
-  json get_json() const;
+  json to_json() const;
 
  private:
   gdc_file_reader gdc;

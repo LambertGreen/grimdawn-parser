@@ -29,7 +29,7 @@ void lore_notes::write(gdc_file_writer* gdc) {
   b.write_end(gdc);
 }
 
-json lore_notes::get_json() const {
+json lore_notes::to_json() const {
   json j;
 
   for (int i = 0; i < names.size(); i++) {

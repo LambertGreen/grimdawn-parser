@@ -49,7 +49,7 @@ void character_bio::write(gdc_file_writer* gdc) {
   b.write_end(gdc);
 }
 
-json character_bio::get_json() const {
+json character_bio::to_json() const {
   json j;
   ADD_TO_JSON(j, level);
   ADD_TO_JSON(j, experience);

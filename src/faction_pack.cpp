@@ -31,12 +31,12 @@ void faction_pack::write(gdc_file_writer* gdc) {
   b.write_end(gdc);
 }
 
-json faction_pack::get_json() const {
+json faction_pack::to_json() const {
   json j;
   ADD_TO_JSON(j, faction);
 
   for (int i = 0; i < factions.size(); i++) {
-    j.emplace("faction_" + formatNumber(2), factions[i].get_json());
+    j.emplace("faction_" + formatNumber(2), factions[i].to_json());
   }
   return j;
 };

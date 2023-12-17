@@ -86,7 +86,7 @@ void inventory::write(gdc_file_writer* gdc) {
   b.write_end(gdc);
 }
 
-json inventory::get_json() const {
+json inventory::to_json() const {
   json j;
   ADD_TO_JSON(j, focused);
   ADD_TO_JSON(j, selected);
@@ -96,20 +96,20 @@ json inventory::get_json() const {
   ADD_TO_JSON(j, alternate2);
 
   for (int i = 0; i < 12; i++) {
-    j.emplace("equipment_" + std::to_string(i), equipment[i].get_json());
+    j.emplace("equipment_" + std::to_string(i), equipment[i].to_json());
   }
 
   for (int i = 0; i < 2; i++) {
-    j.emplace("weapon1_" + std::to_string(i), weapon1[i].get_json());
+    j.emplace("weapon1_" + std::to_string(i), weapon1[i].to_json());
   }
 
   for (int i = 0; i < 2; i++) {
-    j.emplace("weapon2_" + std::to_string(i), weapon2[i].get_json());
+    j.emplace("weapon2_" + std::to_string(i), weapon2[i].to_json());
   }
 
   for (int i = 0; i < sacks.size(); i++) {
     json m;
-    m.emplace("sack_" + std::to_string(i), sacks[i].get_json());
+    m.emplace("sack_" + std::to_string(i), sacks[i].to_json());
   }
   return j;
 };

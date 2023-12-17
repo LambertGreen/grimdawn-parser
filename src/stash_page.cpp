@@ -30,13 +30,13 @@ void stash_page::write(gdc_file_writer* gdc) {
   gdc->write_block_end(&b);
 }
 
-json stash_page::get_json() const {
+json stash_page::to_json() const {
   json j;
   ADD_TO_JSON(j, width);
   ADD_TO_JSON(j, height);
 
   for (int i = 0; i < items.size(); i++) {
-    j.emplace("stash_item_" + std::to_string(i), items[i].get_json());
+    j.emplace("stash_item_" + std::to_string(i), items[i].to_json());
   }
   return j;
 };

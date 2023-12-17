@@ -38,7 +38,7 @@ void tutorial_pages::write(gdc_file_writer* gdc) {
   b.write_end(gdc);
 }
 
-json tutorial_pages::get_json() const {
+json tutorial_pages::to_json() const {
   json j;
 
   ADD_TO_JSON(j, pages);

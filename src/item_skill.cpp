@@ -16,7 +16,7 @@ void item_skill::write(gdc_file_writer* gdc) {
   itemName.write(gdc);
 }
 
-json item_skill::get_json() const {
+json item_skill::to_json() const {
   json j;
   ADD_TO_JSON(j, name);
   ADD_TO_JSON(j, autoCastSkill);

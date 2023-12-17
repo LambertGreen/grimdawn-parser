@@ -17,5 +17,5 @@ class gdc_object {
 
   virtual void read(gdc_file_reader*) = 0;
   virtual void write(gdc_file_writer*) = 0;
-  virtual json get_json() const = 0;
+  virtual json to_json() const = 0;
 };

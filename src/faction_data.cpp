@@ -18,7 +18,7 @@ void faction_data::write(gdc_file_writer* gdc) {
   gdc->write_float(negativeBoost);
 }
 
-json faction_data::get_json() const {
+json faction_data::to_json() const {
   json j;
   ADD_TO_JSON(j, modified);
   ADD_TO_JSON(j, unlocked);

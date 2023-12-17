@@ -12,8 +12,8 @@ void inventory_equipment::write(gdc_file_writer* gdc) {
   gdc->write_byte(attached);
 }
 
-json inventory_equipment::get_json() const {
-  json j = item::get_json();
+json inventory_equipment::to_json() const {
+  json j = item::to_json();
   ADD_TO_JSON(j, attached);
   return j;
 };

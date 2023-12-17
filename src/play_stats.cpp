@@ -129,7 +129,7 @@ void play_stats::write(gdc_file_writer* gdc) {
   b.write_end(gdc);
 }
 
-json play_stats::get_json() const {
+json play_stats::to_json() const {
   json j;
   ADD_TO_JSON(j, playTime);
   ADD_TO_JSON(j, deaths);
@@ -180,7 +180,7 @@ json play_stats::get_json() const {
   }
 
   for (int i = 0; i < skillMap.size(); i++) {
-    j.emplace("skill_" + std::to_string(i), skillMap[i].get_json());
+    j.emplace("skill_" + std::to_string(i), skillMap[i].to_json());
   }
 
   return j;

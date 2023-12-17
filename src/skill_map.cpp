@@ -10,7 +10,7 @@ void skill_map::write(gdc_file_writer* gdc) {
   gdc->write_int(active);
 }
 
-json skill_map::get_json() const {
+json skill_map::to_json() const {
   auto j = json{{"skill", skill}, {"acitive", active}};
   return j;
 }

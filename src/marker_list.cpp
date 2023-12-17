@@ -34,14 +34,14 @@ void marker_list::write(gdc_file_writer* gdc) {
   b.write_end(gdc);
 }
 
-json marker_list::get_json() const {
+json marker_list::to_json() const {
   json j;
 
   for (int i = 0; i < sizeof(uids) / sizeof(uids[0]); i++) {
     json m;
 
     for (int j = 0; j < uids[i].size(); j++) {
-      m.emplace("uid_" + formatNumber(i), uids[i][j].get_json());
+      m.emplace("uid_" + formatNumber(i), uids[i][j].to_json());
     }
 
     j.emplace(json{"uids", m});

@@ -55,23 +55,23 @@ void player::write(const char* filename) {
   tokens.write(&gdc_out);
 }
 
-json player::get_json() const {
+json player::to_json() const {
   json j;
-  j.emplace("id", id.get_json());
-  j.emplace("info", info.get_json());
-  j.emplace("bio", bio.get_json());
-  j.emplace("inventory", inv.get_json());
-  j.emplace("stash", stash.get_json());
-  j.emplace("respawns", respawns.get_json());
-  j.emplace("teleports", teleports.get_json());
-  j.emplace("markers", markers.get_json());
-  j.emplace("shrines", shrines.get_json());
-  j.emplace("skills", skills.get_json());
-  j.emplace("notes", notes.get_json());
-  j.emplace("factions", factions.get_json());
-  j.emplace("ui", ui.get_json());
-  j.emplace("tutorials", tutorials.get_json());
-  j.emplace("stats", stats.get_json());
-  j.emplace("tokens", tokens.get_json());
+  j.emplace("id", id.to_json());
+  j.emplace("info", info.to_json());
+  j.emplace("bio", bio.to_json());
+  j.emplace("inventory", inv.to_json());
+  j.emplace("stash", stash.to_json());
+  j.emplace("respawns", respawns.to_json());
+  j.emplace("teleports", teleports.to_json());
+  j.emplace("markers", markers.to_json());
+  j.emplace("shrines", shrines.to_json());
+  j.emplace("skills", skills.to_json());
+  j.emplace("notes", notes.to_json());
+  j.emplace("factions", factions.to_json());
+  j.emplace("ui", ui.to_json());
+  j.emplace("tutorials", tutorials.to_json());
+  j.emplace("stats", stats.to_json());
+  j.emplace("tokens", tokens.to_json());
   return j;
 }

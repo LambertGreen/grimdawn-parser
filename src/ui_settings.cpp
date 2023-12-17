@@ -7,9 +7,9 @@
 namespace {
 const int BLOCK = 14;
 const int VERSION = 5;
-} // namespace
+}  // namespace
 
-void ui_settings::read(gdc_file_reader *gdc) {
+void ui_settings::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK, "ui_settings: Unexpected block number");
@@ -34,7 +34,7 @@ void ui_settings::read(gdc_file_reader *gdc) {
   b.read_end(gdc);
 }
 
-void ui_settings::write(gdc_file_writer *gdc) {
+void ui_settings::write(gdc_file_writer* gdc) {
   block b;
   b.write_start(gdc, BLOCK, VERSION);
 
@@ -57,7 +57,7 @@ void ui_settings::write(gdc_file_writer *gdc) {
   b.write_end(gdc);
 }
 
-json ui_settings::get_json() const {
+json ui_settings::to_json() const {
   json j;
   ADD_TO_JSON(j, unknown1);
   ADD_TO_JSON(j, unknown2);
@@ -70,7 +70,7 @@ json ui_settings::get_json() const {
   json m;
   ADD_TO_JSON(j, unknown1);
   for (int i = 0; i < sizeof(slots) / sizeof(slots[0]); i++) {
-    m.emplace("hot_slot_" + formatNumber(i), slots[i].get_json());
+    m.emplace("hot_slot_" + formatNumber(i), slots[i].to_json());
   }
   j.emplace("hot_slots", m);
 

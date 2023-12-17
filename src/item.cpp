@@ -34,7 +34,7 @@ void item::write(gdc_file_writer* gdc) {
   gdc->write_int(stackCount);
 }
 
-json item::get_json() const {
+json item::to_json() const {
   json j;
   ADD_TO_JSON(j, baseName);
   ADD_TO_JSON(j, prefixName);

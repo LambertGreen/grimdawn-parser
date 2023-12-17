@@ -14,8 +14,8 @@ void inventory_item::write(gdc_file_writer* gdc) {
   gdc->write_int(y);
 }
 
-json inventory_item::get_json() const {
-  json j = item::get_json();
+json inventory_item::to_json() const {
+  json j = item::to_json();
   ADD_TO_JSON(j, x);
   ADD_TO_JSON(j, y);
   return j;

@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
     j.emplace("player-name", argv[2]);
 
     player player(argv[1]);
-    j.emplace("player-data", player.get_json());
+    j.emplace("player-data", player.to_json());
 
     std::cout << j.dump() << std::endl;
 
