@@ -1,8 +1,9 @@
 #pragma once
 
-#include <nlohmann/json.hpp>
+#include "gdc_file_reader.hpp"
+#include "gdc_file_writer.hpp"
 
-#include "gdc_file.hpp"
+#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 class gdc_file_reader;

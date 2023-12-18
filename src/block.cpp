@@ -1,6 +1,7 @@
 #include "block.hpp"
 
-#include "gdc_file.hpp"
+#include "gdc_file_reader.hpp"
+#include "gdc_file_writer.hpp"
 
 void block::read_start(gdc_file_reader* gdc) {
   num = gdc->read_block_start(&b);

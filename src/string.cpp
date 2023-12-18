@@ -1,5 +1,8 @@
 #include "string.hpp"
 
+#include "gdc_file_reader.hpp"
+#include "gdc_file_writer.hpp"
+
 void string::read(gdc_file_reader* gdc) {
   uint32_t len = gdc->read_int();
   if (len > 256) {

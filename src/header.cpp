@@ -2,11 +2,6 @@
 
 #include "gdc_file.hpp"
 
-namespace {
-const int VERSION1 = 1;
-const int VERSION2 = 2;
-}  // namespace
-
 void header::read(gdc_file_reader* gdc) {
   version = gdc->read_int();
   if (version != VERSION1 && version != VERSION2) {

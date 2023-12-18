@@ -15,6 +15,9 @@ class header : gdc_object {
   json to_json() const;
 
  private:
+  static constexpr int VERSION1 = 1;
+  static constexpr int VERSION2 = 2;
+
   uint32_t version{};
   wstring name;
   string classId;
