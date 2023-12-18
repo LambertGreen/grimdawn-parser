@@ -4,11 +4,6 @@
 #include "format.hpp"
 #include "validation.hpp"
 
-namespace {
-const int BLOCK = 13;
-const int VERSION = 5;
-}  // namespace
-
 void faction_pack::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);

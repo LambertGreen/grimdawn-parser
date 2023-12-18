@@ -12,6 +12,9 @@ class character_skills : gdc_object {
   json to_json() const;
 
  private:
+  static constexpr int BLOCK = 8;
+  static constexpr int VERSION = 5;
+
   vector<skill> skills;
   vector<item_skill> itemSkills;
   uint32_t masteriesAllowed;

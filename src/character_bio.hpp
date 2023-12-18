@@ -9,6 +9,9 @@ class character_bio : gdc_object {
   json to_json() const;
 
  private:
+  static constexpr int BLOCK = 2;
+  static constexpr int VERSION = 8;
+
   uint32_t level{};
   uint32_t experience{};
   uint32_t modifierPoints{};

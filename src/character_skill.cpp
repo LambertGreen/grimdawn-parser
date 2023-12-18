@@ -2,13 +2,7 @@
 
 #include "block.hpp"
 #include "format.hpp"
-#include "gdc_file.hpp"
 #include "validation.hpp"
-
-namespace {
-const int BLOCK = 8;
-const int VERSION = 5;
-}  // namespace
 
 void character_skills::read(gdc_file_reader* gdc) {
   block b;

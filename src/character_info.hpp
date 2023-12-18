@@ -11,6 +11,9 @@ class character_info : gdc_object {
   json to_json() const;
 
  private:
+  static constexpr int BLOCK = 1;
+  static constexpr int VERSION = 5;
+
   string texture;
   uint32_t money;
   uint32_t currentTribute;

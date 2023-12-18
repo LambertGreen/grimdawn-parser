@@ -3,11 +3,6 @@
 #include "block.hpp"
 #include "validation.hpp"
 
-namespace {
-const int BLOCK = 10;
-const int VERSION = 2;
-}  // namespace
-
 void trigger_tokens::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);

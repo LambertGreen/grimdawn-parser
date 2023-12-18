@@ -1,13 +1,7 @@
 #include "inventory.hpp"
 
 #include "block.hpp"
-#include "gdc_file.hpp"
 #include "validation.hpp"
-
-namespace {
-const int BLOCK = 3;
-const int VERSION = 4;
-}  // namespace
 
 void inventory::read(gdc_file_reader* gdc) {
   block b;

@@ -1,13 +1,7 @@
 #include "character_bio.hpp"
 
 #include "block.hpp"
-#include "gdc_file.hpp"
 #include "validation.hpp"
-
-namespace {
-const int BLOCK = 2;
-const int VERSION = 8;
-}  // namespace
 
 void character_bio::read(gdc_file_reader* gdc) {
   block b;

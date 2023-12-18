@@ -4,11 +4,6 @@
 #include "format.hpp"
 #include "validation.hpp"
 
-namespace {
-const int BLOCK = 12;
-const int VERSION = 1;
-}  // namespace
-
 void lore_notes::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);

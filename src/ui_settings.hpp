@@ -10,6 +10,9 @@ class ui_settings : gdc_object {
   json to_json() const;
 
  private:
+  static constexpr int BLOCK = 14;
+  static constexpr int VERSION = 5;
+
   hot_slot slots[46];
   string unknown4[5];
   string unknown5[5];

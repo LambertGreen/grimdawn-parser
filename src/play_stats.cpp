@@ -4,11 +4,6 @@
 #include "block.hpp"
 #include "validation.hpp"
 
-namespace {
-const int BLOCK = 16;
-const int VERSION = 11;
-}  // namespace
-
 void play_stats::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);

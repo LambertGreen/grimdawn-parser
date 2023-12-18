@@ -11,6 +11,9 @@ class respawn_list : gdc_object {
   json to_json() const;
 
  private:
+  static constexpr int BLOCK = 5;
+  static constexpr int VERSION = 1;
+
   vector<uid> uids[3];
   uid spawns[3];
 };

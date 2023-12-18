@@ -13,6 +13,9 @@ class play_stats : gdc_object {
   json to_json() const;
 
  private:
+  static constexpr int BLOCK = 16;
+  static constexpr int VERSION = 11;
+
   string greatestMonsterKilledName[3]{};
   string lastMonsterHit[3]{};
   string lastMonsterHitBy[3]{};

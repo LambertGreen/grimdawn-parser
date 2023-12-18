@@ -11,5 +11,8 @@ class teleport_list : gdc_object {
   json to_json() const;
 
  private:
+  static constexpr int BLOCK = 6;
+  static constexpr int VERSION = 1;
+
   vector<uid> uids[3];
 };

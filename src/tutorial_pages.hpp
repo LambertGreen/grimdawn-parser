@@ -10,5 +10,8 @@ class tutorial_pages : gdc_object {
   json to_json() const;
 
  private:
+  static constexpr int BLOCK = 15;
+  static constexpr int VERSION = 1;
+
   vector<uint32_t> pages;
 };

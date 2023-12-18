@@ -2,13 +2,7 @@
 
 #include "block.hpp"
 #include "format.hpp"
-#include "gdc_file.hpp"
 #include "validation.hpp"
-
-namespace {
-const int BLOCK = 6;
-const int VERSION = 1;
-}  // namespace
 
 void teleport_list::read(gdc_file_reader* gdc) {
   block b;

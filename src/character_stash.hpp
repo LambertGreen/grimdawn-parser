@@ -11,5 +11,8 @@ class character_stash : gdc_object {
   json to_json() const;
 
  private:
+  static constexpr int BLOCK = 4;
+  static constexpr int VERSION = 6;
+
   vector<stash_page> pages;
 };

@@ -11,6 +11,9 @@ class inventory : gdc_object {
   virtual json to_json() const;
 
  private:
+  static constexpr int BLOCK = 3;
+  static constexpr int VERSION = 4;
+
   vector<inventory_sack> sacks;
   inventory_equipment equipment[12];
   inventory_equipment weapon1[2];

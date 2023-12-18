@@ -2,13 +2,7 @@
 
 #include <string>
 #include "block.hpp"
-#include "gdc_file.hpp"
 #include "validation.hpp"
-
-namespace {
-const int BLOCK = 4;
-const int VERSION = 6;
-}  // namespace
 
 void character_stash::read(gdc_file_reader* gdc) {
   block b;
