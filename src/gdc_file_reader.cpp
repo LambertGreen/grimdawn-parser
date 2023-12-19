@@ -6,8 +6,6 @@
 #include <stdexcept>
 #include <string>
 
-static std::exception e;
-
 gdc_file_reader::gdc_file_reader(const char* filename)
     : gdc_file(filename, "rb") {
   if (!(this->fp = this->f.fp)) {
@@ -50,7 +48,7 @@ void gdc_file_reader::read_version() {
 
 void gdc_file_reader::read_end() {
   if (ftell(this->fp) != this->end)
-    throw e;
+    throw std::runtime_error("gdc_file_reader: unexpected end of file.");
 }
 
 void gdc_file_reader::read_key() {
