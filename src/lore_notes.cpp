@@ -15,7 +15,7 @@ void lore_notes::read(gdc_file_reader* gdc) {
   b.read_end(gdc);
 }
 
-void lore_notes::write(gdc_file_writer* gdc) {
+void lore_notes::write(gdc_file_writer* gdc) const {
   block b;
   b.write_start(gdc, BLOCK, VERSION);
 

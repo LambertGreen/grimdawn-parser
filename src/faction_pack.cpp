@@ -16,7 +16,7 @@ void faction_pack::read(gdc_file_reader* gdc) {
   b.read_end(gdc);
 }
 
-void faction_pack::write(gdc_file_writer* gdc) {
+void faction_pack::write(gdc_file_writer* gdc) const {
   block b;
   b.write_start(gdc, BLOCK, VERSION);
 

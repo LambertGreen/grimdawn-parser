@@ -16,7 +16,7 @@ void wstring::read(gdc_file_reader* gdc) {
   }
 }
 
-void wstring::write(gdc_file_writer* gdc) {
+void wstring::write(gdc_file_writer* gdc) const {
   uint32_t len = size();
   const wchar_t* str = data();
 

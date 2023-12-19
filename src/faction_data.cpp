@@ -10,7 +10,7 @@ void faction_data::read(gdc_file_reader* gdc) {
   negativeBoost = gdc->read_float();
 }
 
-void faction_data::write(gdc_file_writer* gdc) {
+void faction_data::write(gdc_file_writer* gdc) const {
   gdc->write_byte(modified);
   gdc->write_byte(unlocked);
   gdc->write_float(value);

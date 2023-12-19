@@ -5,7 +5,6 @@
 #include "character_skill.hpp"
 #include "character_stash.hpp"
 #include "faction_pack.hpp"
-#include "gdc_file.hpp"
 #include "header.hpp"
 #include "inventory.hpp"
 #include "lore_notes.hpp"

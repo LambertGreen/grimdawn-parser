@@ -16,7 +16,7 @@ void hot_slot::read(gdc_file_reader* gdc) {
   }
 }
 
-void hot_slot::write(gdc_file_writer* gdc) {
+void hot_slot::write(gdc_file_writer* gdc) const {
   gdc->write_int(type);
 
   if (type == 0) {

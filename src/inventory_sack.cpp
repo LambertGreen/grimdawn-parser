@@ -19,7 +19,7 @@ void inventory_sack::read(gdc_file_reader* gdc) {
   gdc->read_block_end(&b);
 }
 
-void inventory_sack::write(gdc_file_writer* gdc) {
+void inventory_sack::write(gdc_file_writer* gdc) const {
   block_field b;
   gdc->write_block_start(&b, BLOCK);
 

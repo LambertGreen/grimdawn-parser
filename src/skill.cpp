@@ -15,7 +15,7 @@ void skill::read(gdc_file_reader* gdc) {
   autoCastController.read(gdc);
 }
 
-void skill::write(gdc_file_writer* gdc) {
+void skill::write(gdc_file_writer* gdc) const {
   name.write(gdc);
   gdc->write_int(level);
   gdc->write_byte(enabled);

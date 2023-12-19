@@ -6,7 +6,7 @@
 class ui_settings : gdc_object {
  public:
   void read(gdc_file_reader*);
-  void write(gdc_file_writer*);
+  void write(gdc_file_writer*) const;
   json to_json() const;
 
  private:

@@ -65,7 +65,7 @@ void play_stats::read(gdc_file_reader* gdc) {
   b.read_end(gdc);
 }
 
-void play_stats::write(gdc_file_writer* gdc) {
+void play_stats::write(gdc_file_writer* gdc) const {
   block b;
   b.write_start(gdc, BLOCK, VERSION);
 

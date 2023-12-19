@@ -19,7 +19,7 @@ void stash_page::read(gdc_file_reader* gdc) {
   gdc->read_block_end(&b);
 }
 
-void stash_page::write(gdc_file_writer* gdc) {
+void stash_page::write(gdc_file_writer* gdc) const {
   block_field b;
   gdc->write_block_start(&b, BLOCK);
 

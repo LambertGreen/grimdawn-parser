@@ -1,5 +1,4 @@
 #include "player.hpp"
-#include "gdc_file.hpp"
 
 player::player(const char* filename) : gdc(filename) {
   gdc.read_start();

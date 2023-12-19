@@ -16,7 +16,7 @@ void header::read(gdc_file_reader* gdc) {
   expansionStatus = gdc->read_byte();
 }
 
-void header::write(gdc_file_writer* gdc) {
+void header::write(gdc_file_writer* gdc) const {
   name.write(gdc);
   gdc->write_byte(sex);
   classId.write(gdc);

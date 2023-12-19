@@ -29,7 +29,7 @@ void ui_settings::read(gdc_file_reader* gdc) {
   b.read_end(gdc);
 }
 
-void ui_settings::write(gdc_file_writer* gdc) {
+void ui_settings::write(gdc_file_writer* gdc) const {
   block b;
   b.write_start(gdc, BLOCK, VERSION);
 

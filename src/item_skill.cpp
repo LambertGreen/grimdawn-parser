@@ -8,7 +8,7 @@ void item_skill::read(gdc_file_reader* gdc) {
   itemName.read(gdc);
 }
 
-void item_skill::write(gdc_file_writer* gdc) {
+void item_skill::write(gdc_file_writer* gdc) const {
   name.write(gdc);
   autoCastSkill.write(gdc);
   autoCastController.write(gdc);

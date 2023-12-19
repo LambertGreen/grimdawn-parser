@@ -17,6 +17,6 @@ class gdc_object {
   virtual ~gdc_object() = default;
 
   virtual void read(gdc_file_reader*) = 0;
-  virtual void write(gdc_file_writer*) = 0;
+  virtual void write(gdc_file_writer*) const = 0;
   virtual json to_json() const = 0;
 };

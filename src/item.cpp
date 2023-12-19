@@ -17,7 +17,7 @@ void item::read(gdc_file_reader* gdc) {
   stackCount = gdc->read_int();
 }
 
-void item::write(gdc_file_writer* gdc) {
+void item::write(gdc_file_writer* gdc) const {
   baseName.write(gdc);
   prefixName.write(gdc);
   suffixName.write(gdc);

@@ -5,7 +5,7 @@ void skill_map::read(gdc_file_reader* gdc) {
   active = gdc->read_int();
 }
 
-void skill_map::write(gdc_file_writer* gdc) {
+void skill_map::write(gdc_file_writer* gdc) const {
   skill.write(gdc);
   gdc->write_int(active);
 }

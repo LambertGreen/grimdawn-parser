@@ -18,7 +18,7 @@ void string::read(gdc_file_reader* gdc) {
   }
 }
 
-void string::write(gdc_file_writer* gdc) {
+void string::write(gdc_file_writer* gdc) const {
   uint32_t len = size();
   const char* str = data();
 

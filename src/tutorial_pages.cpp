@@ -19,7 +19,7 @@ void tutorial_pages::read(gdc_file_reader* gdc) {
   b.read_end(gdc);
 }
 
-void tutorial_pages::write(gdc_file_writer* gdc) {
+void tutorial_pages::write(gdc_file_writer* gdc) const {
   block b;
   b.write_start(gdc, BLOCK, VERSION);
 

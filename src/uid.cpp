@@ -9,7 +9,7 @@ void uid::read(gdc_file_reader* gdc) {
   }
 }
 
-void uid::write(gdc_file_writer* gdc) {
+void uid::write(gdc_file_writer* gdc) const {
   for (unsigned i = 0; i < 16; i++) {
     gdc->write_byte(id[i]);
   }

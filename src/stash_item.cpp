@@ -8,7 +8,7 @@ void stash_item::read(gdc_file_reader* gdc) {
   y = gdc->read_float();
 }
 
-void stash_item::write(gdc_file_writer* gdc) {
+void stash_item::write(gdc_file_writer* gdc) const {
   item::write(gdc);
   gdc->write_float(x);
   gdc->write_float(y);

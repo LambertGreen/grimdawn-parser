@@ -17,11 +17,11 @@ class vector : public std::vector<T> {
     }
   }
 
-  void write(gdc_file_writer* gdc) {
+  void write(gdc_file_writer* gdc) const {
     uint32_t n = this->size();
     gdc->write_int(n);
 
-    T* ptr = this->data();
+    const T* ptr = this->data();
     for (uint32_t i = 0; i < n; i++) {
       ptr[i].write(gdc);
     }

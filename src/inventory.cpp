@@ -42,7 +42,7 @@ void inventory::read(gdc_file_reader* gdc) {
   b.read_end(gdc);
 }
 
-void inventory::write(gdc_file_writer* gdc) {
+void inventory::write(gdc_file_writer* gdc) const {
   block b;
   b.write_start(gdc, BLOCK, VERSION);
 

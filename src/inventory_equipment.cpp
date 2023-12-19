@@ -7,7 +7,7 @@ void inventory_equipment::read(gdc_file_reader* gdc) {
   attached = gdc->read_byte();
 }
 
-void inventory_equipment::write(gdc_file_writer* gdc) {
+void inventory_equipment::write(gdc_file_writer* gdc) const {
   item::write(gdc);
   gdc->write_byte(attached);
 }
