@@ -1,7 +1,9 @@
 #pragma once
 
 #include <vector>
-#include "gdc_file.hpp"
+
+#include "gdc_file_reader.hpp"
+#include "gdc_file_writer.hpp"
 
 template <typename T>
 class vector : public std::vector<T> {

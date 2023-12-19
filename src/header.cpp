@@ -1,6 +1,7 @@
 #include "header.hpp"
 
-#include "gdc_file.hpp"
+#include "gdc_file_reader.hpp"
+#include "gdc_file_writer.hpp"
 
 void header::read(gdc_file_reader* gdc) {
   version = gdc->read_int();
