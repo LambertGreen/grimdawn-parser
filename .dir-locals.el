@@ -3,4 +3,6 @@
 
 ((c++-mode . ((flycheck-clang-standard-library . "c++17")
               (flycheck-clang-language-standard . "c++17")
+              (projectile-project-compilation-cmd . "just build")
+              (projectile-project-test-cmd . "just test")
               (compile-command . "just build"))))
