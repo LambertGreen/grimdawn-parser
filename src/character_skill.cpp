@@ -7,8 +7,8 @@
 void character_skills::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "character_skills: Unexpected block number");
-  ENSURE(b.version == VERSION, "character_skills: Unexpected version number");
+  ENSURE(b.num == BLOCK_8, "character_skills: Unexpected block number");
+  ENSURE(b.version == VERSION_5, "character_skills: Unexpected version number");
 
   skills.read(gdc);
   masteriesAllowed = gdc->read_int();
@@ -21,7 +21,7 @@ void character_skills::read(gdc_file_reader* gdc) {
 
 void character_skills::write(gdc_file_writer* gdc) const {
   block b;
-  b.write_start(gdc, BLOCK, VERSION);
+  b.write_start(gdc, BLOCK_8, VERSION_5);
 
   skills.write(gdc);
   gdc->write_int(masteriesAllowed);

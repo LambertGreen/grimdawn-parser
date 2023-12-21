@@ -12,14 +12,14 @@ gdc_file_writer::gdc_file_writer(const char* filename)
 }
 
 void gdc_file_writer::write_start() {
-  write_int(0x55555555);
-  write_int(VERSION1);
+  write_int(XOR_BITMAP);
+  write_int(VERSION);
   write_int(1);
 }
 
 void gdc_file_writer::write_version() {
-  write_int(VERSION2);
-  write_int(VERSION3);
+  write_int(VERSION_0);
+  write_int(VERSION_8);
 }
 
 void gdc_file_writer::write_end() {

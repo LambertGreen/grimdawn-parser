@@ -7,8 +7,8 @@
 void play_stats::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "play_stats: Unexpected block number");
-  ENSURE(b.version == VERSION, "play_stats: Unexpected version number");
+  ENSURE(b.num == BLOCK_16, "play_stats: Unexpected block number");
+  ENSURE(b.version == VERSION_11, "play_stats: Unexpected version number");
 
   playTime = gdc->read_int();
   deaths = gdc->read_int();
@@ -67,7 +67,7 @@ void play_stats::read(gdc_file_reader* gdc) {
 
 void play_stats::write(gdc_file_writer* gdc) const {
   block b;
-  b.write_start(gdc, BLOCK, VERSION);
+  b.write_start(gdc, BLOCK_16, VERSION_11);
 
   gdc->write_int(playTime);
   gdc->write_int(deaths);

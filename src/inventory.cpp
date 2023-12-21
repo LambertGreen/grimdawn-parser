@@ -6,8 +6,8 @@
 void inventory::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "inventory: Unexpected block number");
-  ENSURE(b.version == VERSION, "inventory: Unexpected version number");
+  ENSURE(b.num == BLOCK_3, "inventory: Unexpected block number");
+  ENSURE(b.version == VERSION_4, "inventory: Unexpected version number");
 
   if ((flag = gdc->read_byte())) {
     uint32_t n = gdc->read_int();
@@ -44,7 +44,7 @@ void inventory::read(gdc_file_reader* gdc) {
 
 void inventory::write(gdc_file_writer* gdc) const {
   block b;
-  b.write_start(gdc, BLOCK, VERSION);
+  b.write_start(gdc, BLOCK_3, VERSION_4);
 
   gdc->write_byte(flag);
 

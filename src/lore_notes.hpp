@@ -11,8 +11,8 @@ class lore_notes : gdc_object {
   json to_json() const;
 
  private:
-  static constexpr int BLOCK = 12;
-  static constexpr int VERSION = 1;
+  static constexpr int BLOCK_12 = 12;
+  static constexpr int VERSION_1 = 1;
 
   vector<string> names;
 };

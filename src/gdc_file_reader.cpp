@@ -26,7 +26,7 @@ gdc_file_reader::gdc_file_reader(const char* filename)
 void gdc_file_reader::read_start() {
   read_key();
   const auto v = read_int();
-  if (v != VERSION1) {
+  if (v != VERSION) {
     throw std::runtime_error("gdc_file:read: unexpected int value of " +
                              std::to_string(v));
   }
@@ -34,13 +34,13 @@ void gdc_file_reader::read_start() {
 
 void gdc_file_reader::read_version() {
   const auto v2 = next_int();
-  if (v2 != VERSION2) {
+  if (v2 != VERSION_0) {
     throw std::runtime_error("gdc_file:read: unexpected int is values of " +
                              std::to_string(v2));
   }
 
   const auto v3 = read_int();
-  if (v3 != VERSION3) {
+  if (v3 != VERSION_8) {
     throw std::runtime_error("gdc_file:read: unexpected int value of " +
                              std::to_string(v3));
   }
@@ -63,6 +63,8 @@ void gdc_file_reader::read_key() {
 
   this->key = k;
   for (unsigned i = 0; i < 256; i++) {
+    // TODO: Explain what the below is doing
+    // According to GDStash reference it is doing a RotateRight
     k = (k >> 1) | (k << 31);
     k *= TABLE_MULT;
     this->table[i] = k;

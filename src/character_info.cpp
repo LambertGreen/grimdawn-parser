@@ -7,8 +7,8 @@
 void character_info::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "character_info: Unexpected block number");
-  ENSURE(b.version == VERSION, "character_info: Unexpected version number");
+  ENSURE(b.num == BLOCK_1, "character_info: Unexpected block number");
+  ENSURE(b.version == VERSION_5, "character_info: Unexpected version number");
 
   isInMainQuest = gdc->read_byte();
   hasBeenInGame = gdc->read_byte();
@@ -34,7 +34,7 @@ void character_info::read(gdc_file_reader* gdc) {
 
 void character_info::write(gdc_file_writer* gdc) const {
   block b;
-  b.write_start(gdc, BLOCK, VERSION);
+  b.write_start(gdc, BLOCK_1, VERSION_5);
 
   gdc->write_byte(isInMainQuest);
   gdc->write_byte(hasBeenInGame);

@@ -7,8 +7,8 @@
 void faction_pack::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "faction_pack: Unexpected block number");
-  ENSURE(b.version == VERSION, "faction_pack: Unexpected version number");
+  ENSURE(b.num == BLOCK_13, "faction_pack: Unexpected block number");
+  ENSURE(b.version == VERSION_5, "faction_pack: Unexpected version number");
 
   faction = gdc->read_int();
   factions.read(gdc);
@@ -18,7 +18,7 @@ void faction_pack::read(gdc_file_reader* gdc) {
 
 void faction_pack::write(gdc_file_writer* gdc) const {
   block b;
-  b.write_start(gdc, BLOCK, VERSION);
+  b.write_start(gdc, BLOCK_13, VERSION_5);
 
   gdc->write_int(faction);
   factions.write(gdc);

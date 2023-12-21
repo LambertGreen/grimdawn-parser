@@ -11,8 +11,8 @@ class faction_pack : gdc_object {
   json to_json() const;
 
  private:
-  static constexpr int BLOCK = 13;
-  static constexpr int VERSION = 5;
+  static constexpr int BLOCK_13 = 13;
+  static constexpr int VERSION_5 = 5;
 
   vector<faction_data> factions;
   uint32_t faction;

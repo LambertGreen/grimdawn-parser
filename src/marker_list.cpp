@@ -7,8 +7,8 @@
 void marker_list::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "marker_list: Unexpected block number");
-  ENSURE(b.version == VERSION, "marker_list: Unexpected version number");
+  ENSURE(b.num == BLOCK_7, "marker_list: Unexpected block number");
+  ENSURE(b.version == VERSION_1, "marker_list: Unexpected version number");
 
   for (unsigned i = 0; i < sizeof(uids) / sizeof(uids[0]); i++) {
     uids[i].read(gdc);
@@ -19,7 +19,7 @@ void marker_list::read(gdc_file_reader* gdc) {
 
 void marker_list::write(gdc_file_writer* gdc) const {
   block b;
-  b.write_start(gdc, BLOCK, VERSION);
+  b.write_start(gdc, BLOCK_7, VERSION_1);
 
   for (unsigned i = 0; i < 3; i++) {
     uids[i].write(gdc);

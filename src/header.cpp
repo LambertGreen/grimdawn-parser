@@ -5,7 +5,7 @@
 
 void header::read(gdc_file_reader* gdc) {
   version = gdc->read_int();
-  if (version != VERSION1 && version != VERSION2) {
+  if (version != VERSION_1 && version != VERSION_2) {
     throw std::runtime_error("Unsupported version: " + std::to_string(version));
   }
 

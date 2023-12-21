@@ -26,17 +26,13 @@ player::player(const char* filename) : gdc(filename) {
 void player::write(const char* filename) {
   gdc_file_writer gdc_out(filename);
 
-  gdc_out.write_int(0x55555555);
-  gdc_out.write_int(0x58434447);
-  gdc_out.write_int(1);
-
+  gdc_out.write_start();
   hdr.write(&gdc_out);
 
   gdc_out.write_int(0);
-
   gdc_out.write_int(7);  // version
-  id.write(&gdc_out);
 
+  id.write(&gdc_out);
   info.write(&gdc_out);
   bio.write(&gdc_out);
   inv.write(&gdc_out);

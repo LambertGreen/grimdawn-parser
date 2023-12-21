@@ -7,8 +7,8 @@
 void character_stash::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "character_stash: Unexpected block number");
-  ENSURE(b.version == VERSION, "character_stash: Unexpected version number");
+  ENSURE(b.num == BLOCK_4, "character_stash: Unexpected block number");
+  ENSURE(b.version == VERSION_6, "character_stash: Unexpected version number");
 
   pages.read(gdc);
 
@@ -17,7 +17,7 @@ void character_stash::read(gdc_file_reader* gdc) {
 
 void character_stash::write(gdc_file_writer* gdc) const {
   block b;
-  b.write_start(gdc, BLOCK, VERSION);
+  b.write_start(gdc, BLOCK_4, VERSION_6);
 
   pages.write(gdc);
 

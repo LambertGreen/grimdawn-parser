@@ -7,8 +7,8 @@
 void ui_settings::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "ui_settings: Unexpected block number");
-  ENSURE(b.version == VERSION, "ui_settings: Unexpected version number");
+  ENSURE(b.num == BLOCK_14, "ui_settings: Unexpected block number");
+  ENSURE(b.version == VERSION_5, "ui_settings: Unexpected version number");
 
   unknown1 = gdc->read_byte();
   unknown2 = gdc->read_int();
@@ -31,7 +31,7 @@ void ui_settings::read(gdc_file_reader* gdc) {
 
 void ui_settings::write(gdc_file_writer* gdc) const {
   block b;
-  b.write_start(gdc, BLOCK, VERSION);
+  b.write_start(gdc, BLOCK_14, VERSION_5);
 
   gdc->write_byte(unknown1);
   gdc->write_int(unknown2);
@@ -43,7 +43,7 @@ void ui_settings::write(gdc_file_writer* gdc) const {
     gdc->write_byte(unknown6[i]);
   }
 
-  for (unsigned i = 0; i < 36; i++) {
+  for (unsigned i = 0; i < 46; i++) {
     slots[i].write(gdc);
   }
 

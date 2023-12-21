@@ -7,8 +7,8 @@
 void shrine_list::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "shrine_list: Unexpected block number");
-  ENSURE(b.version == VERSION, "shrine_list: Unexpected version number");
+  ENSURE(b.num == BLOCK_17, "shrine_list: Unexpected block number");
+  ENSURE(b.version == VERSION_2, "shrine_list: Unexpected version number");
 
   for (unsigned i = 0; i < sizeof(uids) / sizeof(uids[0]); i++) {
     uids[i].read(gdc);
@@ -19,7 +19,7 @@ void shrine_list::read(gdc_file_reader* gdc) {
 
 void shrine_list::write(gdc_file_writer* gdc) const {
   block b;
-  b.write_start(gdc, BLOCK, VERSION);
+  b.write_start(gdc, BLOCK_17, VERSION_2);
 
   for (unsigned i = 0; i < 6; i++) {
     uids[i].write(gdc);

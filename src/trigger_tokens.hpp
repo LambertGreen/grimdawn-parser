@@ -11,8 +11,8 @@ class trigger_tokens : gdc_object {
   json to_json() const;
 
  private:
-  static constexpr int BLOCK = 10;
-  static constexpr int VERSION = 2;
+  static constexpr int BLOCK_10 = 10;
+  static constexpr int VERSION_2 = 2;
 
   vector<string> tokens[3];
 };

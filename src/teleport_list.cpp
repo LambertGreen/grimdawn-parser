@@ -7,8 +7,8 @@
 void teleport_list::read(gdc_file_reader* gdc) {
   block b;
   b.read_start(gdc);
-  ENSURE(b.num == BLOCK, "teleport_list: Unexpected block number");
-  ENSURE(b.version == VERSION, "teleport_list: Unexpected version number");
+  ENSURE(b.num == BLOCK_6, "teleport_list: Unexpected block number");
+  ENSURE(b.version == VERSION_1, "teleport_list: Unexpected version number");
 
   const int uids_len = sizeof(uids) / sizeof(uids[0]);
   for (unsigned i = 0; i < uids_len; i++) {
@@ -20,7 +20,7 @@ void teleport_list::read(gdc_file_reader* gdc) {
 
 void teleport_list::write(gdc_file_writer* gdc) const {
   block b;
-  b.write_start(gdc, BLOCK, VERSION);
+  b.write_start(gdc, BLOCK_6, VERSION_1);
 
   for (unsigned i = 0; i < 3; i++) {
     uids[i].write(gdc);
