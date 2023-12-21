@@ -24,30 +24,30 @@ player::player(const char* filename) : gdc(filename) {
 }
 
 void player::write(const char* filename) {
-  gdc_file_writer gdc_out(filename);
+  gdc_file_writer gdc(filename);
 
-  gdc_out.write_start();
-  hdr.write(gdc_out);
+  gdc.write_start();
+  hdr.write(gdc);
 
-  gdc_out.write_int(0);
-  gdc_out.write_int(7);  // version
+  gdc.write_int(0);
+  gdc.write_int(7);  // version
 
-  id.write(gdc_out);
-  info.write(gdc_out);
-  bio.write(gdc_out);
-  inv.write(gdc_out);
-  stash.write(gdc_out);
-  respawns.write(gdc_out);
-  teleports.write(gdc_out);
-  markers.write(gdc_out);
-  shrines.write(gdc_out);
-  skills.write(gdc_out);
-  notes.write(gdc_out);
-  factions.write(gdc_out);
-  ui.write(gdc_out);
-  tutorials.write(gdc_out);
-  stats.write(gdc_out);
-  tokens.write(gdc_out);
+  id.write(gdc);
+  info.write(gdc);
+  bio.write(gdc);
+  inv.write(gdc);
+  stash.write(gdc);
+  respawns.write(gdc);
+  teleports.write(gdc);
+  markers.write(gdc);
+  shrines.write(gdc);
+  skills.write(gdc);
+  notes.write(gdc);
+  factions.write(gdc);
+  ui.write(gdc);
+  tutorials.write(gdc);
+  stats.write(gdc);
+  tokens.write(gdc);
 }
 
 json player::to_json() const {
