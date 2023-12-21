@@ -8,17 +8,17 @@
 
 gdc_file_reader::gdc_file_reader(const char* filename)
     : gdc_file(filename, "rb") {
-  if (!(this->fp = this->f.fp)) {
+  if (!(_fp = _f.fp)) {
     throw std::runtime_error("gdc_file:read: failed!");
   }
 
-  if (fseek(this->fp, 0, SEEK_END)) {
+  if (fseek(_fp, 0, SEEK_END)) {
     throw std::runtime_error("gdc_file:read: failed fseek!");
   }
 
-  this->end = ftell(this->fp);
+  _end = ftell(_fp);
 
-  if (fseek(this->fp, 0, SEEK_SET)) {
+  if (fseek(_fp, 0, SEEK_SET)) {
     throw std::runtime_error("gdc_file:read: failed fseek!");
   }
 }
@@ -47,38 +47,38 @@ void gdc_file_reader::read_version() {
 }
 
 void gdc_file_reader::read_end() {
-  if (ftell(this->fp) != this->end)
+  if (ftell(_fp) != _end)
     throw std::runtime_error("gdc_file_reader: unexpected end of file.");
 }
 
 void gdc_file_reader::read_key() {
   uint32_t k;
 
-  if (fread(&k, 4, 1, this->fp) != 1) {
+  if (fread(&k, 4, 1, _fp) != 1) {
     throw std::runtime_error(
         "gdc_file_reader::read_key: failed to read uint32");
   }
 
   k ^= XOR_BITMAP;
 
-  this->key = k;
+  _key = k;
   for (unsigned i = 0; i < 256; i++) {
     // TODO: Explain what the below is doing
     // According to GDStash reference it is doing a RotateRight
     k = (k >> 1) | (k << 31);
     k *= TABLE_MULT;
-    this->table[i] = k;
+    _table[i] = k;
   }
 }
 
 uint32_t gdc_file_reader::next_int() {
   uint32_t ret;
 
-  if (fread(&ret, 4, 1, this->fp) != 1) {
+  if (fread(&ret, 4, 1, _fp) != 1) {
     throw std::runtime_error("next_int: failed to read uint32");
   }
 
-  ret ^= key;
+  ret ^= _key;
 
   return ret;
 }
@@ -91,18 +91,18 @@ void gdc_file_reader::update_key(void* ptr, uint32_t len) {
     if (j < 0) {
       j += 256;
     }
-    this->key ^= this->table[j];
+    _key ^= _table[j];
   }
 }
 
 uint32_t gdc_file_reader::read_int() {
   uint32_t val;
 
-  if (fread(&val, 4, 1, fp) != 1) {
+  if (fread(&val, 4, 1, _fp) != 1) {
     throw std::runtime_error("read_int: failed to read uint32");
   }
 
-  uint32_t ret = val ^ key;
+  uint32_t ret = val ^ _key;
 
   update_key(&val, 4);
 
@@ -112,11 +112,11 @@ uint32_t gdc_file_reader::read_int() {
 uint16_t gdc_file_reader::read_short() {
   uint16_t val;
 
-  if (fread(&val, 2, 1, fp) != 1) {
+  if (fread(&val, 2, 1, _fp) != 1) {
     throw std::runtime_error("read_short: failed to read uint16");
   }
 
-  uint16_t ret = val ^ key;
+  uint16_t ret = val ^ _key;
 
   update_key(&val, 2);
 
@@ -126,11 +126,11 @@ uint16_t gdc_file_reader::read_short() {
 uint8_t gdc_file_reader::read_byte() {
   uint8_t val;
 
-  if (fread(&val, 1, 1, this->fp) != 1) {
+  if (fread(&val, 1, 1, _fp) != 1) {
     throw std::runtime_error("read_byte: failed to read uint8");
   }
 
-  uint8_t ret = val ^ key;
+  uint8_t ret = val ^ _key;
 
   update_key(&val, 1);
 
@@ -150,13 +150,13 @@ uint32_t gdc_file_reader::read_block_start(block_field* b) {
   uint32_t ret = read_int();
 
   b->len = next_int();
-  b->end = ftell(this->fp) + b->len;
+  b->end = ftell(_fp) + b->len;
 
   return ret;
 }
 
 void gdc_file_reader::read_block_end(block_field* b) {
-  if (ftell(this->fp) != b->end) {
+  if (ftell(_fp) != b->end) {
     throw std::runtime_error("read_block_end: ftell failed!");
   }
 

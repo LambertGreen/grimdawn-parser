@@ -7,7 +7,7 @@
 
 gdc_file_writer::gdc_file_writer(const char* filename)
     : gdc_file(filename, "wb") {
-  if (!(this->fp = this->f.fp)) {
+  if (!(_fp = _f.fp)) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
 }
@@ -36,36 +36,36 @@ void gdc_file_writer::update_key(void* ptr, uint32_t len) {
     if (j < 0) {
       j += 256;
     }
-    this->key ^= this->table[j];
+    _key ^= _table[j];
   }
 }
 
 void gdc_file_writer::write_end() {
-  if (fflush(this->fp)) {
+  if (fflush(_fp)) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
 }
 
 void gdc_file_writer::write_int(uint32_t val) {
-  if (fwrite(&val, 4, 1, this->fp) != 1) {
+  if (fwrite(&val, 4, 1, _fp) != 1) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
 }
 
 void gdc_file_writer::write_short(uint16_t val) {
-  if (fwrite(&val, 2, 1, this->fp) != 1) {
+  if (fwrite(&val, 2, 1, _fp) != 1) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
 }
 
 void gdc_file_writer::write_byte(uint8_t val) {
-  if (fwrite(&val, 1, 1, this->fp) != 1) {
+  if (fwrite(&val, 1, 1, _fp) != 1) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
 }
 
 void gdc_file_writer::write_float(float val) {
-  if (fwrite(&val, 4, 1, this->fp) != 1) {
+  if (fwrite(&val, 4, 1, _fp) != 1) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
 }
@@ -73,19 +73,19 @@ void gdc_file_writer::write_float(float val) {
 void gdc_file_writer::write_block_start(block_field* b, uint32_t n) {
   write_int(n);
   write_int(0);
-  b->end = ftell(this->fp);
+  b->end = ftell(_fp);
 }
 
 void gdc_file_writer::write_block_end(block_field* b) {
-  long pos = ftell(this->fp);
+  long pos = ftell(_fp);
 
-  if (fseek(this->fp, b->end - 4, SEEK_SET)) {
+  if (fseek(_fp, b->end - 4, SEEK_SET)) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
 
   write_int(pos - b->end);
 
-  if (fseek(this->fp, pos, SEEK_SET)) {
+  if (fseek(_fp, pos, SEEK_SET)) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
 

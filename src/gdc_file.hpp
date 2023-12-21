@@ -13,11 +13,11 @@ class gdc_file {
   static constexpr int VERSION_0 = 0;
   static constexpr int VERSION_8 = 8;
 
-  file f;
-  FILE* fp{};
-  long end{};
-  uint32_t key{};
-  uint32_t table[256];
+  file _f;
+  FILE* _fp{};
+  long _end{};
+  uint32_t _key{};
+  uint32_t _table[256]{};
 
-  gdc_file(const char* filename, const char* mode) : f(filename, mode){};
+  gdc_file(const char* filename, const char* mode) : _f(filename, mode){};
 };
