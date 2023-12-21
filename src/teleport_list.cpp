@@ -4,7 +4,7 @@
 #include "format.hpp"
 #include "validation.hpp"
 
-void teleport_list::read(gdc_file_reader* gdc) {
+void teleport_list::read(gdc_file_reader& gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK_6, "teleport_list: Unexpected block number");
@@ -18,7 +18,7 @@ void teleport_list::read(gdc_file_reader* gdc) {
   b.read_end(gdc);
 }
 
-void teleport_list::write(gdc_file_writer* gdc) const {
+void teleport_list::write(gdc_file_writer& gdc) const {
   block b;
   b.write_start(gdc, BLOCK_6, VERSION_1);
 

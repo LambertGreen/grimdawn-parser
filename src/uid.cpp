@@ -3,15 +3,15 @@
 #include <string>
 #include "gdc_file.hpp"
 
-void uid::read(gdc_file_reader* gdc) {
+void uid::read(gdc_file_reader& gdc) {
   for (unsigned i = 0; i < 16; i++) {
-    id[i] = gdc->read_byte();
+    id[i] = gdc.read_byte();
   }
 }
 
-void uid::write(gdc_file_writer* gdc) const {
+void uid::write(gdc_file_writer& gdc) const {
   for (unsigned i = 0; i < 16; i++) {
-    gdc->write_byte(id[i]);
+    gdc.write_byte(id[i]);
   }
 }
 

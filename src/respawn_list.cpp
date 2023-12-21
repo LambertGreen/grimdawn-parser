@@ -4,7 +4,7 @@
 #include "format.hpp"
 #include "validation.hpp"
 
-void respawn_list::read(gdc_file_reader* gdc) {
+void respawn_list::read(gdc_file_reader& gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK_5, "respawn_list: Unexpected block number");
@@ -23,7 +23,7 @@ void respawn_list::read(gdc_file_reader* gdc) {
   b.read_end(gdc);
 }
 
-void respawn_list::write(gdc_file_writer* gdc) const {
+void respawn_list::write(gdc_file_writer& gdc) const {
   block b;
   b.write_start(gdc, BLOCK_5, VERSION_1);
 

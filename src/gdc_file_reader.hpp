@@ -26,6 +26,6 @@ class gdc_file_reader : gdc_file {
   uint8_t read_byte();
   float read_float();
 
-  uint32_t read_block_start(block_field* b);
-  void read_block_end(block_field* b);
+  uint32_t read_block_start(block_field& b);
+  void read_block_end(block_field& b);
 };

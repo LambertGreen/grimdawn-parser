@@ -4,7 +4,7 @@
 #include "block.hpp"
 #include "validation.hpp"
 
-void character_stash::read(gdc_file_reader* gdc) {
+void character_stash::read(gdc_file_reader& gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK_4, "character_stash: Unexpected block number");
@@ -15,7 +15,7 @@ void character_stash::read(gdc_file_reader* gdc) {
   b.read_end(gdc);
 }
 
-void character_stash::write(gdc_file_writer* gdc) const {
+void character_stash::write(gdc_file_writer& gdc) const {
   block b;
   b.write_start(gdc, BLOCK_4, VERSION_6);
 

@@ -1,13 +1,13 @@
 #include "skill_map.hpp"
 
-void skill_map::read(gdc_file_reader* gdc) {
+void skill_map::read(gdc_file_reader& gdc) {
   skill.read(gdc);
-  active = gdc->read_int();
+  active = gdc.read_int();
 }
 
-void skill_map::write(gdc_file_writer* gdc) const {
+void skill_map::write(gdc_file_writer& gdc) const {
   skill.write(gdc);
-  gdc->write_int(active);
+  gdc.write_int(active);
 }
 
 json skill_map::to_json() const {

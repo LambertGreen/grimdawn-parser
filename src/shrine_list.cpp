@@ -4,7 +4,7 @@
 #include "format.hpp"
 #include "validation.hpp"
 
-void shrine_list::read(gdc_file_reader* gdc) {
+void shrine_list::read(gdc_file_reader& gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK_17, "shrine_list: Unexpected block number");
@@ -17,7 +17,7 @@ void shrine_list::read(gdc_file_reader* gdc) {
   b.read_end(gdc);
 }
 
-void shrine_list::write(gdc_file_writer* gdc) const {
+void shrine_list::write(gdc_file_writer& gdc) const {
   block b;
   b.write_start(gdc, BLOCK_17, VERSION_2);
 

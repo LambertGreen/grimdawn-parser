@@ -24,6 +24,6 @@ class gdc_file_writer : gdc_file {
   void write_byte(uint8_t val);
   void write_float(float val);
 
-  void write_block_start(block_field* b, uint32_t n);
-  void write_block_end(block_field* b);
+  void write_block_start(block_field& b, uint32_t n);
+  void write_block_end(const block_field& b);
 };

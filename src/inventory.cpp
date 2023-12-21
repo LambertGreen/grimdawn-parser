@@ -3,16 +3,16 @@
 #include "block.hpp"
 #include "validation.hpp"
 
-void inventory::read(gdc_file_reader* gdc) {
+void inventory::read(gdc_file_reader& gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK_3, "inventory: Unexpected block number");
   ENSURE(b.version == VERSION_4, "inventory: Unexpected version number");
 
-  if ((flag = gdc->read_byte())) {
-    uint32_t n = gdc->read_int();
-    focused = gdc->read_int();
-    selected = gdc->read_int();
+  if ((flag = gdc.read_byte())) {
+    uint32_t n = gdc.read_int();
+    focused = gdc.read_int();
+    selected = gdc.read_int();
 
     sacks.resize(n);
 
@@ -20,19 +20,19 @@ void inventory::read(gdc_file_reader* gdc) {
       sacks[i].read(gdc);
     }
 
-    useAlternate = gdc->read_byte();
+    useAlternate = gdc.read_byte();
 
     for (unsigned i = 0; i < 12; i++) {
       equipment[i].read(gdc);
     }
 
-    alternate1 = gdc->read_byte();
+    alternate1 = gdc.read_byte();
 
     for (unsigned i = 0; i < 2; i++) {
       weapon1[i].read(gdc);
     }
 
-    alternate2 = gdc->read_byte();
+    alternate2 = gdc.read_byte();
 
     for (unsigned i = 0; i < 2; i++) {
       weapon2[i].read(gdc);
@@ -42,35 +42,35 @@ void inventory::read(gdc_file_reader* gdc) {
   b.read_end(gdc);
 }
 
-void inventory::write(gdc_file_writer* gdc) const {
+void inventory::write(gdc_file_writer& gdc) const {
   block b;
   b.write_start(gdc, BLOCK_3, VERSION_4);
 
-  gdc->write_byte(flag);
+  gdc.write_byte(flag);
 
   if (flag) {
     uint32_t n = sacks.size();
-    gdc->write_int(n);
-    gdc->write_int(focused);
-    gdc->write_int(selected);
+    gdc.write_int(n);
+    gdc.write_int(focused);
+    gdc.write_int(selected);
 
     for (uint32_t i = 0; i < n; i++) {
       sacks[i].write(gdc);
     }
 
-    gdc->write_byte(useAlternate);
+    gdc.write_byte(useAlternate);
 
     for (unsigned i = 0; i < 12; i++) {
       equipment[i].write(gdc);
     }
 
-    gdc->write_byte(alternate1);
+    gdc.write_byte(alternate1);
 
     for (unsigned i = 0; i < 2; i++) {
       weapon1[i].write(gdc);
     }
 
-    gdc->write_byte(alternate2);
+    gdc.write_byte(alternate2);
 
     for (unsigned i = 0; i < 2; i++) {
       weapon2[i].write(gdc);

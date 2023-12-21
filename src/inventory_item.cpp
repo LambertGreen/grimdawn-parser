@@ -2,16 +2,16 @@
 
 #include "gdc_file.hpp"
 
-void inventory_item::read(gdc_file_reader* gdc) {
+void inventory_item::read(gdc_file_reader& gdc) {
   item::read(gdc);
-  x = gdc->read_int();
-  y = gdc->read_int();
+  x = gdc.read_int();
+  y = gdc.read_int();
 }
 
-void inventory_item::write(gdc_file_writer* gdc) const {
+void inventory_item::write(gdc_file_writer& gdc) const {
   item::write(gdc);
-  gdc->write_int(x);
-  gdc->write_int(y);
+  gdc.write_int(x);
+  gdc.write_int(y);
 }
 
 json inventory_item::to_json() const {

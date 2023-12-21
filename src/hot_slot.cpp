@@ -1,13 +1,13 @@
 #include "hot_slot.hpp"
 
-void hot_slot::read(gdc_file_reader* gdc) {
-  type = gdc->read_int();
+void hot_slot::read(gdc_file_reader& gdc) {
+  type = gdc.read_int();
 
   if (type == 0) {
     skill.read(gdc);
-    isItemSkill = gdc->read_byte();
+    isItemSkill = gdc.read_byte();
     item.read(gdc);
-    equipLocation = gdc->read_int();
+    equipLocation = gdc.read_int();
   } else if (type == 4) {
     item.read(gdc);
     bitmapUp.read(gdc);
@@ -16,14 +16,14 @@ void hot_slot::read(gdc_file_reader* gdc) {
   }
 }
 
-void hot_slot::write(gdc_file_writer* gdc) const {
-  gdc->write_int(type);
+void hot_slot::write(gdc_file_writer& gdc) const {
+  gdc.write_int(type);
 
   if (type == 0) {
     skill.write(gdc);
-    gdc->write_byte(isItemSkill);
+    gdc.write_byte(isItemSkill);
     item.write(gdc);
-    gdc->write_int(equipLocation);
+    gdc.write_int(equipLocation);
   } else if (type == 4) {
     item.write(gdc);
     bitmapUp.write(gdc);

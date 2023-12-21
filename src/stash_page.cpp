@@ -8,26 +8,26 @@ namespace {
 const int BLOCK = 0;
 }
 
-void stash_page::read(gdc_file_reader* gdc) {
+void stash_page::read(gdc_file_reader& gdc) {
   block_field b;
-  ENSURE(gdc->read_block_start(&b) == BLOCK,
+  ENSURE(gdc.read_block_start(b) == BLOCK,
          "stash_page: Unexpected block number");
 
-  width = gdc->read_int();
-  height = gdc->read_int();
+  width = gdc.read_int();
+  height = gdc.read_int();
   items.read(gdc);
-  gdc->read_block_end(&b);
+  gdc.read_block_end(b);
 }
 
-void stash_page::write(gdc_file_writer* gdc) const {
+void stash_page::write(gdc_file_writer& gdc) const {
   block_field b;
-  gdc->write_block_start(&b, BLOCK);
+  gdc.write_block_start(b, BLOCK);
 
-  gdc->write_int(width);
-  gdc->write_int(height);
+  gdc.write_int(width);
+  gdc.write_int(height);
   items.write(gdc);
 
-  gdc->write_block_end(&b);
+  gdc.write_block_end(b);
 }
 
 json stash_page::to_json() const {

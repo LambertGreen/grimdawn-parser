@@ -1,37 +1,37 @@
 #include "item.hpp"
 
-void item::read(gdc_file_reader* gdc) {
+void item::read(gdc_file_reader& gdc) {
   baseName.read(gdc);
   prefixName.read(gdc);
   suffixName.read(gdc);
   modifierName.read(gdc);
   transmuteName.read(gdc);
-  seed = gdc->read_int();
+  seed = gdc.read_int();
   relicName.read(gdc);
   relicBonus.read(gdc);
-  relicSeed = gdc->read_int();
+  relicSeed = gdc.read_int();
   augmentName.read(gdc);
-  unknown = gdc->read_int();
-  augmentSeed = gdc->read_int();
-  var1 = gdc->read_int();
-  stackCount = gdc->read_int();
+  unknown = gdc.read_int();
+  augmentSeed = gdc.read_int();
+  var1 = gdc.read_int();
+  stackCount = gdc.read_int();
 }
 
-void item::write(gdc_file_writer* gdc) const {
+void item::write(gdc_file_writer& gdc) const {
   baseName.write(gdc);
   prefixName.write(gdc);
   suffixName.write(gdc);
   modifierName.write(gdc);
   transmuteName.write(gdc);
-  gdc->write_int(seed);
+  gdc.write_int(seed);
   relicName.write(gdc);
   relicBonus.write(gdc);
-  gdc->write_int(relicSeed);
+  gdc.write_int(relicSeed);
   augmentName.write(gdc);
-  gdc->write_int(unknown);
-  gdc->write_int(augmentSeed);
-  gdc->write_int(var1);
-  gdc->write_int(stackCount);
+  gdc.write_int(unknown);
+  gdc.write_int(augmentSeed);
+  gdc.write_int(var1);
+  gdc.write_int(stackCount);
 }
 
 json item::to_json() const {

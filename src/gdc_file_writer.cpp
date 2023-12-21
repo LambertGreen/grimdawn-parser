@@ -70,20 +70,20 @@ void gdc_file_writer::write_float(float val) {
   }
 }
 
-void gdc_file_writer::write_block_start(block_field* b, uint32_t n) {
+void gdc_file_writer::write_block_start(block_field& b, uint32_t n) {
   write_int(n);
   write_int(0);
-  b->end = ftell(_fp);
+  b.end = ftell(_fp);
 }
 
-void gdc_file_writer::write_block_end(block_field* b) {
+void gdc_file_writer::write_block_end(const block_field& b) {
   long pos = ftell(_fp);
 
-  if (fseek(_fp, b->end - 4, SEEK_SET)) {
+  if (fseek(_fp, b.end - 4, SEEK_SET)) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
 
-  write_int(pos - b->end);
+  write_int(pos - b.end);
 
   if (fseek(_fp, pos, SEEK_SET)) {
     throw std::runtime_error("gdc_file_writer: error occurred!");

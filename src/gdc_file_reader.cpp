@@ -146,17 +146,17 @@ float gdc_file_reader::read_float() {
   return u.f;
 }
 
-uint32_t gdc_file_reader::read_block_start(block_field* b) {
+uint32_t gdc_file_reader::read_block_start(block_field& b) {
   uint32_t ret = read_int();
 
-  b->len = next_int();
-  b->end = ftell(_fp) + b->len;
+  b.len = next_int();
+  b.end = ftell(_fp) + b.len;
 
   return ret;
 }
 
-void gdc_file_reader::read_block_end(block_field* b) {
-  if (ftell(_fp) != b->end) {
+void gdc_file_reader::read_block_end(block_field& b) {
+  if (ftell(_fp) != b.end) {
     throw std::runtime_error("read_block_end: ftell failed!");
   }
 
