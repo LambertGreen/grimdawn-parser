@@ -23,6 +23,23 @@ void gdc_file_writer::write_version() {
   write_int(VERSION_8);
 }
 
+void gdc_file_writer::write_key(uint32_t key) {
+  uint32_t k = key ^ XOR_BITMAP;
+  write_int(k);
+}
+
+void gdc_file_writer::update_key(void* ptr, uint32_t len) {
+  uint8_t* p = (uint8_t*)ptr;
+
+  for (uint32_t i = 0; i < len; i++) {
+    int j = p[i];
+    if (j < 0) {
+      j += 256;
+    }
+    this->key ^= this->table[j];
+  }
+}
+
 void gdc_file_writer::write_end() {
   if (fflush(this->fp)) {
     throw std::runtime_error("gdc_file_writer: error occurred!");

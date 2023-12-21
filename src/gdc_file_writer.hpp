@@ -5,6 +5,7 @@
 
 #include <_types/_uint8_t.h>
 #include <stdint.h>
+#include <cstdint>
 
 class block_field;
 
@@ -14,6 +15,8 @@ class gdc_file_writer : gdc_file {
 
   void write_start();
   void write_version();
+  void write_key(uint32_t key);
+  void update_key(void* ptr, uint32_t len);
   void write_end();
 
   void write_int(uint32_t val);
