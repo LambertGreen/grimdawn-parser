@@ -7,8 +7,9 @@
 
 gdc_file_writer::gdc_file_writer(const char* filename)
     : gdc_file(filename, "wb") {
-  if (!(fp = f.fp))
+  if (!(this->fp = this->f.fp)) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
+  }
 }
 
 void gdc_file_writer::write_start() {
@@ -23,46 +24,53 @@ void gdc_file_writer::write_version() {
 }
 
 void gdc_file_writer::write_end() {
-  if (fflush(fp))
+  if (fflush(this->fp)) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
+  }
 }
 
 void gdc_file_writer::write_int(uint32_t val) {
-  if (fwrite(&val, 4, 1, fp) != 1)
+  if (fwrite(&val, 4, 1, this->fp) != 1) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
+  }
 }
 
 void gdc_file_writer::write_short(uint16_t val) {
-  if (fwrite(&val, 2, 1, fp) != 1)
+  if (fwrite(&val, 2, 1, this->fp) != 1) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
+  }
 }
 
 void gdc_file_writer::write_byte(uint8_t val) {
-  if (fwrite(&val, 1, 1, fp) != 1)
+  if (fwrite(&val, 1, 1, this->fp) != 1) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
+  }
 }
 
 void gdc_file_writer::write_float(float val) {
-  if (fwrite(&val, 4, 1, fp) != 1)
+  if (fwrite(&val, 4, 1, this->fp) != 1) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
+  }
 }
 
 void gdc_file_writer::write_block_start(block_field* b, uint32_t n) {
   write_int(n);
   write_int(0);
-  b->end = ftell(fp);
+  b->end = ftell(this->fp);
 }
 
 void gdc_file_writer::write_block_end(block_field* b) {
-  long pos = ftell(fp);
+  long pos = ftell(this->fp);
 
-  if (fseek(fp, b->end - 4, SEEK_SET))
+  if (fseek(this->fp, b->end - 4, SEEK_SET)) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
+  }
 
   write_int(pos - b->end);
 
-  if (fseek(fp, pos, SEEK_SET))
+  if (fseek(this->fp, pos, SEEK_SET)) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
+  }
 
   write_int(0);
 }
