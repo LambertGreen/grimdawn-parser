@@ -12,12 +12,11 @@ int main(int argc, char** argv) {
   }
 
   try {
-    json j;
-    j.emplace("player-name", argv[2]);
+    const auto playerGdcFile = argv[1];
+    const auto playerName = argv[2];
 
-    player player(argv[1]);
-    j.emplace("player-data", player.to_json());
-
+    player player(playerGdcFile);
+    json j{{"player-name", playerName}, {"player-data", player.to_json()}};
     std::cout << j.dump() << std::endl;
 
   } catch (const std::runtime_error& e) {

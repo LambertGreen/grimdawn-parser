@@ -51,22 +51,20 @@ void player::write(const char* filename) {
 }
 
 json player::to_json() const {
-  json j;
-  j.emplace("id", id.to_json());
-  j.emplace("info", info.to_json());
-  j.emplace("bio", bio.to_json());
-  j.emplace("inventory", inv.to_json());
-  j.emplace("stash", stash.to_json());
-  j.emplace("respawns", respawns.to_json());
-  j.emplace("teleports", teleports.to_json());
-  j.emplace("markers", markers.to_json());
-  j.emplace("shrines", shrines.to_json());
-  j.emplace("skills", skills.to_json());
-  j.emplace("notes", notes.to_json());
-  j.emplace("factions", factions.to_json());
-  j.emplace("ui", ui.to_json());
-  j.emplace("tutorials", tutorials.to_json());
-  j.emplace("stats", stats.to_json());
-  j.emplace("tokens", tokens.to_json());
-  return j;
+  return json{{"id", id.to_json()},
+              {"info", info.to_json()},
+              {"bio", bio.to_json()},
+              {"inventory", inv.to_json()},
+              {"stash", stash.to_json()},
+              {"respawns", respawns.to_json()},
+              {"teleports", teleports.to_json()},
+              {"markers", markers.to_json()},
+              {"shrines", shrines.to_json()},
+              {"skills", skills.to_json()},
+              {"notes", notes.to_json()},
+              {"factions", factions.to_json()},
+              {"ui", ui.to_json()},
+              {"tutorials", tutorials.to_json()},
+              {"stats", stats.to_json()},
+              {"tokens", tokens.to_json()}};
 }
