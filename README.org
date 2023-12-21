@@ -30,6 +30,23 @@ just test-all
 #+end_src
 
 ** Debug
+The debug recipe runs the test command under =LLDB=:
+- The ~.lldbinit~ sets up breakpoints for any ~throw~ statement allowing one to simply run the program and see where it breaks into the debugger.
+
+*** Start the debugger
+#+begin_src sh
+just debug
+#+end_src
+
+*** Run the program
+#+begin_src lldb
+run
+#+end_src
+
+*** Show the stack-trace on break
+#+begin_src lldb
+bt
+#+end_src
 
 * Usage
 ** Decode ~player.gdc~ files into ~player.json~ files
