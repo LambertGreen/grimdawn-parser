@@ -18,31 +18,31 @@ build:
 
 # debug with lldb
 debug:
-	lldb ./build/grimparse --file testfiles/_Thor/player.gdc --name Thor
+	lldb ./build/grimparse --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out testfiles/_Thor/player.json
 
 # debug with gdb
 debug_with_gdb:
-    gdb -- ./build/grimparse --file testfiles/_Thor/player.gdc --name Thor
+    gdb -- ./build/grimparse --action export-json --file testfiles/_Thor/player.gdc --name Thor
 
 # run
 test:
-	./build/grimparse --file testfiles/_Thor/player.gdc --name Thor > testfiles/_Thor/player.json
+	./build/grimparse --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out testfiles/_Thor/player.json
 
 # run on player Iska
 test-iska:
-	./build/grimparse --file testfiles/_Iska/player.gdc --name Iska > testfiles/_Iska/player.json
+	./build/grimparse --action export-json --file testfiles/_Iska/player.gdc --name Iska --file-out testfiles/_Iska/player.json
 
 # run on player Luna
 test-luna:
-	./build/grimparse --file testfiles/_Luna/player.gdc --name Luna > testfiles/_Luna/player.json
+	./build/grimparse --action export-json --file testfiles/_Luna/player.gdc --name Luna --file-out testfiles/_Luna/player.json
 
 # run on player Luthar
 test-luthar:
-	./build/grimparse --file testfiles/_Luthar/player.gdc --name Luthar > testfiles/_Luthar/player.json
+	./build/grimparse --action export-json --file testfiles/_Luthar/player.gdc --name Luthar --file-out testfiles/_Luthar/player.json
 
 # run on player Thor
 test-thor:
-	./build/grimparse --file testfiles/_Thor/player.gdc --name Thor > testfiles/_Thor/player.json
+	./build/grimparse --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out testfiles/_Thor/player.json
 
 # run on all players
 test-all: test-iska test-luna test-luthar test-thor
