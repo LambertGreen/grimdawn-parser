@@ -28,10 +28,7 @@ void player::write(const char* filename) {
 
   gdc.write_start();
   hdr.write(gdc);
-
-  gdc.write_int(0);
-  gdc.write_int(7);  // version
-
+  gdc.write_version();
   id.write(gdc);
   info.write(gdc);
   bio.write(gdc);
