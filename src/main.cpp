@@ -1,21 +1,23 @@
 #include "player.hpp"
 
+#include <cxxopts.hpp>
 #include <iostream>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
 int main(int argc, char** argv) {
-  if (argc != 3) {
-    fprintf(stderr, "Usage: %s <player.gdc file> <player-name>\n", argv[0]);
-    return 1;
-  }
-
   try {
-    const auto playerGdcFile = argv[1];
-    const auto playerName = argv[2];
+    cxxopts::Options options(argv[0], "GrimDawn Player Commandline Editor");
+    options.add_options()("f,file", "Player.gdc file",
+                          cxxopts::value<std::string>())(
+        "n,name", "Player name", cxxopts::value<std::string>());
+    auto result = options.parse(argc, argv);
 
-    player player(playerGdcFile);
+    const auto playerGdcFile = result["file"].as<std::string>();
+    const auto playerName = result["name"].as<std::string>();
+
+    player player(playerGdcFile.c_str());
     json j{{"player-name", playerName}, {"player-data", player.to_json()}};
     std::cout << j.dump() << std::endl;
 
@@ -23,7 +25,7 @@ int main(int argc, char** argv) {
     std::cout << "Exception:" << e.what() << std::endl;
 
   } catch (const std::exception& e) {
-    printf("Error reading file: %s\n", argv[1]);
+    std::cerr << e.what() << std::endl;
     return 1;
   }
 

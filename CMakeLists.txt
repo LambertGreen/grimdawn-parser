@@ -1,12 +1,19 @@
-cmake_minimum_required(VERSION 3.27)  # Minimum version of CMake required. Adjust as needed.
-project(grimparse)  # Replace with your project name
+cmake_minimum_required(VERSION 3.27)
+project(grimparse)
 
-# Set C++ Standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Include FetchContent module to download dependencies
 include(FetchContent)
+
+# Download jarro2783/cxxopts
+FetchContent_Declare(
+  cxxopts
+  GIT_REPOSITORY https://github.com/jarro2783/cxxopts.git
+  GIT_TAG origin/master  # Specify the version you need
+)
+FetchContent_MakeAvailable(cxxopts)
 
 # Download nlohmann/json
 FetchContent_Declare(
@@ -14,15 +21,14 @@ FetchContent_Declare(
   GIT_REPOSITORY https://github.com/nlohmann/json.git
   GIT_TAG v3.10.5  # Specify the version you need
 )
-
-# Make nlohmann/json available to the project
 FetchContent_MakeAvailable(json)
+
 
 file(GLOB SOURCES "src/*.cpp")
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-# Link nlohmann/json to your executable
 target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
+target_include_directories(${PROJECT_NAME} PRIVATE ${cxxopts_SOURCE_DIR}/include)
 
 # Symlik compile_commands.json to project directory
 if (CMAKE_EXPORT_COMPILE_COMMANDS)

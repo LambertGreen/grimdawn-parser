@@ -18,31 +18,31 @@ build:
 
 # debug with lldb
 debug:
-	lldb ./build/grimparse testfiles/_Thor/player.gdc Thor
+	lldb ./build/grimparse --file testfiles/_Thor/player.gdc --name Thor
 
 # debug with gdb
 debug_with_gdb:
-    gdb -- ./build/grimparse testfiles/_Thor/player.gdc Thor
+    gdb -- ./build/grimparse --file testfiles/_Thor/player.gdc --name Thor
 
 # run
 test:
-	./build/grimparse testfiles/_Thor/player.gdc Thor > testfiles/_Thor/player.json
+	./build/grimparse --file testfiles/_Thor/player.gdc --name Thor > testfiles/_Thor/player.json
 
 # run on player Iska
 test-iska:
-	./build/grimparse testfiles/_Iska/player.gdc Iska > testfiles/_Iska/player.json
+	./build/grimparse --file testfiles/_Iska/player.gdc --name Iska > testfiles/_Iska/player.json
 
 # run on player Luna
 test-luna:
-	./build/grimparse testfiles/_Luna/player.gdc Luna > testfiles/_Luna/player.json
+	./build/grimparse --file testfiles/_Luna/player.gdc --name Luna > testfiles/_Luna/player.json
 
 # run on player Luthar
 test-luthar:
-	./build/grimparse testfiles/_Luthar/player.gdc Luthar > testfiles/_Luthar/player.json
+	./build/grimparse --file testfiles/_Luthar/player.gdc --name Luthar > testfiles/_Luthar/player.json
 
 # run on player Thor
 test-thor:
-	./build/grimparse testfiles/_Thor/player.gdc Thor > testfiles/_Thor/player.json
+	./build/grimparse --file testfiles/_Thor/player.gdc --name Thor > testfiles/_Thor/player.json
 
 # run on all players
 test-all: test-iska test-luna test-luthar test-thor
@@ -61,7 +61,7 @@ clean:
 	trash build
 	trash grimdawn_decoded
 
-# decode player.gdc files
+# decode player.gdc --name files
 decode:
 	./scripts/decode_player_info.sh
 
