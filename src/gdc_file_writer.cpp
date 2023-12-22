@@ -47,27 +47,37 @@ void gdc_file_writer::write_end() {
 }
 
 void gdc_file_writer::write_int(uint32_t val) {
-  if (fwrite(&val, 4, 1, _fp) != 1) {
+  uint32_t encVal = val ^ _key;
+
+  if (fwrite(&encVal, 4, 1, _fp) != 1) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
+
+  update_key(&val, 4);
 }
 
 void gdc_file_writer::write_short(uint16_t val) {
-  if (fwrite(&val, 2, 1, _fp) != 1) {
+  uint16_t encVal = val ^ _key;
+
+  if (fwrite(&encVal, 2, 1, _fp) != 1) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
+
+  update_key(&val, 2);
 }
 
 void gdc_file_writer::write_byte(uint8_t val) {
-  if (fwrite(&val, 1, 1, _fp) != 1) {
+  uint8_t encVal = val ^ _key;
+
+  if (fwrite(&encVal, 1, 1, _fp) != 1) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
+
+  update_key(&val, 1);
 }
 
 void gdc_file_writer::write_float(float val) {
-  if (fwrite(&val, 4, 1, _fp) != 1) {
-    throw std::runtime_error("gdc_file_writer: error occurred!");
-  }
+  write_int(val);
 }
 
 void gdc_file_writer::write_block_start(block_field& b, uint32_t n) {
