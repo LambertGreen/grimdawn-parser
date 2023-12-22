@@ -1,5 +1,7 @@
 # -*- mode: makefile -*-
 
+set dotenv-load
+
 # default
 default: build
 
@@ -59,7 +61,6 @@ test-combine:
 # clean
 clean:
 	trash build
-	trash grimdawn_decoded
 
 # decode player.gdc --name files
 decode:

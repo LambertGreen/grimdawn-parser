@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.5)
 project(grimparse)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -19,7 +19,7 @@ FetchContent_MakeAvailable(cxxopts)
 FetchContent_Declare(
   json
   GIT_REPOSITORY https://github.com/nlohmann/json.git
-  GIT_TAG v3.10.5  # Specify the version you need
+  GIT_TAG origin/master
 )
 FetchContent_MakeAvailable(json)
 
