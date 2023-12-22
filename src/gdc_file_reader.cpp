@@ -63,8 +63,7 @@ void gdc_file_reader::read_key() {
 
   _key = k;
   for (unsigned i = 0; i < 256; i++) {
-    // TODO: Explain what the below is doing
-    // According to GDStash reference it is doing a RotateRight
+    // Rotate right
     k = (k >> 1) | (k << 31);
     k *= TABLE_MULT;
     _table[i] = k;
