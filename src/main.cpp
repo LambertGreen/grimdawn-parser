@@ -28,7 +28,9 @@ void edit(std::string playerGdcFilename,
           std::string field,
           std::string value,
           std::string outFilename) {
-  std::cout << "Not yet implemented!!!" << std::endl;
+  player player(playerGdcFilename.c_str());
+  player.write(outFilename.c_str());
+  std::cout << "Gdc written to " + outFilename << std::endl;
 }
 }  // namespace
 
