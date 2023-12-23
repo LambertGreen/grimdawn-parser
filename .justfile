@@ -1,42 +1,66 @@
-# -*- mode: makefile -*-
+#===============================================================================
+# Project Justfile
+# - for building, testing, and command execution
+# - use with https://github.com/casey/just
+#===============================================================================
 
+# load the project .env file
 set dotenv-load
 
 # default
 default:
-  just --list -u
+  @just --list -u
 
 #-------------------------------------------------------------------------------
+# Aliases
+#-------------------------------------------------------------------------------
+alias f := format
+alias g := generate
+alias b := build
+alias c := clean
+alias t := test
+
 # Formatting
 #-------------------------------------------------------------------------------
 # format
 format:
-	find src -iname '*.cpp' -o -iname '*.hpp' | xargs clang-format -i
+  @echo "Formatting code files..."
+  find src -iname '*.cpp' -o -iname '*.hpp' | xargs clang-format -i
 
 #-------------------------------------------------------------------------------
 # Building
 #-------------------------------------------------------------------------------
 # generate with cmake
 generate:
-	cmake -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -G Ninja
+  @echo "Generating build system..."
+  cmake -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug -G Ninja
 
 # build with cmake
-build:
-	cmake --build build
+build: generate format
+  @echo "Building..."
+  cmake --build build
 
 # clean build
 clean:
-	trash build
+  @echo "Cleaning build..."
+  trash build
 
+#-------------------------------------------------------------------------------
+# Debugging
+#-------------------------------------------------------------------------------
 # debug with lldb
 debug:
 	lldb ./build/grimparse -- --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out testfiles/_Thor/player.json
 
 #-------------------------------------------------------------------------------
-# Tests
+# Testing
 #-------------------------------------------------------------------------------
+# test setup
+test-setup: build
+  @echo "Running tests..."
+
 # test
-test: test-export
+test: test-setup test-export test-edit
 
 # test export
 test-export: test-export-thor
@@ -58,7 +82,14 @@ test-export-thor:
 	./build/grimparse --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out testfiles/_Thor/player.json
 
 # test export on all players
-test-export-all: test-export-iska test-export-luna test-export-luthar test-export-thor
+test-export-all: build test-export-iska test-export-luna test-export-luthar test-export-thor
+
+# test edit action
+test-edit: test-edit-thor
+
+# test edit action on player thor
+test-edit-thor:
+  build/grimparse --action edit --file testfiles/_Thor/player.gdc --field "field" --value "none" --file-out testfiles/_Thor/player.out.gdc
 
 # combine all players
 test-combine:
