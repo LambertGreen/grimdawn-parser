@@ -18,6 +18,6 @@ find "$input_dir" -name "player.gdc" | while IFS= read -r file; do
     mkdir -p "$output_dir/$character_name"
 
     # Call decryption tool (replace 'your_decryption_tool' with the actual tool's name)
-    build/grimparse "$file" "$character_name" > "$output_dir/$character_name/player.json"
+    build/grimparse --action export-json --file "$file"  --name "$character_name" --file-out "$output_dir/$character_name/player.json"
 done
 
