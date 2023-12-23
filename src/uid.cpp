@@ -1,7 +1,6 @@
 #include "uid.hpp"
 
 #include <string>
-#include "gdc_file.hpp"
 
 void uid::read(gdc_file_reader& gdc) {
   for (unsigned i = 0; i < 16; i++) {

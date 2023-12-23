@@ -6,6 +6,12 @@
 #include <stdexcept>
 #include <string>
 
+namespace {
+uint32_t rotate_right(uint32_t n) {
+  return (n >> 1) | (n << 31);
+}
+}  // namespace
+
 gdc_file_reader::gdc_file_reader(const char* filename)
     : gdc_file(filename, "rb") {
   if (!(_fp = _f.fp)) {
@@ -25,6 +31,7 @@ gdc_file_reader::gdc_file_reader(const char* filename)
 
 void gdc_file_reader::read_start() {
   read_key();
+  build_table();
   const auto v = read_int();
   if (v != VERSION) {
     throw std::runtime_error("gdc_file:read: unexpected int value of " +
@@ -60,11 +67,14 @@ void gdc_file_reader::read_key() {
   }
 
   k ^= XOR_BITMAP;
-
   _key = k;
+}
+
+void gdc_file_reader::build_table() {
+  uint32_t k = _key;
+
   for (unsigned i = 0; i < 256; i++) {
-    // Rotate right
-    k = (k >> 1) | (k << 31);
+    k = rotate_right(k);
     k *= TABLE_MULT;
     _table[i] = k;
   }
