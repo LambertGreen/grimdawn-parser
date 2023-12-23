@@ -77,7 +77,12 @@ void gdc_file_writer::write_byte(uint8_t val) {
 }
 
 void gdc_file_writer::write_float(float val) {
-  write_int(val);
+  union {
+    float f;
+    int i;
+  } u;
+  u.f = val;
+  write_int(u.i);
 }
 
 void gdc_file_writer::write_block_start(block_field& b, uint32_t n) {
