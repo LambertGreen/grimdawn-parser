@@ -18,7 +18,6 @@ class gdc_file_reader : gdc_file {
   void read_end();
 
   void read_key();
-  void build_table();
   uint32_t next_int();
   void update_key(void* ptr, uint32_t len);
 

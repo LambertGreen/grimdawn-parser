@@ -6,12 +6,6 @@
 #include <stdexcept>
 #include <string>
 
-namespace {
-uint32_t rotate_right(uint32_t n) {
-  return (n >> 1) | (n << 31);
-}
-}  // namespace
-
 gdc_file_reader::gdc_file_reader(const char* filename)
     : gdc_file(filename, "rb") {
   if (!(_fp = _f.fp)) {
@@ -68,16 +62,6 @@ void gdc_file_reader::read_key() {
 
   k ^= XOR_BITMAP;
   _key = k;
-}
-
-void gdc_file_reader::build_table() {
-  uint32_t k = _key;
-
-  for (unsigned i = 0; i < 256; i++) {
-    k = rotate_right(k);
-    k *= TABLE_MULT;
-    _table[i] = k;
-  }
 }
 
 uint32_t gdc_file_reader::next_int() {

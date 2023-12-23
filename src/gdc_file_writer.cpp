@@ -13,7 +13,8 @@ gdc_file_writer::gdc_file_writer(const char* filename)
 }
 
 void gdc_file_writer::write_start() {
-  write_int(XOR_BITMAP);
+  write_key(0x1fdbf1d3);
+  build_table();
   write_int(VERSION);
   write_int(1);
 }
@@ -24,8 +25,12 @@ void gdc_file_writer::write_version() {
 }
 
 void gdc_file_writer::write_key(uint32_t key) {
+  _key = key;
   uint32_t k = key ^ XOR_BITMAP;
-  write_int(k);
+
+  if (fwrite(&k, 4, 1, _fp) != 1) {
+    throw std::runtime_error("gdc_file_writer: error occurred!");
+  }
 }
 
 void gdc_file_writer::update_key(void* ptr, uint32_t len) {
@@ -49,11 +54,11 @@ void gdc_file_writer::write_end() {
 void gdc_file_writer::write_int(uint32_t val) {
   uint32_t encVal = val ^ _key;
 
-  if (fwrite(&encVal, 4, 1, _fp) != 1) {
+  if (fwrite(&val, 4, 1, _fp) != 1) {
     throw std::runtime_error("gdc_file_writer: error occurred!");
   }
 
-  update_key(&val, 4);
+  // update_key(&val, 4);
 }
 
 void gdc_file_writer::write_short(uint16_t val) {
