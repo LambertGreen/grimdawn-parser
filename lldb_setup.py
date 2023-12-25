@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import lldb
+import struct
 
 
 def set_throw_breakpoint(debugger, command, result, internal_dict):

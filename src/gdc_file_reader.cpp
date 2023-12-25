@@ -76,18 +76,6 @@ uint32_t gdc_file_reader::next_int() {
   return ret;
 }
 
-void gdc_file_reader::update_key(void* ptr, uint32_t len) {
-  uint8_t* p = (uint8_t*)ptr;
-
-  for (uint32_t i = 0; i < len; i++) {
-    int j = p[i];
-    if (j < 0) {
-      j += 256;
-    }
-    _key ^= _table[j];
-  }
-}
-
 uint32_t gdc_file_reader::read_int() {
   uint32_t val;
 

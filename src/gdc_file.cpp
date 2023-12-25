@@ -11,7 +11,16 @@ void gdc_file::build_table() {
 
   for (unsigned i = 0; i < 256; i++) {
     k = rotate_right(k);
-    k *= TABLE_MULT;
+    k *= FACTORIAL_PRIME;
     _table[i] = k;
+  }
+}
+
+void gdc_file::update_key(void* ptr, uint32_t len) {
+  uint8_t* p = (uint8_t*)ptr;
+
+  for (uint32_t i = 0; i < len; i++) {
+    int j = p[i];
+    _key ^= _table[j];
   }
 }

@@ -89,7 +89,11 @@ test-edit: test-edit-thor
 
 # test edit action on player thor
 test-edit-thor:
-  build/grimparse --action edit --file testfiles/_Thor/player.gdc --field "field" --value "none" --file-out testfiles/_Thor/player.out.gdc
+  build/grimparse --action edit --file testfiles/_Thor/player.gdc --field "field" --value "none" --file-out testfiles/_Thor/player.out.g
+
+# test edit action on player iska
+test-edit-iska:
+  build/grimparse --action edit --file testfiles/_Iska/player.gdc --field "field" --value "none" --file-out testfiles/_Iska/player.out.g
 
 # combine all players
 test-combine:

@@ -25,23 +25,23 @@ class player {
   json to_json() const;
 
  private:
-  gdc_file_reader gdc;
+  gdc_file_reader _gdc_reader;
 
-  header hdr{};
-  uid id{};
-  character_info info{};
-  character_bio bio{};
-  inventory inv{};
-  character_stash stash{};
-  respawn_list respawns{};
-  teleport_list teleports{};
-  marker_list markers{};
-  shrine_list shrines{};
-  character_skills skills{};
-  lore_notes notes{};
-  faction_pack factions{};
-  ui_settings ui{};
-  tutorial_pages tutorials{};
-  play_stats stats{};
-  trigger_tokens tokens{};
+  header _hdr{};
+  uid _id{};
+  character_info _info{};
+  character_bio _bio{};
+  inventory _inv{};
+  character_stash _stash{};
+  respawn_list _respawns{};
+  teleport_list _teleports{};
+  marker_list _markers{};
+  shrine_list _shrines{};
+  character_skills _skills{};
+  lore_notes _notes{};
+  faction_pack _factions{};
+  ui_settings _ui{};
+  tutorial_pages _tutorials{};
+  play_stats _stats{};
+  trigger_tokens _tokens{};
 };

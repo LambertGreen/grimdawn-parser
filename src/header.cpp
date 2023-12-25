@@ -18,11 +18,13 @@ void header::read(gdc_file_reader& gdc) {
 }
 
 void header::write(gdc_file_writer& gdc) const {
+  gdc.write_int(VERSION_2);
   name.write(gdc);
   gdc.write_byte(sex);
   classId.write(gdc);
   gdc.write_int(level);
   gdc.write_byte(hardcore);
+  gdc.write_byte(expansionStatus);
 }
 
 json header::to_json() const {
