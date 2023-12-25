@@ -24,6 +24,8 @@ class player {
   void write(const char* filename);
   json to_json() const;
 
+  void reset_stats();
+
  private:
   gdc_file_reader _gdc_reader;
 

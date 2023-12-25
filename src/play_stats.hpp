@@ -12,6 +12,8 @@ class play_stats : gdc_object {
   void write(gdc_file_writer& gdc) const;
   json to_json() const;
 
+  void reset_stats();
+
  private:
   static constexpr int BLOCK_16 = 16;
   static constexpr int VERSION_11 = 11;

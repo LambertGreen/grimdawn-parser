@@ -25,10 +25,12 @@ void exportJson(std::string playerGdcFilename,
 }
 
 void edit(std::string playerGdcFilename,
-          std::string field,
-          std::string value,
+          std::string edit_action,
           std::string outFilename) {
   player player(playerGdcFilename.c_str());
+  if (edit_action == "reset-stats") {
+    player.reset_stats();
+  }
   player.write(outFilename.c_str());
   std::cout << "Gdc written to " + outFilename << std::endl;
 }
@@ -51,8 +53,7 @@ int main(int argc, char** argv) {
       ("name", "Player name", cxxopts::value<std::string>());
 
     options.add_options("edit")
-      ("field", "Field to edit", cxxopts::value<std::string>())
-      ("value", "New value for field", cxxopts::value<std::string>());
+      ("edit-action", "Edit action perform: reset-stats", cxxopts::value<std::string>());
 
     // clang-format on
     // -------------------------------------------------------------------------
@@ -72,9 +73,8 @@ int main(int argc, char** argv) {
       const auto playerName = result["name"].as<std::string>();
       exportJson(playerGdcFilename, playerName, outFilename);
     } else if (action == "edit") {
-      const auto field = result["field"].as<std::string>();
-      const auto value = result["value"].as<std::string>();
-      edit(playerGdcFilename, field, value, outFilename);
+      const auto edit_action = result["edit-action"].as<std::string>();
+      edit(playerGdcFilename, edit_action, outFilename);
     }
   } catch (const std::runtime_error& e) {
     std::cout << "Exception:" << e.what() << std::endl;

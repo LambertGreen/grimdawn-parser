@@ -180,3 +180,28 @@ json play_stats::to_json() const {
 
   return j;
 }
+
+void play_stats::reset_stats() {
+  for (unsigned i = 0; i < 3; i++) {
+    greatestMonsterKilledName[i] = {};
+    greatestMonsterKilledLevel[i] = 0;
+    greatestMonsterKilledLifeAndMana[i] = 0;
+    bossKills[i] = 0;
+  }
+
+  deaths = 0;
+  kills = 0;
+  healthPotionsUsed = 0;
+  manaPotionsUsed = 0;
+  hitsInflicted = 0;
+  hitsReceived = 0;
+  criticalHitsInflicted = 0;
+  criticalHitsReceived = 0;
+  championKills = 0;
+  heroKills = 0;
+  greatestDamageInflicted = 0.0f;
+  greatestDamageReceived = 0.0f;
+  survivalGreatestScore = 0;
+  survivalGreatestWave = 0;
+  survivalPowerUpsActivated = 0;
+}

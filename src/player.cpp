@@ -72,3 +72,7 @@ json player::to_json() const {
   // clang-format on
   // -------------------------------------------------------------------------
 }
+
+void player::reset_stats() {
+  _stats.reset_stats();
+}
