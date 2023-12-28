@@ -50,7 +50,7 @@ clean:
 #-------------------------------------------------------------------------------
 # debug with lldb
 debug:
-	lldb ./build/grimparse -- --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out testfiles/_Thor/player.json
+	lldb ./build/grimparse -- --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out out/testfiles_json/_Thor/player.json
 
 #-------------------------------------------------------------------------------
 # Testing
@@ -67,19 +67,23 @@ test-export: test-export-thor
 
 # test export player Iska
 test-export-iska:
-	./build/grimparse --action export-json --file testfiles/_Iska/player.gdc --name Iska --file-out testfiles/_Iska/player.json
+  mkdir -p out/testfiles_json/_Iska
+  ./build/grimparse --action export-json --file testfiles/_Iska/player.gdc --name Iska --file-out out/testfiles_json/_Iska/player.json
 
 # test export player Luna
 test-export-luna:
-	./build/grimparse --action export-json --file testfiles/_Luna/player.gdc --name Luna --file-out testfiles/_Luna/player.json
+  mkdir -p out/testfiles_json/_Luna
+  ./build/grimparse --action export-json --file testfiles/_Luna/player.gdc --name Luna --file-out out/testfiles_json/_Luna/player.json
 
 # test export player Luthar
 test-export-luthar:
-	./build/grimparse --action export-json --file testfiles/_Luthar/player.gdc --name Luthar --file-out testfiles/_Luthar/player.json
+  mkdir -p out/testfiles_json/_Luthar
+  ./build/grimparse --action export-json --file testfiles/_Luthar/player.gdc --name Luthar --file-out out/testfiles_json/_Luthar/player.json
 
 # test export player Thor
 test-export-thor:
-	./build/grimparse --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out testfiles/_Thor/player.json
+  mkdir -p out/testfiles_json/_Thor
+  ./build/grimparse --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out out/testfiles_json/_Thor/player.json
 
 # test export on all players
 test-export-all: build test-export-iska test-export-luna test-export-luthar test-export-thor
@@ -89,24 +93,23 @@ test-edit: test-edit-thor
 
 # test edit action on player thor
 test-edit-thor:
-  build/grimparse --action edit --file testfiles/_Thor/player.gdc --edit-action "none" --file-out testfiles/_Thor/player.out.g
+  ./build/grimparse --action edit --file testfiles/_Thor/player.gdc --edit-action "none" --file-out out/testfiles_json/_Thor/player.g
 
 # test edit action on player iska
 test-edit-iska:
-  build/grimparse --action edit --file testfiles/_Iska/player.gdc --edit-action "none" --file-out testfiles/_Iska/player.out.g
+  ./build/grimparse --action edit --file testfiles/_Iska/player.gdc --edit-action "none" --file-out out/testfiles_json/_Iska/player.g
 
 # test edit action reset on player thor
 test-edit-reset-thor: test-setup
-  build/grimparse --action edit --file testfiles/_Thor/player.gdc --edit-action "reset-stats" --file-out testfiles/_Thor/player.reset.out.g
+  ./build/grimparse --action edit --file testfiles/_Thor/player.gdc --edit-action "reset-stats" --file-out out/testfiles_json/_Thor/player.reset.g
 
-# combine all players
-test-combine:
-    jq -s '.' \
-       testfiles/_Iska/player.json      \
-       testfiles/_Luna/player.json      \
-       testfiles/_Luthar/player.json    \
-       testfiles/_Thor/player.json      \
-       > testfiles/combined.json
+# test filter players
+test-filter:
+  ./scripts/filter_player_json.sh ./out/testfiles_json ./out/testfiles_filtered_json
+
+# test combinne filtered player json files
+test-combine: test-filter
+  ./scripts/combine_player_info.sh ./out/testfiles_filtered_json ./out/testfiles_combined/all-characters.json
 
 #-------------------------------------------------------------------------------
 # Tests for importing player json files into a MongoDB
