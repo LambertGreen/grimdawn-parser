@@ -4,49 +4,25 @@
 * Introduction
 A =Grim Dawn= player parser.
 
-* References
+** References
 + [[http://www.lost.org.uk/grimdawn/][GrimDawn decryption code samples]]
 
+* Usage
+** Decode ~player.gdc~ files into ~player.json~ files
+#+begin_src sh
+just decode
+#+end_src
+
+** Filter ~player.json~ files
+The ~player.json~ files are large and we don't need all the sections for importing into =Tableau=. We use the =jq= commandline tool to filter out unneeded sections.
+
+
+** Combine ~player.json~ files into ~all-characters-combined.json~
+#+begin_src sh
+just combine
+#+end_src
+
 * Development
-** Build
-The build is automated via the =just= tool with build recipes defined in ~".justfile"~.
-
-*** Generate build config
-#+begin_src sh
-just generate
-#+end_src
-
-*** Run build command
-#+begin_src sh
-just build
-#+end_src
-
-** Test
-See the ~'.justfile'~ for all test recipes.
-
-*** Test all
-#+begin_src sh
-just test-all
-#+end_src
-
-** Debug
-The debug recipe runs the test command under =LLDB=:
-- The ~.lldbinit~ sets up breakpoints for any ~throw~ statement allowing one to simply run the program and see where it breaks into the debugger.
-
-*** Start the debugger
-#+begin_src sh
-just debug
-#+end_src
-
-*** Run the program
-#+begin_src lldb
-run
-#+end_src
-
-*** Show the stack-trace on break
-#+begin_src lldb
-bt
-#+end_src
 ** Design
 The design is split into the following sections:
 + Decoding the ~player.gdc~ files into ~player.json~ files
@@ -107,21 +83,45 @@ jq -s '.' \
     > testfiles/combined.json
 #+end_src
 
-* Usage
-** Decode ~player.gdc~ files into ~player.json~ files
+** Build
+The build is automated via the =just= tool with build recipes defined in ~".justfile"~.
+
+*** Generate build config
 #+begin_src sh
-just decode
+just generate
 #+end_src
 
-** Filter ~player.json~ files
-The ~player.json~ files are large and we don't need all the sections for importing into =Tableau=. We use the =jq= commandline tool to filter out unneeded sections.
-
-
-** Combine ~player.json~ files into ~all-characters-combined.json~
+*** Run build command
 #+begin_src sh
-just combine
+just build
 #+end_src
 
+** Test
+See the ~'.justfile'~ for all test recipes.
+
+*** Test all
+#+begin_src sh
+just test-all
+#+end_src
+
+** Debug
+The debug recipe runs the test command under =LLDB=:
+- The ~.lldbinit~ sets up breakpoints for any ~throw~ statement allowing one to simply run the program and see where it breaks into the debugger.
+
+*** Start the debugger
+#+begin_src sh
+just debug
+#+end_src
+
+*** Run the program
+#+begin_src lldb
+run
+#+end_src
+
+*** Show the stack-trace on break
+#+begin_src lldb
+bt
+#+end_src
 * Issues and Solutions :issue:
 ** Open [0/1] :open:
 *** TODO Update building and running on supported platforms
