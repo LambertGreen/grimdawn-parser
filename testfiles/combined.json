@@ -24,6 +24,19 @@
           "value": 24000.0
         }
       },
+      "header": {
+        "classId": "tagSkillClassName05",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": [
+          73,
+          115,
+          107,
+          97
+        ],
+        "sex": 0
+      },
       "id": {
         "uid": "0-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15"
       },
@@ -6210,6 +6223,19 @@
           "value": 24000.0
         }
       },
+      "header": {
+        "classId": "tagSkillClassName0205",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 99,
+        "name": [
+          76,
+          117,
+          110,
+          97
+        ],
+        "sex": 0
+      },
       "id": {
         "uid": "0-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15"
       },
@@ -11115,6 +11141,21 @@
           "value": 24000.0
         }
       },
+      "header": {
+        "classId": "tagSkillClassName0109",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": [
+          76,
+          117,
+          116,
+          104,
+          97,
+          114
+        ],
+        "sex": 1
+      },
       "id": {
         "uid": "0-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15"
       },
@@ -15554,6 +15595,19 @@
           "value": 24000.0
         }
       },
+      "header": {
+        "classId": "tagSkillClassName0106",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": [
+          84,
+          104,
+          111,
+          114
+        ],
+        "sex": 1
+      },
       "id": {
         "uid": "0-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15"
       },
@@ -15561,7 +15615,7 @@
         "alternateConfig": 0,
         "alternateConfigEnabled": 1,
         "compassState": 3,
-        "currentTribute": 88,
+        "currentTribute": 98,
         "difficulty": 66,
         "greatestDifficulty": 2,
         "hasBeenInGame": 1,
@@ -15607,7 +15661,7 @@
           "lootFilter_37": 0,
           "lootFilter_38": 1
         },
-        "money": 1463226,
+        "money": 1076402,
         "skillWindowShowHelp": 0,
         "texture": "creatures/pc/hero02.tex"
       },
@@ -15819,8 +15873,8 @@
           "var1": 4
         },
         "flag": 1,
-        "focused": 5,
-        "selected": 5,
+        "focused": 0,
+        "selected": 3,
         "useAlternate": 0,
         "weapon1_0": {
           "attached": 1,
@@ -16187,8 +16241,8 @@
             "experience": 0,
             "level": 1,
             "name": "records/skills/playerclass01/counterstrike1.dbr",
-            "unknown1": 0,
-            "unknown2": 0
+            "unknown1": 1,
+            "unknown2": 1
           },
           "skill_011": {
             "active": 0,
@@ -16199,7 +16253,7 @@
             "experience": 0,
             "level": 10,
             "name": "records/skills/playerclass01/fieldcommand1.dbr",
-            "unknown1": 0,
+            "unknown1": 1,
             "unknown2": 0
           },
           "skill_012": {
@@ -16331,7 +16385,7 @@
             "experience": 0,
             "level": 12,
             "name": "records/skills/playerclass06/natureblessing1.dbr",
-            "unknown1": 0,
+            "unknown1": 1,
             "unknown2": 0
           },
           "skill_023": {
@@ -16367,7 +16421,7 @@
             "experience": 0,
             "level": 12,
             "name": "records/skills/playerclass06/stormcaller1.dbr",
-            "unknown1": 0,
+            "unknown1": 1,
             "unknown2": 0
           },
           "skill_026": {
@@ -17288,7 +17342,7 @@
             "autoCastSkill": "",
             "devotionLevel": 17,
             "enabled": 1,
-            "experience": 12689076,
+            "experience": 13369851,
             "level": 1,
             "name": "records/skills/devotion/tier2_29g_skill.dbr",
             "unknown1": 0,
@@ -17398,8 +17452,8 @@
             "transmuteName": "",
             "unknown": 0,
             "var1": 3,
-            "x": 0.0,
-            "y": 0.0
+            "x": 6.0,
+            "y": 2.0
           },
           "stash_item_1": {
             "augmentName": "",
@@ -17416,8 +17470,134 @@
             "transmuteName": "",
             "unknown": 0,
             "var1": 3,
+            "x": 5.0,
+            "y": 2.0
+          },
+          "stash_item_10": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/crafting/materials/craft_ancientheart.dbr",
+            "modifierName": "records/items/lootaffixes/crafting/ad07_bleedresist.dbr",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 1593853434,
+            "stackCount": 932,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
+            "x": 3.0,
+            "y": 0.0
+          },
+          "stash_item_11": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/crafting/materials/craft_ugdenbloom.dbr",
+            "modifierName": "",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 1461900234,
+            "stackCount": 302,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
+            "x": 1.0,
+            "y": 2.0
+          },
+          "stash_item_12": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/crafting/materials/craft_taintedbrain.dbr",
+            "modifierName": "",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 1563150828,
+            "stackCount": 993,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
             "x": 0.0,
-            "y": 1.0
+            "y": 2.0
+          },
+          "stash_item_13": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/crafting/materials/craft_aetherialmutagen.dbr",
+            "modifierName": "",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 1259322339,
+            "stackCount": 514,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
+            "x": 2.0,
+            "y": 0.0
+          },
+          "stash_item_14": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/crafting/materials/craft_aetherialmissive.dbr",
+            "modifierName": "",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 1423001625,
+            "stackCount": 431,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
+            "x": 1.0,
+            "y": 0.0
+          },
+          "stash_item_15": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/misc/potions/potion_devotionreset.dbr",
+            "modifierName": "",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 0,
+            "stackCount": 134,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
+            "x": 0.0,
+            "y": 0.0
+          },
+          "stash_item_16": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/crafting/materials/craft_manticore.dbr",
+            "modifierName": "",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 1898816142,
+            "stackCount": 555,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
+            "x": 4.0,
+            "y": 2.0
           },
           "stash_item_2": {
             "augmentName": "",
@@ -17434,7 +17614,7 @@
             "transmuteName": "",
             "unknown": 0,
             "var1": 0,
-            "x": 1.0,
+            "x": 6.0,
             "y": 0.0
           },
           "stash_item_3": {
@@ -17452,8 +17632,116 @@
             "transmuteName": "",
             "unknown": 0,
             "var1": 0,
-            "x": 2.0,
+            "x": 3.0,
+            "y": 2.0
+          },
+          "stash_item_4": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/crafting/materials/craft_bloodchthon.dbr",
+            "modifierName": "",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 1189601234,
+            "stackCount": 95,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
+            "x": 4.0,
             "y": 0.0
+          },
+          "stash_item_5": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/crafting/materials/craft_cultistseal.dbr",
+            "modifierName": "",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 1664191055,
+            "stackCount": 299,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
+            "x": 5.0,
+            "y": 0.0
+          },
+          "stash_item_6": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/questitems/quest_dynamite.dbr",
+            "modifierName": "",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 1565146399,
+            "stackCount": 140,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
+            "x": 7.0,
+            "y": 0.0
+          },
+          "stash_item_7": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/crafting/materials/craft_royaljelly.dbr",
+            "modifierName": "",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 398655506,
+            "stackCount": 20,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
+            "x": 9.0,
+            "y": 0.0
+          },
+          "stash_item_8": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/crafting/materials/craft_heartofdarkness.dbr",
+            "modifierName": "",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 1031824693,
+            "stackCount": 1,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
+            "x": 8.0,
+            "y": 0.0
+          },
+          "stash_item_9": {
+            "augmentName": "",
+            "augmentSeed": 0,
+            "baseName": "records/items/crafting/materials/craft_wendigospirit.dbr",
+            "modifierName": "",
+            "prefixName": "",
+            "relicBonus": "",
+            "relicName": "",
+            "relicSeed": 0,
+            "seed": 1998337059,
+            "stackCount": 182,
+            "suffixName": "",
+            "transmuteName": "",
+            "unknown": 0,
+            "var1": 0,
+            "x": 2.0,
+            "y": 2.0
           },
           "width": 10
         },
@@ -17479,60 +17767,60 @@
         }
       },
       "stats": {
-        "championKills": 4996,
-        "criticalHitsInflicted": 176694,
+        "championKills": 57,
+        "criticalHitsInflicted": 3559,
         "criticalHitsReceived": 0,
-        "deaths": 59,
+        "deaths": 0,
         "difficultySkip": 0,
         "difficulty_0": {
           "bossKills": 0,
-          "greatestMonsterKilledLevel": 107,
-          "greatestMonsterKilledLifeAndMana": 1432020,
-          "greatestMonsterKilledName": "tagNemesis_Undead02",
+          "greatestMonsterKilledLevel": 0,
+          "greatestMonsterKilledLifeAndMana": 0,
+          "greatestMonsterKilledName": "",
           "lastMonsterHit": "tagNemesis_Undead02",
           "lastMonsterHitBy": "tagNemesis_Undead02"
         },
         "difficulty_1": {
           "bossKills": 0,
-          "greatestMonsterKilledLevel": 108,
-          "greatestMonsterKilledLifeAndMana": 2901707,
-          "greatestMonsterKilledName": "tagNemesis_Undead02",
+          "greatestMonsterKilledLevel": 0,
+          "greatestMonsterKilledLifeAndMana": 0,
+          "greatestMonsterKilledName": "",
           "lastMonsterHit": "tagNemesis_Undead02",
           "lastMonsterHitBy": "tagNemesis_Undead02"
         },
         "difficulty_2": {
-          "bossKills": 7,
-          "greatestMonsterKilledLevel": 103,
-          "greatestMonsterKilledLifeAndMana": 5517543,
-          "greatestMonsterKilledName": "tagGDX1MiniBoss_Bog01",
-          "lastMonsterHit": "tagGDX2HeroScorpion_H04",
-          "lastMonsterHitBy": "tagGDX2HeroScorpion_H02"
+          "bossKills": 0,
+          "greatestMonsterKilledLevel": 111,
+          "greatestMonsterKilledLifeAndMana": 4016605,
+          "greatestMonsterKilledName": "tagGDX1Boss_Roguelike03",
+          "lastMonsterHit": "tagHumanBoss01",
+          "lastMonsterHitBy": "tagHumanBoss01"
         },
         "endlessEssence": 0,
         "endlessSouls": 0,
-        "experienceFromKills": 22533579,
-        "greatestDamageInflicted": 328993.65625,
-        "greatestDamageReceived": 16229.966796875,
-        "healthPotionsUsed": 1289,
-        "heroKills": 3598,
-        "hitsInflicted": 1152409,
-        "hitsReceived": 210855,
+        "experienceFromKills": 23183494,
+        "greatestDamageInflicted": 287656.8125,
+        "greatestDamageReceived": 11374.740234375,
+        "healthPotionsUsed": 5,
+        "heroKills": 49,
+        "hitsInflicted": 20545,
+        "hitsReceived": 2042,
         "itemsCrafted": 415,
-        "kills": 114736,
-        "lastHit": 2515.447509765625,
-        "lastHitBy": 2620.57958984375,
+        "kills": 1347,
+        "lastHit": 2385.89013671875,
+        "lastHitBy": 2564.830078125,
         "loreNotesCollected": 125,
-        "manaPotionsUsed": 374,
+        "manaPotionsUsed": 0,
         "maxLevel": 99,
         "mythicalRelicsCrafted": 1,
         "oneShotChestsOpened": 53,
-        "playTime": 362068,
+        "playTime": 365153,
         "relicsCrafted": 38,
         "shrinesRestored": 63,
         "survivalDefensesBuilt": 20,
-        "survivalGreatestScore": 3936085,
-        "survivalGreatestWave": 170,
-        "survivalPowerUpsActivated": 18,
+        "survivalGreatestScore": 146049,
+        "survivalGreatestWave": 20,
+        "survivalPowerUpsActivated": 0,
         "transcendentRelicsCrafted": 7,
         "unknown1": 0,
         "unknown2": 0
@@ -17669,16 +17957,6 @@
             "type": 0
           },
           "hot_slot_05": {
-            "bitmapDown": "",
-            "bitmapUp": "",
-            "equipLocation": 0,
-            "isItemSkill": 0,
-            "item": "",
-            "label": [],
-            "skill": "",
-            "type": 4294967295
-          },
-          "hot_slot_06": {
             "bitmapDown": "items/craftingparts/materials/material_a002_aethercrystal_down.tex",
             "bitmapUp": "items/craftingparts/materials/material_a002_aethercrystal_a.tex",
             "equipLocation": 0,
@@ -17706,6 +17984,16 @@
             ],
             "skill": "",
             "type": 4
+          },
+          "hot_slot_06": {
+            "bitmapDown": "",
+            "bitmapUp": "",
+            "equipLocation": 0,
+            "isItemSkill": 0,
+            "item": "",
+            "label": [],
+            "skill": "",
+            "type": 4294967295
           },
           "hot_slot_07": {
             "bitmapDown": "items/craftingparts/consumable/consumableb_tealdown.tex",
