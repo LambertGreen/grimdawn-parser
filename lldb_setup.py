@@ -10,3 +10,9 @@ def set_throw_breakpoint(debugger, command, result, internal_dict):
 
 def __lldb_init_module(debugger, internal_dict):
     set_throw_breakpoint(debugger, None, None, None)
+
+
+def uint32_to_hex(value):
+    little_endian = struct.pack("<I", value)
+    big_endian = struct.pack(">I", value)
+    return little_endian.hex(), big_endian.hex()
