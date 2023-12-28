@@ -47,6 +47,65 @@ run
 #+begin_src lldb
 bt
 #+end_src
+** Design
+The design is split into the following sections:
++ Decoding the ~player.gdc~ files into ~player.json~ files
++ Filtering the ~player.json~ files to contain the sections useful for comparison
++ Combining the ~player.json~ files into single =json= file for use in =Tableau=
+
+*** Decode ~player.gdc~ files into ~player.json~ files
+We implement the decoding of encrypted ~player.gdc~ files (which are written by =Grim Dawn=) in command line tool =grimparse=.
+
+**** Requirements
+1. Read in and parse encrypted =Grim Dawn= ~player.gdc~ files
+2. Write out player info in a =json= format.
+
+**** Implementation
++ =grimparse= executable: ("./build/grimparse")
+
+*** Filter ~player.json~ files
+We need to filter the =json= files.
+
+**** Requirements
+1. Read in ~player.json~ file and remove unneeded sections.
+
+**** Implementation
+We will use the =jq= command-line tool.
+
+Example:
+#+begin_src jq
+{
+  "player-name": ."player-name",
+  "player-data": {
+    "bio": .["player-data"].bio,
+    "factions": .["player-data"].factions,
+    "info": .["player-data"].info,
+    "inventory": .["player-data"].inventory,
+    "skills": .["player-data"].skills,
+    "stats": .["player-data"].stats,
+    "tokens": .["player-data"].tokens
+  }
+}
+#+end_src
+
+*** Combine ~player.json~ files into ~all-characters-combined.json~
+We need to combine the filtered =json= files into one single file.
+
+**** Requirements
+1. Read in multiple ~player.json~ files and combine into one single ~all-characters-combined.json~ file
+
+**** Solution
+We will use the =jq= command-line tool.
+
+Example:
+#+begin_src sh
+jq -s '.' \
+    testfiles/_Iska/player.json      \
+    testfiles/_Luna/player.json      \
+    testfiles/_Luthar/player.json    \
+    testfiles/_Thor/player.json      \
+    > testfiles/combined.json
+#+end_src
 
 * Usage
 ** Decode ~player.gdc~ files into ~player.json~ files
@@ -54,13 +113,17 @@ bt
 just decode
 #+end_src
 
+** Filter ~player.json~ files
+The ~player.json~ files are large and we don't need all the sections for importing into =Tableau=. We use the =jq= commandline tool to filter out unneeded sections.
+
+
 ** Combine ~player.json~ files into ~all-characters-combined.json~
 #+begin_src sh
 just combine
 #+end_src
 
 * Issues and Solutions :issue:
-** Open [0/2] :open:
+** Open [0/1] :open:
 *** TODO Update building and running on supported platforms
 We have updated the building process to use the following tools:
 + =cmake=: for easier build file generation now that we moved to multiple cpp files
