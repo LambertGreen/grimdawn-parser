@@ -82,43 +82,43 @@ jq -s '.' \
     testfiles/_Thor/player.json      \
     > testfiles/combined.json
 #+end_src
-
-** Build
+** Worklow
+*** Build
 The build is automated via the =just= tool with build recipes defined in ~".justfile"~.
 
-*** Generate build config
+**** Generate build config
 #+begin_src sh
 just generate
 #+end_src
 
-*** Run build command
+**** Run build command
 #+begin_src sh
 just build
 #+end_src
 
-** Test
+*** Test
 See the ~'.justfile'~ for all test recipes.
 
-*** Test all
+**** Test all
 #+begin_src sh
 just test-all
 #+end_src
 
-** Debug
+*** Debug
 The debug recipe runs the test command under =LLDB=:
 - The ~.lldbinit~ sets up breakpoints for any ~throw~ statement allowing one to simply run the program and see where it breaks into the debugger.
 
-*** Start the debugger
+**** Start the debugger
 #+begin_src sh
 just debug
 #+end_src
 
-*** Run the program
+**** Run the program
 #+begin_src lldb
 run
 #+end_src
 
-*** Show the stack-trace on break
+**** Show the stack-trace on break
 #+begin_src lldb
 bt
 #+end_src
