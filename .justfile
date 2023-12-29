@@ -136,18 +136,31 @@ test-combine: test-filter-multi
 #-------------------------------------------------------------------------------
 # run decode player.gdc files
 run-export-players:
-	./scripts/decode_players_info.sh ./grimdawn_save ./processed/exported
+  @echo "Running export of player.gdc files..."
+  ./scripts/decode_players_info.sh ./grimdawn_save ./processed/exported
 
 # run filter on player.json files
 run-filter-players:
+  @echo "Running filtering of player.json files..."
   ./scripts/filter_players_json.sh ./processed/exported ./processed/filtered
 
 # run combine player.json files
 run-combine-players:
-	./scripts/combine_players_json.sh ./processed/filtered ./processed/combined/players.json
+  @echo "Running combining of player.json files..."
+  ./scripts/combine_players_json.sh ./processed/filtered ./processed/combined/players.json
 
 # run all
 run: \
   run-export-players \
   run-filter-players \
   run-combine-players
+
+# Edit reset player stats
+run-edit-reset-player-stats:
+  @echo "Running reseting of player stats..."
+  ./scripts/edit_players_info.sh ./grimdawn_save reset-stats ./processed/edited_reset_stats
+
+# Copy edited player.gdc files to GrimDawn save directory
+run-copy-edited-files-to-save-dir:
+  @echo "Copying edited files to GrimDawn save directory..."
+  ./scripts/copy_player_files.sh ./processed/edited_reset_stats ./grimdawn_save/main
