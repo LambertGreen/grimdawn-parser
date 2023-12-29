@@ -112,28 +112,6 @@ test-combine: test-filter
   ./scripts/combine_player_info.sh ./out/testfiles_filtered_json ./out/testfiles_combined/all-characters.json
 
 #-------------------------------------------------------------------------------
-# Tests for importing player json files into a MongoDB
-#-------------------------------------------------------------------------------
-# test import into MongoDB, player Iska
-test-mongo-import-iska:
-  mongoimport --db GrimDawn --collection PlayerInfoTest --file ./testfiles/_Iska/player.json
-
-# test import into MongoDB, player Luna
-test-mongo-import-luna:
-  mongoimport --db GrimDawn --collection PlayerInfoTest --file ./testfiles/_Luna/player.json
-
-# test import into MongoDB, player Luthar
-test-mongo-import-luthar:
-  mongoimport --db GrimDawn --collection PlayerInfoTest --file ./testfiles/_Luthar/player.json
-
-# test import into MongoDB, player Thor
-test-mongo-import-thor:
-  mongoimport --db GrimDawn --collection PlayerInfoTest --file ./testfiles/_Thor/player.json
-
-# test import into MongoDB, all players
-test-mongo-import-all: test-mongo-import-iska test-mongo-import-luna test-mongo-import-luthar test-mongo-import-thor
-
-#-------------------------------------------------------------------------------
 # Runs
 #-------------------------------------------------------------------------------
 # run decode player.gdc files
