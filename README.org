@@ -8,19 +8,23 @@ A =Grim Dawn= player parser.
 + [[http://www.lost.org.uk/grimdawn/][GrimDawn decryption code samples]]
 
 * Usage
-** Decode ~player.gdc~ files into ~player.json~ files
+** Export ~player.gdc~ files into ~player.json~ files
 #+begin_src sh
-just decode
+just run-export-players
 #+end_src
 
 ** Filter ~player.json~ files
 The ~player.json~ files are large and we don't need all the sections for importing into =Tableau=. We use the =jq= commandline tool to filter out unneeded sections.
-
+#+begin_src sh
+just run-filter-players
+#+end_src
 
 ** Combine ~player.json~ files into ~all-characters-combined.json~
 #+begin_src sh
-just combine
+just run-combine-players
 #+end_src
+
+** Use =Tableau= for analyzing ~players.json~
 
 * Development
 ** Design

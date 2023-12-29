@@ -44,80 +44,110 @@ build: generate format
 clean:
   @echo "Cleaning build..."
   trash build
+  @echo "Cleaning test ouput..."
+  trash test_output
 
 #-------------------------------------------------------------------------------
 # Debugging
 #-------------------------------------------------------------------------------
 # debug with lldb
 debug:
-	lldb ./build/grimparse -- --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out out/testfiles_json/_Thor/player.json
+	lldb ./build/grimparse -- --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out test_output/exported_json/_Thor/player.json
 
 #-------------------------------------------------------------------------------
 # Testing
 #-------------------------------------------------------------------------------
-# test setup
-test-setup: build
-  @echo "Running tests..."
+# test all
+test: test-single test-multi
 
-# test
-test: test-setup test-export test-edit
+# test againgst a single file
+test-single: build \
+  test-export-single \
+  test-edit-single \
+  test-edit-reset-single \
+  test-filter-single
 
-# test export
-test-export: test-export-thor
+# test against multiple files
+test-multi: build \
+  test-export-multi \
+  test-edit-multi \
+  test-edit-reset-multi \
+  test-filter-multi \
+  test-combine
 
-# test export player Iska
-test-export-iska:
-  mkdir -p out/testfiles_json/_Iska
-  ./build/grimparse --action export-json --file testfiles/_Iska/player.gdc --name Iska --file-out out/testfiles_json/_Iska/player.json
+# Testing - Exporting
+#-------------------------------------------------------------------------------
+# test export a single player
+test-export-single:
+  @echo "Running test-export-single..."
+  mkdir -p test_output/exported_single/_Thor
+  ./build/grimparse --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out test_output/exported_single/_Thor/player.json
 
-# test export player Luna
-test-export-luna:
-  mkdir -p out/testfiles_json/_Luna
-  ./build/grimparse --action export-json --file testfiles/_Luna/player.gdc --name Luna --file-out out/testfiles_json/_Luna/player.json
+# test export on multiple players
+test-export-multi:
+  @echo "Running test-export-multi..."
+  ./scripts/decode_players_info.sh ./testfiles ./test_output/exported_multi
 
-# test export player Luthar
-test-export-luthar:
-  mkdir -p out/testfiles_json/_Luthar
-  ./build/grimparse --action export-json --file testfiles/_Luthar/player.gdc --name Luthar --file-out out/testfiles_json/_Luthar/player.json
+# Testing - Editing
+#-------------------------------------------------------------------------------
+# test edit action on single player
+test-edit-single:
+  @echo "Running test-edit-single..."
+  mkdir -p test_output/edited_single/_Thor
+  ./build/grimparse --action edit --file testfiles/_Thor/player.gdc --edit-action "none" --file-out test_output/edited_single/_Thor/player.gdc
 
-# test export player Thor
-test-export-thor:
-  mkdir -p out/testfiles_json/_Thor
-  ./build/grimparse --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out out/testfiles_json/_Thor/player.json
+# test edit action on multiple players
+test-edit-multi:
+  @echo "Running test-edit-multi..."
+  ./scripts/edit_players_info.sh ./testfiles none ./test_output/edited_multi
 
-# test export on all players
-test-export-all: build test-export-iska test-export-luna test-export-luthar test-export-thor
+# Testing - Editing - reset stats
+#-------------------------------------------------------------------------------
+# test edit action reset on single player
+test-edit-reset-single:
+  @echo "Running test-edit-reset-single..."
+  mkdir -p test_output/edited_reset_stats_single/_Thor
+  ./build/grimparse --action edit --file testfiles/_Thor/player.gdc --edit-action "reset-stats" --file-out test_output/edited_reset_stats_single/_Thor/player.gdc
 
-# test edit action
-test-edit: test-edit-thor
+# test edit action reset on multiple players
+test-edit-reset-multi:
+  @echo "Running test-edit-reset-multi..."
+  ./scripts/edit_players_info.sh ./testfiles reset-stats ./test_output/edited_reset_stats_multi
 
-# test edit action on player thor
-test-edit-thor:
-  ./build/grimparse --action edit --file testfiles/_Thor/player.gdc --edit-action "none" --file-out out/testfiles_json/_Thor/player.g
+# Testing - Filter player info
+#-------------------------------------------------------------------------------
+# test filter single player
+test-filter-single: test-export-single
+  mkdir -p test_output/filtered_single/_Thor
+  jq -f ./scripts/filter_player.jq test_output/exported_single/_Thor/player.json > test_output/filtered_single/_Thor/player.json
 
-# test edit action on player iska
-test-edit-iska:
-  ./build/grimparse --action edit --file testfiles/_Iska/player.gdc --edit-action "none" --file-out out/testfiles_json/_Iska/player.g
+# test filter multiple players
+test-filter-multi: test-export-multi
+  ./scripts/filter_players_json.sh ./test_output/exported_multi ./test_output/filtered_multi
 
-# test edit action reset on player thor
-test-edit-reset-thor: test-setup
-  ./build/grimparse --action edit --file testfiles/_Thor/player.gdc --edit-action "reset-stats" --file-out out/testfiles_json/_Thor/player.reset.g
-
-# test filter players
-test-filter:
-  ./scripts/filter_player_json.sh ./out/testfiles_json ./out/testfiles_filtered_json
-
-# test combinne filtered player json files
-test-combine: test-filter
-  ./scripts/combine_player_info.sh ./out/testfiles_filtered_json ./out/testfiles_combined/all-characters.json
+# Testing - Combine player info
+#-------------------------------------------------------------------------------
+# test combine filtered player json files
+test-combine: test-filter-multi
+  ./scripts/combine_players_json.sh ./test_output/filtered_multi ./test_output/all-characters.json
 
 #-------------------------------------------------------------------------------
 # Runs
 #-------------------------------------------------------------------------------
 # run decode player.gdc files
-run-export-player:
-	./scripts/decode_player_info.sh
+run-export-players:
+	./scripts/decode_players_info.sh ./grimdawn_save ./processed/exported
+
+# run filter on player.json files
+run-filter-players:
+  ./scripts/filter_players_json.sh ./processed/exported ./processed/filtered
 
 # run combine player.json files
-run-combine:
-	./scripts/combine_player_info.sh
+run-combine-players:
+	./scripts/combine_players_json.sh ./processed/filtered ./processed/combined/players.json
+
+# run all
+run: \
+  run-export-players \
+  run-filter-players \
+  run-combine-players
