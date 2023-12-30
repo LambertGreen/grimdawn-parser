@@ -52,7 +52,11 @@ clean:
 #-------------------------------------------------------------------------------
 # debug with lldb
 debug:
-	lldb ./build/grimparse -- --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out test_output/exported_json/_Thor/player.json
+	lldb ./build/grimparse -- \
+            --action export-json \
+            --file testfiles/_Thor/player.gdc \
+            --name Thor \
+            --file-out test_output/exported_json/_Thor/player.json
 
 #-------------------------------------------------------------------------------
 # Testing
@@ -81,7 +85,10 @@ test-multi: build \
 test-export-single:
   @echo "Running test-export-single..."
   mkdir -p test_output/exported_single/_Thor
-  ./build/grimparse --action export-json --file testfiles/_Thor/player.gdc --name Thor --file-out test_output/exported_single/_Thor/player.json
+  ./build/grimparse --action export-json \
+                    --file testfiles/_Thor/player.gdc \
+                    --name Thor \
+                    --file-out test_output/exported_single/_Thor/player.json
 
 # test export on multiple players
 test-export-multi:
@@ -94,7 +101,10 @@ test-export-multi:
 test-edit-single:
   @echo "Running test-edit-single..."
   mkdir -p test_output/edited_single/_Thor
-  ./build/grimparse --action edit --file testfiles/_Thor/player.gdc --edit-action "none" --file-out test_output/edited_single/_Thor/player.gdc
+  ./build/grimparse --action edit \
+                    --file testfiles/_Thor/player.gdc \
+                    --edit-action "none" \
+                    --file-out test_output/edited_single/_Thor/player.gdc
 
 # test edit action on multiple players
 test-edit-multi:
@@ -107,7 +117,10 @@ test-edit-multi:
 test-edit-reset-single:
   @echo "Running test-edit-reset-single..."
   mkdir -p test_output/edited_reset_stats_single/_Thor
-  ./build/grimparse --action edit --file testfiles/_Thor/player.gdc --edit-action "reset-stats" --file-out test_output/edited_reset_stats_single/_Thor/player.gdc
+  ./build/grimparse --action edit \
+                    --file testfiles/_Thor/player.gdc \
+                    --edit-action "reset-stats" \
+                    --file-out test_output/edited_reset_stats_single/_Thor/player.gdc
 
 # test edit action reset on multiple players
 test-edit-reset-multi:
@@ -119,7 +132,9 @@ test-edit-reset-multi:
 # test filter single player
 test-filter-single: test-export-single
   mkdir -p test_output/filtered_single/_Thor
-  jq -f ./scripts/filter_player.jq test_output/exported_single/_Thor/player.json > test_output/filtered_single/_Thor/player.json
+  jq -f ./scripts/filter_player.jq \
+        test_output/exported_single/_Thor/player.json > \
+          test_output/filtered_single/_Thor/player.json
 
 # test filter multiple players
 test-filter-multi: test-export-multi
