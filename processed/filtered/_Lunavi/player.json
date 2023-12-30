@@ -79,27 +79,27 @@
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagNemesis_Undead02",
-        "lastMonsterHitBy": "tagEnemySummonIceCrystal"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_1": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagNemesis_Chthonian02",
-        "lastMonsterHitBy": "tagGDX1Nemesis_Wendigo01"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_2": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagGDX2EnemyBeetle_B01",
-        "lastMonsterHitBy": "tagGDX2EnemyBeetle_B01"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
-      "endlessEssence": 10,
-      "endlessSouls": 608,
+      "endlessEssence": 0,
+      "endlessSouls": 0,
       "experienceFromKills": 26005728,
       "greatestDamageInflicted": 0.0,
       "greatestDamageReceived": 0.0,
@@ -107,17 +107,17 @@
       "heroKills": 0,
       "hitsInflicted": 0,
       "hitsReceived": 0,
-      "itemsCrafted": 527,
+      "itemsCrafted": 0,
       "kills": 0,
-      "lastHit": 2111.086181640625,
-      "lastHitBy": 2090.78173828125,
+      "lastHit": 0.0,
+      "lastHitBy": 0.0,
       "loreNotesCollected": 133,
       "manaPotionsUsed": 0,
       "maxLevel": 100,
-      "mythicalRelicsCrafted": 6,
+      "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 60,
-      "playTime": 538470,
-      "relicsCrafted": 69,
+      "playTime": 0,
+      "relicsCrafted": 0,
       "shrinesRestored": 67,
       "skill_0": {
         "acitive": 1,
@@ -135,11 +135,11 @@
         "acitive": 1,
         "skill": "records/endlessdungeon/skills/shrines/viremonolith_01.dbr"
       },
-      "survivalDefensesBuilt": 12,
+      "survivalDefensesBuilt": 0,
       "survivalGreatestScore": 0,
       "survivalGreatestWave": 0,
       "survivalPowerUpsActivated": 0,
-      "transcendentRelicsCrafted": 12,
+      "transcendentRelicsCrafted": 0,
       "unknown1": 0,
       "unknown2": 0
     },

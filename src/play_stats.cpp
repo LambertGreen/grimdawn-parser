@@ -186,9 +186,12 @@ void play_stats::reset_stats() {
     greatestMonsterKilledName[i] = {};
     greatestMonsterKilledLevel[i] = 0;
     greatestMonsterKilledLifeAndMana[i] = 0;
+    lastMonsterHit[i] = {};
+    lastMonsterHitBy[i] = {};
     bossKills[i] = 0;
   }
 
+  playTime = 0;
   deaths = 0;
   kills = 0;
   healthPotionsUsed = 0;
@@ -199,9 +202,18 @@ void play_stats::reset_stats() {
   criticalHitsReceived = 0;
   championKills = 0;
   heroKills = 0;
+  itemsCrafted = 0;
+  relicsCrafted = 0;
+  transcendentRelicsCrafted = 0;
+  mythicalRelicsCrafted = 0;
+  lastHit = 0.0f;
+  lastHitBy = 0.0f;
   greatestDamageInflicted = 0.0f;
   greatestDamageReceived = 0.0f;
   survivalGreatestScore = 0;
+  survivalDefensesBuilt = 0;
   survivalGreatestWave = 0;
   survivalPowerUpsActivated = 0;
+  endlessSouls = 0;
+  endlessEssence = 0;
 }

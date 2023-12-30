@@ -79,24 +79,24 @@
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagNemesis_OrderDeathsVigil01",
-        "lastMonsterHitBy": "tagNemesis_OrderDeathsVigil01"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_1": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagEnemySummonVoid",
-        "lastMonsterHitBy": "tagEnemySummonVoid"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_2": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagMiscTargetDummy",
-        "lastMonsterHitBy": "tagGhostBoss05"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "endlessEssence": 0,
       "endlessSouls": 0,
@@ -107,17 +107,17 @@
       "heroKills": 0,
       "hitsInflicted": 0,
       "hitsReceived": 0,
-      "itemsCrafted": 1060,
+      "itemsCrafted": 0,
       "kills": 0,
-      "lastHit": 2060.026123046875,
-      "lastHitBy": 2661.264892578125,
+      "lastHit": 0.0,
+      "lastHitBy": 0.0,
       "loreNotesCollected": 172,
       "manaPotionsUsed": 0,
       "maxLevel": 100,
-      "mythicalRelicsCrafted": 3,
+      "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 52,
-      "playTime": 393024,
-      "relicsCrafted": 30,
+      "playTime": 0,
+      "relicsCrafted": 0,
       "shrinesRestored": 78,
       "skill_0": {
         "acitive": 9,
@@ -131,11 +131,11 @@
         "acitive": 19,
         "skill": "records/skills/playerclass09/viremight1.dbr"
       },
-      "survivalDefensesBuilt": 10,
+      "survivalDefensesBuilt": 0,
       "survivalGreatestScore": 0,
       "survivalGreatestWave": 0,
       "survivalPowerUpsActivated": 0,
-      "transcendentRelicsCrafted": 4,
+      "transcendentRelicsCrafted": 0,
       "unknown1": 0,
       "unknown2": 0
     },

@@ -79,27 +79,27 @@
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagNecromancer_Boss02",
-        "lastMonsterHitBy": "tagNecromancer_Boss02"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_1": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagMiscTargetDummy",
-        "lastMonsterHitBy": "tagEnemyVoidFiendA02"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_2": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagMiscTargetDummy",
-        "lastMonsterHitBy": "tagGDX2EndlessDungeon_Boss01"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
-      "endlessEssence": 8,
-      "endlessSouls": 409,
+      "endlessEssence": 0,
+      "endlessSouls": 0,
       "experienceFromKills": 26274683,
       "greatestDamageInflicted": 0.0,
       "greatestDamageReceived": 0.0,
@@ -107,17 +107,17 @@
       "heroKills": 0,
       "hitsInflicted": 0,
       "hitsReceived": 0,
-      "itemsCrafted": 916,
+      "itemsCrafted": 0,
       "kills": 0,
-      "lastHit": 2060.026123046875,
-      "lastHitBy": 2493.83447265625,
+      "lastHit": 0.0,
+      "lastHitBy": 0.0,
       "loreNotesCollected": 182,
       "manaPotionsUsed": 0,
       "maxLevel": 100,
-      "mythicalRelicsCrafted": 1,
+      "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 68,
-      "playTime": 431190,
-      "relicsCrafted": 11,
+      "playTime": 0,
+      "relicsCrafted": 0,
       "shrinesRestored": 104,
       "skill_0": {
         "acitive": 1,
@@ -155,7 +155,7 @@
       "survivalGreatestScore": 0,
       "survivalGreatestWave": 0,
       "survivalPowerUpsActivated": 0,
-      "transcendentRelicsCrafted": 1,
+      "transcendentRelicsCrafted": 0,
       "unknown1": 0,
       "unknown2": 0
     },

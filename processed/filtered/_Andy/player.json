@@ -79,8 +79,8 @@
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagEnemyHungryDead001",
-        "lastMonsterHitBy": "tagEnemyHungryDead001"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_1": {
         "bossKills": 0,
@@ -109,14 +109,14 @@
       "hitsReceived": 0,
       "itemsCrafted": 0,
       "kills": 0,
-      "lastHit": 156.36000061035156,
-      "lastHitBy": 124.27249908447266,
+      "lastHit": 0.0,
+      "lastHitBy": 0.0,
       "loreNotesCollected": 0,
       "manaPotionsUsed": 0,
       "maxLevel": 5,
       "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 0,
-      "playTime": 4073,
+      "playTime": 0,
       "relicsCrafted": 0,
       "shrinesRestored": 0,
       "survivalDefensesBuilt": 0,

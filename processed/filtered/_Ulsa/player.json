@@ -79,27 +79,27 @@
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagGDX2Nemesis_Eldritch01",
-        "lastMonsterHitBy": "tagGDX2Nemesis_Eldritch01"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_1": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagNPC_Homestead_03",
-        "lastMonsterHitBy": "tagNPC_Homestead_03"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_2": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagNemesis_Kymon02",
-        "lastMonsterHitBy": "tagNemesis_Kymon02"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
-      "endlessEssence": 10,
-      "endlessSouls": 17014,
+      "endlessEssence": 0,
+      "endlessSouls": 0,
       "experienceFromKills": 61956030,
       "greatestDamageInflicted": 0.0,
       "greatestDamageReceived": 0.0,
@@ -107,17 +107,17 @@
       "heroKills": 0,
       "hitsInflicted": 0,
       "hitsReceived": 0,
-      "itemsCrafted": 897,
+      "itemsCrafted": 0,
       "kills": 0,
-      "lastHit": 2755.242431640625,
-      "lastHitBy": 2415.892822265625,
+      "lastHit": 0.0,
+      "lastHitBy": 0.0,
       "loreNotesCollected": 191,
       "manaPotionsUsed": 0,
       "maxLevel": 100,
-      "mythicalRelicsCrafted": 29,
+      "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 66,
-      "playTime": 964310,
-      "relicsCrafted": 118,
+      "playTime": 0,
+      "relicsCrafted": 0,
       "shrinesRestored": 70,
       "skill_0": {
         "acitive": 1,
@@ -139,11 +139,11 @@
         "acitive": 1,
         "skill": "records/endlessdungeon/skills/shrines/viremonolith_01.dbr"
       },
-      "survivalDefensesBuilt": 73,
+      "survivalDefensesBuilt": 0,
       "survivalGreatestScore": 0,
       "survivalGreatestWave": 0,
       "survivalPowerUpsActivated": 0,
-      "transcendentRelicsCrafted": 21,
+      "transcendentRelicsCrafted": 0,
       "unknown1": 0,
       "unknown2": 0
     },

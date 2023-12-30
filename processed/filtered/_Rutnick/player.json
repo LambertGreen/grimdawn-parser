@@ -79,27 +79,27 @@
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagNemesis_OrderDeathsVigil01",
-        "lastMonsterHitBy": "tagNemesis_OrderDeathsVigil01"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_1": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagNPC_Homestead_03",
-        "lastMonsterHitBy": "tagNPC_Homestead_03"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_2": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagNecromancer_Boss02",
-        "lastMonsterHitBy": "tagNecromancer_Boss02"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
-      "endlessEssence": 10,
-      "endlessSouls": 15959,
+      "endlessEssence": 0,
+      "endlessSouls": 0,
       "experienceFromKills": 65959566,
       "greatestDamageInflicted": 0.0,
       "greatestDamageReceived": 0.0,
@@ -107,17 +107,17 @@
       "heroKills": 0,
       "hitsInflicted": 0,
       "hitsReceived": 0,
-      "itemsCrafted": 1261,
+      "itemsCrafted": 0,
       "kills": 0,
-      "lastHit": 2290.719482421875,
-      "lastHitBy": 2381.762939453125,
+      "lastHit": 0.0,
+      "lastHitBy": 0.0,
       "loreNotesCollected": 204,
       "manaPotionsUsed": 0,
       "maxLevel": 100,
-      "mythicalRelicsCrafted": 32,
+      "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 67,
-      "playTime": 993731,
-      "relicsCrafted": 140,
+      "playTime": 0,
+      "relicsCrafted": 0,
       "shrinesRestored": 155,
       "skill_0": {
         "acitive": 1,
@@ -143,11 +143,11 @@
         "acitive": 18,
         "skill": "records/skills/playerclass09/viremight1.dbr"
       },
-      "survivalDefensesBuilt": 72,
+      "survivalDefensesBuilt": 0,
       "survivalGreatestScore": 0,
       "survivalGreatestWave": 0,
       "survivalPowerUpsActivated": 0,
-      "transcendentRelicsCrafted": 25,
+      "transcendentRelicsCrafted": 0,
       "unknown1": 0,
       "unknown2": 0
     },

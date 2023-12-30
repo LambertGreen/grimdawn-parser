@@ -79,27 +79,27 @@
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagGDX1EnemyLivingPlant_B01",
-        "lastMonsterHitBy": "tagGDX1EnemyLivingPlant_B00"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_1": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagNemesis_Kymon02",
-        "lastMonsterHitBy": "tagNemesis_Kymon02"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_2": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagEnemyFleshHulkA01",
-        "lastMonsterHitBy": "tagEnemyTrollCorruptedA01"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
-      "endlessEssence": 10,
-      "endlessSouls": 2489,
+      "endlessEssence": 0,
+      "endlessSouls": 0,
       "experienceFromKills": 80825940,
       "greatestDamageInflicted": 0.0,
       "greatestDamageReceived": 0.0,
@@ -107,17 +107,17 @@
       "heroKills": 0,
       "hitsInflicted": 0,
       "hitsReceived": 0,
-      "itemsCrafted": 1466,
+      "itemsCrafted": 0,
       "kills": 0,
-      "lastHit": 2161.41015625,
-      "lastHitBy": 1988.0936279296875,
+      "lastHit": 0.0,
+      "lastHitBy": 0.0,
       "loreNotesCollected": 185,
       "manaPotionsUsed": 0,
       "maxLevel": 100,
-      "mythicalRelicsCrafted": 4,
+      "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 81,
-      "playTime": 1812484,
-      "relicsCrafted": 49,
+      "playTime": 0,
+      "relicsCrafted": 0,
       "shrinesRestored": 77,
       "skill_0": {
         "acitive": 1,
@@ -143,11 +143,11 @@
         "acitive": 9,
         "skill": "records/skills/itemskillsgdx2/runes/rush_d201.dbr"
       },
-      "survivalDefensesBuilt": 103,
+      "survivalDefensesBuilt": 0,
       "survivalGreatestScore": 0,
       "survivalGreatestWave": 0,
       "survivalPowerUpsActivated": 0,
-      "transcendentRelicsCrafted": 9,
+      "transcendentRelicsCrafted": 0,
       "unknown1": 0,
       "unknown2": 0
     },

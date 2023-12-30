@@ -79,27 +79,27 @@
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagEnemyYetiB01",
-        "lastMonsterHitBy": "tagEnemyYetiB01"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_1": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagMiscTargetDummy",
-        "lastMonsterHitBy": "tagNPC_Homestead_03"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
       "difficulty_2": {
         "bossKills": 0,
         "greatestMonsterKilledLevel": 0,
         "greatestMonsterKilledLifeAndMana": 0,
         "greatestMonsterKilledName": "",
-        "lastMonsterHit": "tagEnemyBloodswornMiniBoss01",
-        "lastMonsterHitBy": "tagGhostBoss05"
+        "lastMonsterHit": "",
+        "lastMonsterHitBy": ""
       },
-      "endlessEssence": 10,
-      "endlessSouls": 718,
+      "endlessEssence": 0,
+      "endlessSouls": 0,
       "experienceFromKills": 24061968,
       "greatestDamageInflicted": 0.0,
       "greatestDamageReceived": 0.0,
@@ -107,17 +107,17 @@
       "heroKills": 0,
       "hitsInflicted": 0,
       "hitsReceived": 0,
-      "itemsCrafted": 655,
+      "itemsCrafted": 0,
       "kills": 0,
-      "lastHit": 2261.636474609375,
-      "lastHitBy": 2659.306884765625,
+      "lastHit": 0.0,
+      "lastHitBy": 0.0,
       "loreNotesCollected": 114,
       "manaPotionsUsed": 0,
       "maxLevel": 100,
-      "mythicalRelicsCrafted": 16,
+      "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 46,
-      "playTime": 439427,
-      "relicsCrafted": 88,
+      "playTime": 0,
+      "relicsCrafted": 0,
       "shrinesRestored": 109,
       "skill_0": {
         "acitive": 1,
@@ -135,11 +135,11 @@
         "acitive": 1,
         "skill": "records/endlessdungeon/skills/shrines/viremonolith_01.dbr"
       },
-      "survivalDefensesBuilt": 23,
+      "survivalDefensesBuilt": 0,
       "survivalGreatestScore": 0,
       "survivalGreatestWave": 0,
       "survivalPowerUpsActivated": 0,
-      "transcendentRelicsCrafted": 25,
+      "transcendentRelicsCrafted": 0,
       "unknown1": 0,
       "unknown2": 0
     },
