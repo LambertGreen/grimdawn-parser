@@ -18,8 +18,8 @@
       "alternateConfig": 0,
       "alternateConfigEnabled": 1,
       "compassState": 4,
-      "currentTribute": 56,
-      "difficulty": 2,
+      "currentTribute": 49,
+      "difficulty": 66,
       "greatestDifficulty": 2,
       "hasBeenInGame": 1,
       "isInMainQuest": 1,
@@ -69,10 +69,10 @@
       "texture": "creatures/pc/hero02.tex"
     },
     "stats": {
-      "championKills": 0,
-      "criticalHitsInflicted": 0,
+      "championKills": 24,
+      "criticalHitsInflicted": 945,
       "criticalHitsReceived": 0,
-      "deaths": 0,
+      "deaths": 1,
       "difficultySkip": 0,
       "difficulty_0": {
         "bossKills": 0,
@@ -92,31 +92,31 @@
       },
       "difficulty_2": {
         "bossKills": 0,
-        "greatestMonsterKilledLevel": 0,
-        "greatestMonsterKilledLifeAndMana": 0,
-        "greatestMonsterKilledName": "",
-        "lastMonsterHit": "",
-        "lastMonsterHitBy": ""
+        "greatestMonsterKilledLevel": 108,
+        "greatestMonsterKilledLifeAndMana": 1610828,
+        "greatestMonsterKilledName": "tagSkeletonBoss04",
+        "lastMonsterHit": "tagDevotion_SkeletonH05",
+        "lastMonsterHitBy": "tagBoneRatMiniBoss02"
       },
       "endlessEssence": 0,
       "endlessSouls": 0,
       "experienceFromKills": 80825940,
-      "greatestDamageInflicted": 0.0,
-      "greatestDamageReceived": 0.0,
+      "greatestDamageInflicted": 93658.28125,
+      "greatestDamageReceived": 3821.896484375,
       "healthPotionsUsed": 0,
-      "heroKills": 0,
-      "hitsInflicted": 0,
-      "hitsReceived": 0,
+      "heroKills": 19,
+      "hitsInflicted": 3421,
+      "hitsReceived": 301,
       "itemsCrafted": 0,
-      "kills": 0,
-      "lastHit": 0.0,
-      "lastHitBy": 0.0,
+      "kills": 228,
+      "lastHit": 2485.631103515625,
+      "lastHitBy": 2299.630859375,
       "loreNotesCollected": 185,
       "manaPotionsUsed": 0,
       "maxLevel": 100,
       "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 81,
-      "playTime": 0,
+      "playTime": 333,
       "relicsCrafted": 0,
       "shrinesRestored": 77,
       "skill_0": {
@@ -144,8 +144,8 @@
         "skill": "records/skills/itemskillsgdx2/runes/rush_d201.dbr"
       },
       "survivalDefensesBuilt": 0,
-      "survivalGreatestScore": 0,
-      "survivalGreatestWave": 0,
+      "survivalGreatestScore": 155749,
+      "survivalGreatestWave": 59,
       "survivalPowerUpsActivated": 0,
       "transcendentRelicsCrafted": 0,
       "unknown1": 0,
@@ -176,7 +176,8 @@
         "SURVIVALMODE_4POWERUPS",
         "SURVIVALMODE_TIER05CHECKPOINT",
         "SURVIVALMODE_DEFENSEBUILT",
-        "SURVIVALMODE_TIER10CHECKPOINT"
+        "SURVIVALMODE_TIER10CHECKPOINT",
+        "GD_STASHED"
       ]
     }
   }

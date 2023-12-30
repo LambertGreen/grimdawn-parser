@@ -10,7 +10,7 @@
       "level": 100,
       "modifierPoints": 2,
       "physique": 474.0,
-      "skillPoints": 172,
+      "skillPoints": 121,
       "spirit": 466.0,
       "totalDevotion": 55
     },
@@ -19,7 +19,7 @@
       "alternateConfigEnabled": 1,
       "compassState": 4,
       "currentTribute": 55,
-      "difficulty": 2,
+      "difficulty": 66,
       "greatestDifficulty": 2,
       "hasBeenInGame": 1,
       "isInMainQuest": 1,
@@ -116,7 +116,7 @@
       "maxLevel": 100,
       "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 67,
-      "playTime": 0,
+      "playTime": 608,
       "relicsCrafted": 0,
       "shrinesRestored": 155,
       "skill_0": {
