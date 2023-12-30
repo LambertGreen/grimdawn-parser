@@ -52,11 +52,11 @@ clean:
 #-------------------------------------------------------------------------------
 # debug with lldb
 debug:
-	lldb ./build/grimparse -- \
-            --action export-json \
-            --file testfiles/_Thor/player.gdc \
-            --name Thor \
-            --file-out test_output/exported_json/_Thor/player.json
+  lldb ./build/grimparse -- \
+    --action export-json \
+    --file testfiles/_Thor/player.gdc \
+    --name Thor \
+    --file-out test_output/exported_json/_Thor/player.json
 
 #-------------------------------------------------------------------------------
 # Testing
