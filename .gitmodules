@@ -1,3 +1,4 @@
 [submodule "grimdawn_save"]
 	path = grimdawn_save
 	url = ../grimdawn_save.git
+    branch = version_1_2
