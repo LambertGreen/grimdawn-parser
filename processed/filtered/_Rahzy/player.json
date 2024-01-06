@@ -18,7 +18,7 @@
       "alternateConfig": 1,
       "alternateConfigEnabled": 1,
       "compassState": 4,
-      "currentTribute": 85,
+      "currentTribute": 92,
       "difficulty": 66,
       "greatestDifficulty": 2,
       "hasBeenInGame": 1,
@@ -64,13 +64,13 @@
         "lootFilter_37": 0,
         "lootFilter_38": 1
       },
-      "money": 7456163,
+      "money": 7543557,
       "skillWindowShowHelp": 0,
       "texture": "creatures/pc/hero02.tex"
     },
     "stats": {
-      "championKills": 78,
-      "criticalHitsInflicted": 2610,
+      "championKills": 151,
+      "criticalHitsInflicted": 5004,
       "criticalHitsReceived": 0,
       "deaths": 0,
       "difficultySkip": 0,
@@ -95,28 +95,28 @@
         "greatestMonsterKilledLevel": 111,
         "greatestMonsterKilledLifeAndMana": 3796239,
         "greatestMonsterKilledName": "tagNemesis_Aetherial01",
-        "lastMonsterHit": "tagNemesis_Aetherial01",
-        "lastMonsterHitBy": "tagNemesis_Aetherial01"
+        "lastMonsterHit": "tagNemesis_Chthonian02",
+        "lastMonsterHitBy": "tagNemesis_Outlaw01"
       },
       "endlessEssence": 0,
       "endlessSouls": 0,
       "experienceFromKills": 67909178,
-      "greatestDamageInflicted": 383634.3125,
+      "greatestDamageInflicted": 402045.875,
       "greatestDamageReceived": 5031.05615234375,
       "healthPotionsUsed": 6,
-      "heroKills": 55,
-      "hitsInflicted": 11368,
-      "hitsReceived": 1901,
+      "heroKills": 102,
+      "hitsInflicted": 22457,
+      "hitsReceived": 3965,
       "itemsCrafted": 0,
-      "kills": 772,
-      "lastHit": 2453.06787109375,
-      "lastHitBy": 2663.675537109375,
+      "kills": 1487,
+      "lastHit": 2453.931884765625,
+      "lastHitBy": 2785.488037109375,
       "loreNotesCollected": 206,
       "manaPotionsUsed": 0,
       "maxLevel": 100,
       "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 67,
-      "playTime": 978,
+      "playTime": 2354,
       "relicsCrafted": 0,
       "shrinesRestored": 155,
       "skill_0": {
@@ -144,7 +144,7 @@
         "skill": "records/skills/playerclass09/viremight1.dbr"
       },
       "survivalDefensesBuilt": 0,
-      "survivalGreatestScore": 2632300,
+      "survivalGreatestScore": 2678718,
       "survivalGreatestWave": 120,
       "survivalPowerUpsActivated": 0,
       "transcendentRelicsCrafted": 0,
@@ -181,7 +181,9 @@
         "SURVIVALMODE_GLADIATOR",
         "SURVIVALMODE_TIER15CHECKPOINT",
         "SURVIVALMODE_4POWERUPS",
-        "GD_STASHED"
+        "GD_STASHED",
+        "DISMANTLING_UNLOCKED",
+        "CONVERTING_UNLOCKED"
       ]
     }
   }

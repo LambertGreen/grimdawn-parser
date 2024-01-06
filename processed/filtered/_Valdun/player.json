@@ -18,8 +18,8 @@
       "alternateConfig": 1,
       "alternateConfigEnabled": 1,
       "compassState": 4,
-      "currentTribute": 51,
-      "difficulty": 66,
+      "currentTribute": 45,
+      "difficulty": 2,
       "greatestDifficulty": 2,
       "hasBeenInGame": 1,
       "isInMainQuest": 1,
@@ -64,15 +64,15 @@
         "lootFilter_37": 0,
         "lootFilter_38": 1
       },
-      "money": 5041788,
+      "money": 5087596,
       "skillWindowShowHelp": 0,
       "texture": "creatures/pc/hero02.tex"
     },
     "stats": {
-      "championKills": 43,
-      "criticalHitsInflicted": 1518,
+      "championKills": 80,
+      "criticalHitsInflicted": 2790,
       "criticalHitsReceived": 0,
-      "deaths": 0,
+      "deaths": 1,
       "difficultySkip": 0,
       "difficulty_0": {
         "bossKills": 0,
@@ -95,28 +95,28 @@
         "greatestMonsterKilledLevel": 109,
         "greatestMonsterKilledLifeAndMana": 3670677,
         "greatestMonsterKilledName": "tagNemesis_Chthonian02",
-        "lastMonsterHit": "tagEnemySkeletonA02",
-        "lastMonsterHitBy": "tagEnemySkeletonA02"
+        "lastMonsterHit": "tagGDX2EnemyGroble_A02",
+        "lastMonsterHitBy": "tagGDX2EnemyGroble_A02"
       },
       "endlessEssence": 0,
       "endlessSouls": 0,
-      "experienceFromKills": 65470685,
-      "greatestDamageInflicted": 469668.28125,
-      "greatestDamageReceived": 4187.1298828125,
+      "experienceFromKills": 65513341,
+      "greatestDamageInflicted": 498030.0,
+      "greatestDamageReceived": 5633.22802734375,
       "healthPotionsUsed": 3,
-      "heroKills": 33,
-      "hitsInflicted": 6126,
-      "hitsReceived": 773,
+      "heroKills": 60,
+      "hitsInflicted": 10720,
+      "hitsReceived": 1362,
       "itemsCrafted": 0,
-      "kills": 455,
-      "lastHit": 1957.0850830078125,
-      "lastHitBy": 2362.8076171875,
+      "kills": 903,
+      "lastHit": 1784.37548828125,
+      "lastHitBy": 2053.896484375,
       "loreNotesCollected": 204,
       "manaPotionsUsed": 2,
       "maxLevel": 100,
       "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 67,
-      "playTime": 737,
+      "playTime": 1822,
       "relicsCrafted": 0,
       "shrinesRestored": 155,
       "skill_0": {
@@ -181,7 +181,9 @@
         "SURVIVALMODE_GLADIATOR",
         "SURVIVALMODE_TIER15CHECKPOINT",
         "SURVIVALMODE_4POWERUPS",
-        "GD_STASHED"
+        "GD_STASHED",
+        "DISMANTLING_UNLOCKED",
+        "CONVERTING_UNLOCKED"
       ]
     }
   }

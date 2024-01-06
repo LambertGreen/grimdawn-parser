@@ -18,7 +18,7 @@
       "alternateConfig": 1,
       "alternateConfigEnabled": 1,
       "compassState": 4,
-      "currentTribute": 37,
+      "currentTribute": 45,
       "difficulty": 66,
       "greatestDifficulty": 2,
       "hasBeenInGame": 1,
@@ -64,15 +64,15 @@
         "lootFilter_37": 1,
         "lootFilter_38": 1
       },
-      "money": 12487,
+      "money": 76966,
       "skillWindowShowHelp": 0,
       "texture": ""
     },
     "stats": {
-      "championKills": 124,
-      "criticalHitsInflicted": 8216,
+      "championKills": 223,
+      "criticalHitsInflicted": 15073,
       "criticalHitsReceived": 0,
-      "deaths": 2,
+      "deaths": 3,
       "difficultySkip": 0,
       "difficulty_0": {
         "bossKills": 0,
@@ -95,28 +95,28 @@
         "greatestMonsterKilledLevel": 111,
         "greatestMonsterKilledLifeAndMana": 3924799,
         "greatestMonsterKilledName": "tagNemesis_Undead02",
-        "lastMonsterHit": "tagDevotion_ZombieH02",
-        "lastMonsterHitBy": "tagGDX2EnemyGargoyle_C01"
+        "lastMonsterHit": "tagGDX1HeroWendigo_H03",
+        "lastMonsterHitBy": "tagGDX1HeroAetherialFleshshaper_H01"
       },
       "endlessEssence": 0,
       "endlessSouls": 0,
       "experienceFromKills": 69374090,
-      "greatestDamageInflicted": 201635.9375,
+      "greatestDamageInflicted": 216158.40625,
       "greatestDamageReceived": 4807.4189453125,
       "healthPotionsUsed": 1,
-      "heroKills": 94,
-      "hitsInflicted": 28632,
-      "hitsReceived": 5005,
+      "heroKills": 165,
+      "hitsInflicted": 53221,
+      "hitsReceived": 7943,
       "itemsCrafted": 28,
-      "kills": 1116,
-      "lastHit": 2477.6630859375,
-      "lastHitBy": 2581.22119140625,
+      "kills": 2111,
+      "lastHit": 2749.6630859375,
+      "lastHitBy": 3098.609375,
       "loreNotesCollected": 156,
       "manaPotionsUsed": 0,
       "maxLevel": 100,
       "mythicalRelicsCrafted": 1,
       "oneShotChestsOpened": 75,
-      "playTime": 3225,
+      "playTime": 4463,
       "relicsCrafted": 1,
       "shrinesRestored": 68,
       "skill_0": {
@@ -136,8 +136,8 @@
         "skill": "records/endlessdungeon/skills/shrines/viremonolith_01.dbr"
       },
       "survivalDefensesBuilt": 0,
-      "survivalGreatestScore": 1716140,
-      "survivalGreatestWave": 116,
+      "survivalGreatestScore": 3581603,
+      "survivalGreatestWave": 128,
       "survivalPowerUpsActivated": 0,
       "transcendentRelicsCrafted": 0,
       "unknown1": 0,
@@ -173,7 +173,9 @@
         "SURVIVALMODE_CHALLENGER",
         "SURVIVALMODE_GLADIATOR",
         "SURVIVALMODE_TIER15CHECKPOINT",
-        "GD_STASHED"
+        "GD_STASHED",
+        "DISMANTLING_UNLOCKED",
+        "CONVERTING_UNLOCKED"
       ]
     }
   }
