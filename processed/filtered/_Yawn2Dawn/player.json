@@ -18,7 +18,7 @@
       "alternateConfig": 1,
       "alternateConfigEnabled": 1,
       "compassState": 4,
-      "currentTribute": 79,
+      "currentTribute": 54,
       "difficulty": 66,
       "greatestDifficulty": 2,
       "hasBeenInGame": 1,
@@ -64,13 +64,13 @@
         "lootFilter_37": 0,
         "lootFilter_38": 1
       },
-      "money": 5386059,
+      "money": 4873140,
       "skillWindowShowHelp": 0,
       "texture": "creatures/pc/hero02.tex"
     },
     "stats": {
-      "championKills": 81,
-      "criticalHitsInflicted": 878,
+      "championKills": 388,
+      "criticalHitsInflicted": 4067,
       "criticalHitsReceived": 0,
       "deaths": 0,
       "difficultySkip": 0,
@@ -92,31 +92,31 @@
       },
       "difficulty_2": {
         "bossKills": 0,
-        "greatestMonsterKilledLevel": 111,
-        "greatestMonsterKilledLifeAndMana": 3884201,
-        "greatestMonsterKilledName": "tagNemesis_Chthonian02",
-        "lastMonsterHit": "tagNemesis_Aetherial01",
-        "lastMonsterHitBy": "tagNemesis_Aetherial01"
+        "greatestMonsterKilledLevel": 110,
+        "greatestMonsterKilledLifeAndMana": 4487891,
+        "greatestMonsterKilledName": "tagGDX1EnclaveBoss01",
+        "lastMonsterHit": "tagNemesis_OrderDeathsVigil01",
+        "lastMonsterHitBy": "tagNemesis_OrderDeathsVigil01"
       },
       "endlessEssence": 0,
       "endlessSouls": 0,
       "experienceFromKills": 65652724,
-      "greatestDamageInflicted": 442100.375,
-      "greatestDamageReceived": 3710.585693359375,
+      "greatestDamageInflicted": 574814.1875,
+      "greatestDamageReceived": 9356.9404296875,
       "healthPotionsUsed": 1,
-      "heroKills": 60,
-      "hitsInflicted": 9225,
-      "hitsReceived": 1676,
-      "itemsCrafted": 0,
-      "kills": 738,
-      "lastHit": 2586.26806640625,
-      "lastHitBy": 2579.315673828125,
+      "heroKills": 258,
+      "hitsInflicted": 39086,
+      "hitsReceived": 8642,
+      "itemsCrafted": 1,
+      "kills": 3222,
+      "lastHit": 2805.4921875,
+      "lastHitBy": 2908.74267578125,
       "loreNotesCollected": 206,
       "manaPotionsUsed": 0,
       "maxLevel": 100,
       "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 67,
-      "playTime": 868,
+      "playTime": 6529,
       "relicsCrafted": 0,
       "shrinesRestored": 155,
       "skill_0": {
@@ -151,10 +151,10 @@
         "acitive": 18,
         "skill": "records/skills/playerclass09/viremight1.dbr"
       },
-      "survivalDefensesBuilt": 0,
-      "survivalGreatestScore": 2634964,
-      "survivalGreatestWave": 120,
-      "survivalPowerUpsActivated": 0,
+      "survivalDefensesBuilt": 4,
+      "survivalGreatestScore": 15784847,
+      "survivalGreatestWave": 170,
+      "survivalPowerUpsActivated": 4,
       "transcendentRelicsCrafted": 0,
       "unknown1": 0,
       "unknown2": 0
@@ -189,7 +189,9 @@
         "SURVIVALMODE_GLADIATOR",
         "SURVIVALMODE_TIER15CHECKPOINT",
         "SURVIVALMODE_4POWERUPS",
-        "GD_STASHED"
+        "GD_STASHED",
+        "DISMANTLING_UNLOCKED",
+        "CONVERTING_UNLOCKED"
       ]
     }
   }
