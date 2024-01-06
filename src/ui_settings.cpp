@@ -8,7 +8,8 @@ void ui_settings::read(gdc_file_reader& gdc) {
   block b;
   b.read_start(gdc);
   ENSURE(b.num == BLOCK_14, "ui_settings: Unexpected block number");
-  ENSURE(b.version == VERSION_5, "ui_settings: Unexpected version number");
+  ENSURE(b.version == VERSION_5 || b.version == VERSION_6,
+         "ui_settings: Unexpected version number");
 
   unknown1 = gdc.read_byte();
   unknown2 = gdc.read_int();
@@ -20,7 +21,13 @@ void ui_settings::read(gdc_file_reader& gdc) {
     unknown6[i] = gdc.read_byte();
   }
 
-  for (unsigned i = 0; i < 46; i++) {
+  if (b.version == VERSION_5) {
+    slots.resize(46);
+  } else {
+    slots.resize(47);
+  }
+
+  for (unsigned i = 0; i < slots.size(); i++) {
     slots[i].read(gdc);
   }
 
@@ -31,7 +38,12 @@ void ui_settings::read(gdc_file_reader& gdc) {
 
 void ui_settings::write(gdc_file_writer& gdc) const {
   block b;
-  b.write_start(gdc, BLOCK_14, VERSION_5);
+
+  if (slots.size() == 46) {
+    b.write_start(gdc, BLOCK_14, VERSION_5);
+  } else {
+    b.write_start(gdc, BLOCK_14, VERSION_6);
+  }
 
   gdc.write_byte(unknown1);
   gdc.write_int(unknown2);
@@ -43,7 +55,7 @@ void ui_settings::write(gdc_file_writer& gdc) const {
     gdc.write_byte(unknown6[i]);
   }
 
-  for (unsigned i = 0; i < 46; i++) {
+  for (unsigned i = 0; i < slots.size(); i++) {
     slots[i].write(gdc);
   }
 
@@ -64,7 +76,7 @@ json ui_settings::to_json() const {
 
   json m;
   ADD_TO_JSON(j, unknown1);
-  for (int i = 0; i < sizeof(slots) / sizeof(slots[0]); i++) {
+  for (int i = 0; i < slots.size(); i++) {
     m.emplace("hot_slot_" + formatNumber(i), slots[i].to_json());
   }
   j.emplace("hot_slots", m);

@@ -12,13 +12,14 @@ class ui_settings : gdc_object {
  private:
   static constexpr int BLOCK_14 = 14;
   static constexpr int VERSION_5 = 5;
+  static constexpr int VERSION_6 = 6;
 
-  hot_slot slots[46];
-  string unknown4[5];
-  string unknown5[5];
-  uint32_t unknown2;
-  float cameraDistance;
-  uint8_t unknown6[5];
-  uint8_t unknown1;
-  uint8_t unknown3;
+  std::vector<hot_slot> slots{};
+  string unknown4[5]{};
+  string unknown5[5]{};
+  uint32_t unknown2{};
+  float cameraDistance{};
+  uint8_t unknown6[5]{};
+  uint8_t unknown1{};
+  uint8_t unknown3{};
 };
