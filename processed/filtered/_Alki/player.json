@@ -14,6 +14,14 @@
       "spirit": 274.0,
       "totalDevotion": 55
     },
+    "header": {
+      "classId": "tagSkillClassName0409",
+      "expansionStatus": 3,
+      "hardcore": 0,
+      "level": 100,
+      "name": "Alki",
+      "sex": 1
+    },
     "info": {
       "alternateConfig": 1,
       "alternateConfigEnabled": 1,

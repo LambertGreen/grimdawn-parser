@@ -14,6 +14,14 @@
       "spirit": 114.0,
       "totalDevotion": 55
     },
+    "header": {
+      "classId": "tagSkillClassName0106",
+      "expansionStatus": 3,
+      "hardcore": 0,
+      "level": 100,
+      "name": "Blud",
+      "sex": 1
+    },
     "info": {
       "alternateConfig": 1,
       "alternateConfigEnabled": 1,

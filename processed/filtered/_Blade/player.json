@@ -14,6 +14,14 @@
       "spirit": 138.0,
       "totalDevotion": 55
     },
+    "header": {
+      "classId": "tagSkillClassName0104",
+      "expansionStatus": 3,
+      "hardcore": 0,
+      "level": 100,
+      "name": "Blade",
+      "sex": 0
+    },
     "info": {
       "alternateConfig": 1,
       "alternateConfigEnabled": 1,

@@ -14,6 +14,14 @@
       "spirit": 754.0,
       "totalDevotion": 55
     },
+    "header": {
+      "classId": "tagSkillClassName0408",
+      "expansionStatus": 3,
+      "hardcore": 0,
+      "level": 100,
+      "name": "Fantasia",
+      "sex": 0
+    },
     "info": {
       "alternateConfig": 1,
       "alternateConfigEnabled": 1,

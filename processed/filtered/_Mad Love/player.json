@@ -14,6 +14,14 @@
       "spirit": 74.0,
       "totalDevotion": 55
     },
+    "header": {
+      "classId": "tagSkillClassName0304",
+      "expansionStatus": 3,
+      "hardcore": 0,
+      "level": 100,
+      "name": "Mad Love",
+      "sex": 0
+    },
     "info": {
       "alternateConfig": 1,
       "alternateConfigEnabled": 1,

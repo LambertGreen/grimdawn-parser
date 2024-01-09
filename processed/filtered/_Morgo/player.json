@@ -14,6 +14,14 @@
       "spirit": 242.0,
       "totalDevotion": 55
     },
+    "header": {
+      "classId": "tagSkillClassName0408",
+      "expansionStatus": 3,
+      "hardcore": 0,
+      "level": 100,
+      "name": "Morgo",
+      "sex": 1
+    },
     "info": {
       "alternateConfig": 1,
       "alternateConfigEnabled": 1,

@@ -15,6 +15,14 @@
         "spirit": 274.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0409",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Alki",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -203,6 +211,14 @@
         "spirit": 50.0,
         "totalDevotion": 1
       },
+      "header": {
+        "classId": "tagSkillClassName07",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 5,
+        "name": "Andy",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 0,
         "alternateConfigEnabled": 0,
@@ -338,6 +354,14 @@
         "skillPoints": 0,
         "spirit": 66.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0309",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Angus",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -527,6 +551,14 @@
         "spirit": 122.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0107",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Arcanor",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -714,6 +746,14 @@
         "skillPoints": 0,
         "spirit": 162.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0106",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Aven the Sav",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -903,6 +943,14 @@
         "spirit": 162.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0106",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Aven",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -1091,6 +1139,14 @@
         "spirit": 98.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0304",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Bale",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -1267,6 +1323,14 @@
         "skillPoints": 0,
         "spirit": 74.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0304",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Billie",
+        "sex": 0
       },
       "info": {
         "alternateConfig": 1,
@@ -1456,6 +1520,14 @@
         "spirit": 138.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0104",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Blade",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -1637,6 +1709,14 @@
         "skillPoints": 0,
         "spirit": 114.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0106",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Blud",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -1826,6 +1906,14 @@
         "spirit": 394.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0506",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Chozan",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -2013,6 +2101,14 @@
         "skillPoints": 0,
         "spirit": 106.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0207",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Daga",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -2202,6 +2298,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0203",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Darkie",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -2389,6 +2493,14 @@
         "skillPoints": 0,
         "spirit": 98.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0104",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "DeMarcus Sol",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -2582,6 +2694,14 @@
         "spirit": 122.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0104",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Deepra",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -2769,6 +2889,14 @@
         "skillPoints": 0,
         "spirit": 50.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0809",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Dr Bones",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -2958,6 +3086,14 @@
         "spirit": 90.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0609",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Earl",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 0,
         "alternateConfigEnabled": 1,
@@ -3146,6 +3282,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0607",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Electra",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -3333,6 +3477,14 @@
         "skillPoints": 0,
         "spirit": 226.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0507",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Eli",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -3526,6 +3678,14 @@
         "spirit": 354.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0209",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Empy",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -3717,6 +3877,14 @@
         "skillPoints": 0,
         "spirit": 754.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0408",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Fantasia",
+        "sex": 0
       },
       "info": {
         "alternateConfig": 1,
@@ -3910,6 +4078,14 @@
         "spirit": 98.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0209",
+        "expansionStatus": 3,
+        "hardcore": 1,
+        "level": 100,
+        "name": "Felix I",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 0,
         "alternateConfigEnabled": 1,
@@ -4079,6 +4255,14 @@
         "skillPoints": 0,
         "spirit": 50.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0209",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "FelixSC",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 0,
@@ -4252,6 +4436,14 @@
         "skillPoints": 0,
         "spirit": 50.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0207",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "ForKeeps",
+        "sex": 0
       },
       "info": {
         "alternateConfig": 1,
@@ -4441,6 +4633,14 @@
         "spirit": 186.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0407",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Hagar Blade",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 0,
         "alternateConfigEnabled": 1,
@@ -4624,6 +4824,14 @@
         "skillPoints": 0,
         "spirit": 386.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0204",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Harra",
+        "sex": 0
       },
       "info": {
         "alternateConfig": 1,
@@ -4813,6 +5021,14 @@
         "spirit": 466.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0507",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Iska",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 0,
         "alternateConfigEnabled": 1,
@@ -5000,6 +5216,14 @@
         "skillPoints": 0,
         "spirit": 74.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0607",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Jaxa",
+        "sex": 0
       },
       "info": {
         "alternateConfig": 1,
@@ -5193,6 +5417,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0105",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Kraig",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -5380,6 +5612,14 @@
         "skillPoints": 0,
         "spirit": 50.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0208",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Lady Gaga",
+        "sex": 0
       },
       "info": {
         "alternateConfig": 1,
@@ -5569,6 +5809,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0809",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Lady Gaga2",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -5757,6 +6005,14 @@
         "spirit": 130.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0104",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Lando",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 0,
         "alternateConfigEnabled": 1,
@@ -5940,6 +6196,14 @@
         "spirit": 162.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0104",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "LandoMarked",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -6098,6 +6362,14 @@
         "skillPoints": 0,
         "spirit": 50.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0408",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "LandoSoul",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 0,
@@ -6283,6 +6555,14 @@
         "skillPoints": 0,
         "spirit": 154.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0108",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Levi",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -6472,6 +6752,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0205",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 99,
+        "name": "Luna",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 0,
         "alternateConfigEnabled": 1,
@@ -6615,6 +6903,14 @@
         "skillPoints": 0,
         "spirit": 50.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0305",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Lunavi",
+        "sex": 0
       },
       "info": {
         "alternateConfig": 0,
@@ -6794,6 +7090,14 @@
         "skillPoints": 0,
         "spirit": 82.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0109",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Luthar",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 0,
@@ -6979,6 +7283,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0102",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "LutharOnFire",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 0,
         "alternateConfigEnabled": 1,
@@ -7162,6 +7474,14 @@
         "skillPoints": 0,
         "spirit": 74.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0304",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Mad Love",
+        "sex": 0
       },
       "info": {
         "alternateConfig": 1,
@@ -7351,6 +7671,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0304",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Maddy",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -7533,6 +7861,14 @@
         "skillPoints": 0,
         "spirit": 194.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0104",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Maxie",
+        "sex": 0
       },
       "info": {
         "alternateConfig": 1,
@@ -7722,6 +8058,14 @@
         "spirit": 82.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0206",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Miss Smith",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -7910,6 +8254,14 @@
         "spirit": 290.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0304",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Moon",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -8064,6 +8416,14 @@
         "skillPoints": 0,
         "spirit": 242.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0408",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Morgo",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -8257,6 +8617,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0309",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Null",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -8445,6 +8813,14 @@
         "spirit": 186.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0405",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Olexra",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 0,
         "alternateConfigEnabled": 1,
@@ -8632,6 +9008,14 @@
         "skillPoints": 0,
         "spirit": 50.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0103",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Rahzy",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -8823,6 +9207,14 @@
         "spirit": 114.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0406",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Rank",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -9010,6 +9402,14 @@
         "skillPoints": 0,
         "spirit": 226.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0309",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Reflux",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 0,
@@ -9199,6 +9599,14 @@
         "spirit": 234.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0608",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Regen",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -9387,6 +9795,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0509",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Rekt",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -9574,6 +9990,14 @@
         "skillPoints": 0,
         "spirit": 282.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0309",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Rotisha",
+        "sex": 0
       },
       "info": {
         "alternateConfig": 1,
@@ -9765,6 +10189,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0809",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Rutnick",
+        "sex": 0
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -9954,6 +10386,14 @@
         "skillPoints": 9,
         "spirit": 122.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0306",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Rylock",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -10147,6 +10587,14 @@
         "spirit": 386.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0308",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Seeker",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -10334,6 +10782,14 @@
         "skillPoints": 0,
         "spirit": 106.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0107",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Sharpie",
+        "sex": 0
       },
       "info": {
         "alternateConfig": 1,
@@ -10523,6 +10979,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0106",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Thor",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 0,
         "alternateConfigEnabled": 1,
@@ -10680,6 +11144,14 @@
         "skillPoints": 0,
         "spirit": 58.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0204",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Ulsa",
+        "sex": 0
       },
       "info": {
         "alternateConfig": 0,
@@ -10864,6 +11336,14 @@
         "skillPoints": 0,
         "spirit": 530.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0508",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Uro",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -11053,6 +11533,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0608",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Val",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -11240,6 +11728,14 @@
         "skillPoints": 0,
         "spirit": 106.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0107",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Valdun",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -11430,6 +11926,14 @@
         "skillPoints": 0,
         "spirit": 50.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0508",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Vale",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -11623,6 +12127,14 @@
         "spirit": 74.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0209",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Virgil",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -11811,6 +12323,14 @@
         "spirit": 50.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0108",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Vita",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -11987,6 +12507,14 @@
         "skillPoints": 0,
         "spirit": 202.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0109",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Waive",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -12176,6 +12704,14 @@
         "spirit": 178.0,
         "totalDevotion": 55
       },
+      "header": {
+        "classId": "tagSkillClassName0106",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Wynot",
+        "sex": 1
+      },
       "info": {
         "alternateConfig": 1,
         "alternateConfigEnabled": 1,
@@ -12363,6 +12899,14 @@
         "skillPoints": 0,
         "spirit": 50.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0106",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Yawn",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
@@ -12555,6 +13099,14 @@
         "skillPoints": 0,
         "spirit": 50.0,
         "totalDevotion": 55
+      },
+      "header": {
+        "classId": "tagSkillClassName0106",
+        "expansionStatus": 3,
+        "hardcore": 0,
+        "level": 100,
+        "name": "Yawn2Dawn",
+        "sex": 1
       },
       "info": {
         "alternateConfig": 1,
