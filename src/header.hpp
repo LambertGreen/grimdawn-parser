@@ -24,5 +24,4 @@ class header : gdc_object {
   uint8_t hardcore{};
   uint8_t expansionStatus{};
   uint8_t isInMainQuest{};
-  string className;
 };
