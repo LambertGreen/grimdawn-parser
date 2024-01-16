@@ -26,7 +26,7 @@
       "alternateConfig": 1,
       "alternateConfigEnabled": 1,
       "compassState": 4,
-      "currentTribute": 97,
+      "currentTribute": 31,
       "difficulty": 66,
       "greatestDifficulty": 2,
       "hasBeenInGame": 1,
@@ -72,13 +72,13 @@
         "lootFilter_37": 0,
         "lootFilter_38": 1
       },
-      "money": 5281959,
+      "money": 5540871,
       "skillWindowShowHelp": 0,
       "texture": ""
     },
     "stats": {
-      "championKills": 24,
-      "criticalHitsInflicted": 949,
+      "championKills": 611,
+      "criticalHitsInflicted": 25607,
       "criticalHitsReceived": 0,
       "deaths": 0,
       "difficultySkip": 0,
@@ -100,31 +100,31 @@
       },
       "difficulty_2": {
         "bossKills": 0,
-        "greatestMonsterKilledLevel": 109,
-        "greatestMonsterKilledLifeAndMana": 2023919,
-        "greatestMonsterKilledName": "tagGDX1MiniBoss_Bog07",
+        "greatestMonsterKilledLevel": 108,
+        "greatestMonsterKilledLifeAndMana": 4843029,
+        "greatestMonsterKilledName": "tagGDX1EnclaveBoss01",
         "lastMonsterHit": "tagEnemySummonIceCrystal",
-        "lastMonsterHitBy": "tagNecromancer_Boss02"
+        "lastMonsterHitBy": "tagNemesis_Undead02"
       },
       "endlessEssence": 0,
       "endlessSouls": 0,
       "experienceFromKills": 71166581,
-      "greatestDamageInflicted": 61436.26171875,
-      "greatestDamageReceived": 6721.35400390625,
+      "greatestDamageInflicted": 95857.3125,
+      "greatestDamageReceived": 11532.728515625,
       "healthPotionsUsed": 0,
-      "heroKills": 17,
-      "hitsInflicted": 5335,
-      "hitsReceived": 370,
+      "heroKills": 375,
+      "hitsInflicted": 139248,
+      "hitsReceived": 8043,
       "itemsCrafted": 0,
-      "kills": 263,
-      "lastHit": 2101.3017578125,
-      "lastHitBy": 2321.13720703125,
+      "kills": 3973,
+      "lastHit": 2553.7568359375,
+      "lastHitBy": 2846.372802734375,
       "loreNotesCollected": 206,
       "manaPotionsUsed": 0,
       "maxLevel": 100,
       "mythicalRelicsCrafted": 0,
       "oneShotChestsOpened": 67,
-      "playTime": 400,
+      "playTime": 5143,
       "relicsCrafted": 0,
       "shrinesRestored": 155,
       "skill_0": {
@@ -155,10 +155,10 @@
         "acitive": 18,
         "skill": "records/skills/playerclass09/viremight1.dbr"
       },
-      "survivalDefensesBuilt": 0,
-      "survivalGreatestScore": 278467,
-      "survivalGreatestWave": 60,
-      "survivalPowerUpsActivated": 0,
+      "survivalDefensesBuilt": 4,
+      "survivalGreatestScore": 2195777,
+      "survivalGreatestWave": 160,
+      "survivalPowerUpsActivated": 8,
       "transcendentRelicsCrafted": 0,
       "unknown1": 0,
       "unknown2": 0
@@ -193,7 +193,9 @@
         "SURVIVALMODE_GLADIATOR",
         "SURVIVALMODE_TIER15CHECKPOINT",
         "SURVIVALMODE_4POWERUPS",
-        "GD_STASHED"
+        "GD_STASHED",
+        "DISMANTLING_UNLOCKED",
+        "CONVERTING_UNLOCKED"
       ]
     }
   }
