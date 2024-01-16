@@ -7,7 +7,7 @@ import sys
 
 def process_json_file(playerFilename, dbFilename):
     # Load JSON data from the specified file
-    with open(playerFilename) as file:
+    with open(playerFilename, "r", encoding="utf-8") as file:
         data = json.load(file)
 
     # Connect to SQLite database (this creates the file if it doesn't exist)

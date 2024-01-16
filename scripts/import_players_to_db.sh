@@ -10,7 +10,7 @@ db_file="$2"
 find "$players_dir" -name "*.json" -print0 | while IFS= read -r -d '' file; do
 
     echo "Importing \"$file\" to \"$db_file\"..."
-    cmd="python ./scripts/import_player_json_to_db.py \"$file\" \"$db_file\""
+    cmd="python ./scripts/import_player_json_to_postgres_db.py \"$file\" \"$db_file\""
     echo "Running: $cmd"
     eval "$cmd"
 done

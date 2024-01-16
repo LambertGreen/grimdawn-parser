@@ -11818,8 +11818,8 @@
             </column>
           </datasource-dependencies>
           <shelf-sorts>
-            <shelf-sort-v2 dimension-to-sort='[federated.06tgat30kjiybu1fgwmcl1l4oubv].[none:player-name:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.06tgat30kjiybu1fgwmcl1l4oubv].[avg:greatestMonsterKilledLevel (player-data.stats.difficulty_2):qk]' shelf='rows' />
             <shelf-sort-v2 dimension-to-sort='[federated.06tgat30kjiybu1fgwmcl1l4oubv].[none:greatestMonsterKilledName (player-data.stats.difficulty_2):nk]' direction='DESC' measure-to-sort-by='[federated.06tgat30kjiybu1fgwmcl1l4oubv].[avg:greatestMonsterKilledLifeAndMana (player-data.stats.difficulty_2):qk]' shelf='rows' />
+            <shelf-sort-v2 dimension-to-sort='[federated.06tgat30kjiybu1fgwmcl1l4oubv].[none:player-name:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.06tgat30kjiybu1fgwmcl1l4oubv].[avg:greatestMonsterKilledLevel (player-data.stats.difficulty_2):qk]' shelf='rows' />
           </shelf-sorts>
           <slices>
             <column>[federated.06tgat30kjiybu1fgwmcl1l4oubv].[none:player-name:nk]</column>
@@ -12483,7 +12483,7 @@
       </viewpoint>
       <simple-id uuid='{20B7CFC1-B19A-45DA-849C-0608DB1F74F9}' />
     </window>
-    <window class='worksheet' maximized='true' name='Mastery'>
+    <window class='worksheet' name='Mastery'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -12518,7 +12518,7 @@
       </viewpoint>
       <simple-id uuid='{449A1D58-0A3C-4E65-A03D-F5EDA9C5362E}' />
     </window>
-    <window class='worksheet' name='Attrib'>
+    <window class='worksheet' maximized='true' name='Attrib'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -12541,8 +12541,6 @@
         <edge name='right'>
           <strip size='160'>
             <card param='[federated.0bs6d390epeuir11f8kwq1h2iy4t].[none:name:nk]' type='filter' />
-            <card pane-specification-id='2' param='[federated.0bs6d390epeuir11f8kwq1h2iy4t].[med:cunning:qk]' type='size' />
-            <card pane-specification-id='2' param='[federated.0bs6d390epeuir11f8kwq1h2iy4t].[none:Calculation_5662150674716798976:nk]' type='color' />
           </strip>
         </edge>
       </cards>

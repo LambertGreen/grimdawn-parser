@@ -179,3 +179,11 @@ run-edit-reset-player-stats:
 run-copy-edited-files-to-save-dir:
   @echo "Copying edited files to GrimDawn save directory..."
   ./scripts/copy_player_files.sh ./processed/edited_reset_stats ./grimdawn_save/main
+
+run-create-players-db:
+  @echo "Creating grimdawn players DB.."
+  createdb -U lgreen grimdawn_players
+
+run-import-players-to-db:
+  @echo "Importing player json files into players DB..."
+  ./scripts/import_players_to_db.sh processed/filtered "dbname='grimdawn_players' user='lgreen' host='localhost'"
