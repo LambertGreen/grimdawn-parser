@@ -86,7 +86,7 @@ jq -s '.' \
     testfiles/_Thor/player.json      \
     > testfiles/combined.json
 #+end_src
-** Worklow
+** Workflow
 *** Build
 The build is automated via the =just= tool with build recipes defined in ~".justfile"~.
 

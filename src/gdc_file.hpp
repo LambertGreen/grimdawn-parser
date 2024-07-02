@@ -19,7 +19,7 @@ class gdc_file {
   uint32_t _key{};
   uint32_t _table[256]{};
 
-  gdc_file(const char* filename, const char* mode) : _f(filename, mode){};
+  gdc_file(const char* filename, const char* mode) : _f(filename, mode) {};
   void build_table();
   void update_key(void* ptr, uint32_t len);
 };
