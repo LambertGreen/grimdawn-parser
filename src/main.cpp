@@ -8,7 +8,17 @@
 using json = nlohmann::json;
 
 namespace {
-
+/**
+ * @brief Exports player data to a JSON file.
+ *
+ * This function reads player data from a specified GDC file, converts it to
+ * JSON format, and writes it to an output file. The JSON data includes the
+ * player's name and the player data extracted from the GDC file.
+ *
+ * @param playerGdcFilename The filename of the player's GDC file.
+ * @param playerName The name of the player.
+ * @param outFilename The filename of the output JSON file.
+ */
 void exportJson(std::string playerGdcFilename,
                 std::string playerName,
                 std::string outFilename) {
@@ -24,6 +34,19 @@ void exportJson(std::string playerGdcFilename,
   }
 }
 
+/**
+ * @brief Edits player data and writes the changes to a GDC file.
+ *
+ * This function reads player data from a specified GDC file, performs an edit
+ * action on the data, and writes the modified data to an output GDC file.
+ * Currently, the function supports resetting the player's stats as the edit
+ * action.
+ *
+ * @param playerGdcFilename The filename of the player's GDC file.
+ * @param edit_action The action to perform on the player data (e.g.,
+ * "reset-stats").
+ * @param outFilename The filename of the output GDC file.
+ */
 void edit(std::string playerGdcFilename,
           std::string edit_action,
           std::string outFilename) {
@@ -36,6 +59,13 @@ void edit(std::string playerGdcFilename,
 }
 }  // namespace
 
+/**
+ * @brief Entry point for the GrimDawn Player Commandline Editor.
+ *
+ * This function parses command line arguments to perform various actions on a
+ * GrimDawn player GDC file. Supported actions include exporting player data to
+ * JSON format and editing player data (e.g., resetting stats).
+ */
 int main(int argc, char** argv) {
   try {
     cxxopts::Options options(argv[0], "GrimDawn Player Commandline Editor");
